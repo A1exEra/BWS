@@ -13,7 +13,7 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main}`}>
+      <main>
         <ul>
           {props.bws_data.map((el: BWS_DATA) => (
             <li key={el.id}>{el.title}</li>

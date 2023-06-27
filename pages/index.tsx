@@ -1,11 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
+import { BWS_DATA } from '@/helpers/api-util';
 import styles from '@/styles/Home.module.scss';
+import { getAllData } from '@/helpers/api-util';
+import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export default function Home() {
+const Home = (props: { bws_data: BWS_DATA[] }) => {
   return (
     <>
       <Head>
@@ -14,9 +13,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <h1>BWS</h1>
+      <main className={`${styles.main}`}>
+        <ul>
+          {props.bws_data.map((el: BWS_DATA) => (
+            <li key={el.id}>{el.title}</li>
+          ))}
+        </ul>
+        <Link href="/products">Products</Link>
       </main>
     </>
   );
-}
+};
+export const getStaticProps = async () => {
+  const items = await getAllData();
+  console.log(items);
+  return {
+    props: {
+      bws_data: items,
+    },
+    revalidate: 1800,
+  };
+};
+
+export default Home;

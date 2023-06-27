@@ -1,0 +1,291 @@
+{
+  "bws": {
+    "item1": {
+      "color": "Brown",
+      "description": "Premium oakwood flooring planks with a smooth finish.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/oakwood.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 39.99,
+      "title": "Oakwood Planks"
+    },
+    "item10": {
+      "color": "Brown",
+      "description": "Hickory wood flooring with a harmonious blend of light and dark tones.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/granite.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 74.99,
+      "title": "Hickory Harmony"
+    },
+    "item11": {
+      "color": "Beige",
+      "description": "Timeless travertine flooring that adds warmth and character to any space.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/bamboo.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 84.99,
+      "title": "Travertine Timeless"
+    },
+    "item12": {
+      "color": "Gray",
+      "description": "Prestigious porcelain tiles known for their durability and luxurious appearance.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/slate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 89.99,
+      "title": "Porcelain Prestige"
+    },
+    "item13": {
+      "color": "Red",
+      "description": "Cherry wood flooring with a beautiful grain pattern and natural reddish tones.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/cork.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 79.99,
+      "title": "Cherry Blossom"
+    },
+    "item14": {
+      "color": "Golden",
+      "description": "Acacia wood flooring that adds a distinctive accent to any room.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/laminate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 69.99,
+      "title": "Acacia Accent"
+    },
+    "item15": {
+      "color": "Various",
+      "description": "Versatile vinyl flooring that replicates the look of various natural materials.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/oakwood.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 49.99,
+      "title": "Vinyl Versatile"
+    },
+    "item16": {
+      "color": "Brown",
+      "description": "Wonderful walnut wood flooring with rich, dark tones and a sophisticated appeal.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/marble.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 89.99,
+      "title": "Walnut Wonder"
+    },
+    "item17": {
+      "color": "Gray",
+      "description": "Chic concrete flooring that exudes an industrial and modern aesthetic.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/granite.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 59.99,
+      "title": "Concrete Chic"
+    },
+    "item18": {
+      "color": "Light Brown",
+      "description": "Beautiful birch wood flooring with a smooth finish and natural color variations.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/bamboo.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 64.99,
+      "title": "Birch Beauty"
+    },
+    "item19": {
+      "color": "Beige",
+      "description": "Luxurious limestone flooring that brings sophistication and natural beauty.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/slate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 79.99,
+      "title": "Limestone Luxe"
+    },
+    "item2": {
+      "color": "White",
+      "description": "Luxurious marble flooring tiles that add elegance to any space.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/marble.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 79.99,
+      "title": "Marble Elegance"
+    },
+    "item20": {
+      "color": "Light Brown",
+      "description": "Paradise-like pine wood flooring with a charming rustic appeal.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/cork.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 54.99,
+      "title": "Pine Paradise"
+    },
+    "item21": {
+      "color": "Light Brown",
+      "description": "Majestic maple wood flooring known for its durability and timeless beauty.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/laminate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 74.99,
+      "title": "Maple Majesty"
+    },
+    "item22": {
+      "color": "Gray",
+      "description": "Charming cobblestone flooring that adds a touch of nostalgia and old-world charm.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/oakwood.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 69.99,
+      "title": "Cobblestone Charm"
+    },
+    "item23": {
+      "color": "Light Brown",
+      "description": "Blissful beechwood flooring with a smooth and elegant appearance.",
+      "image": "/images/marble.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 59.99,
+      "title": "Beechwood Bliss"
+    },
+    "item24": {
+      "color": "Light Brown",
+      "description": "Serenading sycamore wood flooring that captures attention with its unique grain patterns.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/granite.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 84.99,
+      "title": "Sycamore Serenade"
+    },
+    "item25": {
+      "color": "Brown",
+      "description": "Classic chestnut wood flooring with a warm and inviting appeal.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/bamboo.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 79.99,
+      "title": "Chestnut Classic"
+    },
+    "item26": {
+      "color": "Gray",
+      "description": "Innovative bamstone flooring made from bamboo fibers for a sustainable and durable choice.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/slate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 89.99,
+      "title": "Bamstone"
+    },
+    "item27": {
+      "color": "Red",
+      "description": "Radiant rosewood flooring that adds warmth and a touch of luxury to any room.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/cork.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 94.99,
+      "title": "Rosewood Radiance"
+    },
+    "item3": {
+      "color": "Gray",
+      "description": "Classic granite flooring for a timeless look and durability.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/granite.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 59.99,
+      "title": "Granite Classic"
+    },
+    "item4": {
+      "color": "Light Brown",
+      "description": "Eco-friendly bamboo flooring for a natural and sustainable choice.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/bamboo.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 49.99,
+      "title": "Bamboo Bliss"
+    },
+    "item5": {
+      "color": "Dark Gray",
+      "description": "Slate stone flooring that brings a serene and earthy vibe to any room.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/slate.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 69.99,
+      "title": "Slate Serenity"
+    },
+    "item6": {
+      "color": "Beige",
+      "description": "Comfortable and eco-friendly cork flooring for a cozy atmosphere.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/cork.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 54.99,
+      "title": "Cork Comfort"
+    },
+    "item7": {
+      "color": "Brown",
+      "description": "Laminate flooring with a luxurious look and easy maintenance.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/laminate.jpg",
+      "isLiked": false,
+      "onSale": true,
+      "price": 44.99,
+      "title": "Laminate Luxe"
+    },
+    "item8": {
+      "color": "Multicolor",
+      "description": "Trendy terrazzo flooring with colorful stone chips for a unique style.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/oakwood.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 64.99,
+      "title": "Terrazzo Trend"
+    },
+    "item9": {
+      "color": "White",
+      "description": "Chic ceramic tiles that offer durability and a modern aesthetic.",
+      "image": "gs://nextjs-client-side-db43a.appspot.com/productImages/marble.jpg",
+      "isLiked": false,
+      "onSale": false,
+      "price": 49.99,
+      "title": "Ceramic Chic"
+    }
+  },
+  "events": {
+    "e1": {
+      "date": "2023-05-12",
+      "description": "Everyone can learn to code! Yes, everyone! In this live event, we are going to go through all the key basics and get you started with programming as well.",
+      "image": "/images/coding-event.jpg",
+      "isFeatured": false,
+      "location": "Somestreet 25, 12345 San Somewhereo",
+      "title": "Programming for everyone"
+    },
+    "e2": {
+      "date": "2023-05-30",
+      "description": "We know: Networking is no fun if you are an introvert person. That's why we came up with this event - it'll be so much easier. Promised!",
+      "image": "/images/introvert-event.jpg",
+      "isFeatured": true,
+      "location": "New Wall Street 5, 98765 New Work",
+      "title": "Networking for introverts"
+    },
+    "e3": {
+      "date": "2022-04-10",
+      "description": "You probably need no help with networking in general. But focusing your energy correctly - that is something where most people can improve.",
+      "image": "/images/extrovert-event.jpg",
+      "isFeatured": true,
+      "location": "My Street 12, 10115 Broke City",
+      "title": "Networking for extroverts"
+    }
+  },
+  "sales": {
+    "s1": {
+      "amount": 150,
+      "user": "Alex"
+    },
+    "s2": {
+      "amount": 200,
+      "user": "Sandro"
+    },
+    "s3": {
+      "amount": 500,
+      "user": "God Of Code"
+    },
+    "s4": {
+      "amount": 199,
+      "user": "Jane"
+    }
+  }
+}

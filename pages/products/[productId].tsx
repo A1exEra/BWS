@@ -1,7 +1,7 @@
 import { BWS_DATA, getAllData, getItemById } from '@/helpers/api-util';
 import Head from 'next/head';
 import Link from 'next/link';
-
+import Image from 'next/image';
 const ProductDetailPage = (props: { product: BWS_DATA }) => {
   const { product } = props;
 
@@ -24,6 +24,7 @@ const ProductDetailPage = (props: { product: BWS_DATA }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Image src={product.image} alt="img" width={304} height={320} />
       <h2>ProductDetailPage</h2>
       <h3>{product.title}</h3>
       <p>{product.description}</p>

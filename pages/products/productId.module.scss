@@ -1,0 +1,14 @@
+.productSection {
+  display: flex;
+  // justify-content: space-between;
+  padding: 30px;
+  .imageContainer {
+    width: 50vw;
+    padding: 0 20px;
+  }
+  .productDetails {
+    padding: 0 20px;
+
+    background-color: red;
+  }
+}

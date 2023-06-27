@@ -2,6 +2,7 @@ import { BWS_DATA, getAllData, getItemById } from '@/helpers/api-util';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+
 const ProductDetailPage = (props: { product: BWS_DATA }) => {
   const { product } = props;
 

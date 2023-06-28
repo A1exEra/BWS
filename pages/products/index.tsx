@@ -1,6 +1,6 @@
 import { BWS_DATA, getAllData } from '@/helpers/api-util';
 import Head from 'next/head';
-import Home from '..';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -23,6 +23,12 @@ const AllProductsPage = (props: { products: BWS_DATA[] }) => {
               <h3>{el.title}</h3>
             </Link>
             <p>{el.description}</p>
+            <Image
+              src={`${el.image}`}
+              alt={el.title}
+              width={304}
+              height={320}
+            />
           </li>
         ))}
       </ul>

@@ -56,6 +56,12 @@ theme.mixins = {
     fontStyle: 'normal',
     fontWeight: '300',
   },
+  primaryProductPrice: {
+    fontSize: theme.fontSizes.textXl,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    color: '#536758',
+  },
   primaryComponentTitle: {
     fontSize: theme.fontSizes.text20,
     fontStyle: 'normal',

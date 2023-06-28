@@ -1,21 +1,16 @@
 import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-type BurgerProps = {
+type SliderProps = {
   isOpen: boolean;
-  className?: string;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const SliderNav = ({ isOpen, setIsOpen }) => {
-  const sliderRef = useRef(null);
-  const divRef = useRef(null);
+const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
+  const sliderRef = useRef<HTMLUListElement>(null);
+  const divRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
-    const handleOutsideClick = (event: any) => {
+    const handleOutsideClick = (event: MouseEvent) => {
       if (isOpen) {
-        if (sliderRef?.current?.contains(event.target)) {
-          return document.removeEventListener('mousedown', handleOutsideClick);
-        }
-        if (divRef?.current?.contains(event.target)) {
-          console.log('test');
+        if (divRef.current?.contains(event.target)) {
           setIsOpen(false);
         }
       }
@@ -39,7 +34,7 @@ const SliderNav = ({ isOpen, setIsOpen }) => {
   );
 };
 
-const SliderNavContainer = styled.nav`
+const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
   .background {
     position: absolute;
     top: 0px;

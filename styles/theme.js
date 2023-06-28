@@ -1,10 +1,10 @@
 const theme = {
   colors: {
     primary: '#536758',
-    secondary: '#2A2A2A',
-    third: '#2B2B2B',
-    whitePrimary: '#FFFFFF',
-    whiteSecondary: '#F9F9F9',
+    secondary: '#2a2a2a',
+    third: '#2b2b2b',
+    whitePrimary: '#ffffff',
+    whiteSecondary: '#f9f9f9',
     black: '#000000',
   },
   fontSizes: {
@@ -35,24 +35,23 @@ theme.mixins = {
     fontWeight: '700',
     lineHeight: '1.25',
   },
-  productTitle46: {
-    fontSize: '46px',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    lineHeight: '1.25',
-    letterSpacing: '-0.8px',
-  },
   primaryHeroRegular: {
     fontSize: theme.fontSizes.textXl,
     fontStyle: 'normal',
     fontWeight: '300',
-    color: '#FFFFFF',
+    color: '#ffffff',
   },
   primaryComponentHeading: {
     fontSize: theme.fontSizes.textBase,
     color: theme.colors.primary,
     fontStyle: 'normal',
     fontWeight: '300',
+  },
+  primaryProductPrice: {
+    fontSize: theme.fontSizes.textXl,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    color: '#536758',
   },
   primaryComponentTitle: {
     fontSize: theme.fontSizes.text20,
@@ -69,7 +68,7 @@ theme.mixins = {
   },
   primaryProductName: {
     fontSize: theme.fontSizes.text46px,
-    color: '#2B2B2B',
+    color: '#2b2b2b',
     fontStyle: 'normal',
     letterSpacing: '-0.8px',
     fontWeight: '400',
@@ -85,7 +84,7 @@ theme.mixins = {
     fontSize: theme.fontSizes.textSm,
     fontStyle: 'normal',
     letterSpacing: '0.6px',
-    color: '#3C3D48',
+    color: '#3c3d48',
     fontWeight: '600',
   },
   secondarySidebar: {
@@ -103,4 +102,5 @@ theme.mixins = {
     fontWeight: '300',
   },
 };
+
 export default theme;

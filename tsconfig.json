@@ -18,12 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "styles/theme.js",
-    "styles/productId.styled.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "styles/theme.ts"],
   "exclude": ["node_modules"]
 }

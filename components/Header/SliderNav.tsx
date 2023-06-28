@@ -42,7 +42,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
     width: 100vw;
     height: 100vh;
     opacity: 0.5;
-    z-index: 10;
+    z-index: 99;
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
   position: fixed;

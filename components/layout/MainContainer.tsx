@@ -1,14 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import Header from '../Header/Header';
 const MainContainer = ({ children }: { children: ReactNode }) => {
-  return (
-    <MainContainerWrapper>
-      <Header />
-      <h1 className="heading">GOD OF CODE</h1>
-      {children}
-    </MainContainerWrapper>
-  );
+  return <MainContainerWrapper>{children}</MainContainerWrapper>;
 };
 
 const MainContainerWrapper = styled.div`

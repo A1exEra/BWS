@@ -37,7 +37,7 @@ theme.mixins = {
   },
 
   productTitle46: {
-    fontSize: '46px',
+    fontSize: theme.fontSizes.text46px,
     fontStyle: 'normal',
     fontWeight: '600',
     lineHeight: '1.25',

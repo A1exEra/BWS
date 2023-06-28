@@ -2,7 +2,7 @@ import { BWS_DATA, getAllData, getItemById } from '@/helpers/api-util';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ProductId } from '../../styles/productId.styled.js';
+import { ProductId } from '../../styles/productId.styled';
 // import styles from './productId.module.scss';
 
 const ProductDetailPage = (props: { product: BWS_DATA }) => {
@@ -27,7 +27,7 @@ const ProductDetailPage = (props: { product: BWS_DATA }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ProductId>
+      <ProductId bg="purple">
         <div className="imageContainer">
           {/* <Image src={product.image} alt="img" width={640} height={457} /> */}
           <Image src={product.image} alt="img" width={640} height={457} />

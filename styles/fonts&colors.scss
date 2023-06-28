@@ -10,7 +10,7 @@ $text-xbase: clamp(0.81rem, calc(0.78rem + 0.18vw), 0.94rem); // min 13, max 15
 $text-sm: clamp(0.75rem, calc(0.71rem + 0.18vw), 0.88rem); // min 12, max 14
 
 @mixin primary_font_regular_300 {
-  font-size: 15px;
+  font-size: $text-xbase;
   color: #939393;
   font-style: normal;
   font-weight: 300;

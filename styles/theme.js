@@ -35,6 +35,15 @@ theme.mixins = {
     fontWeight: '700',
     lineHeight: '1.25',
   },
+
+  productTitle46: {
+    fontSize: '46px',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: '1.25',
+    letterSpacing: '-0.8px',
+  },
+
   primaryHeroRegular: {
     fontSize: theme.fontSizes.textXl,
     fontStyle: 'normal',

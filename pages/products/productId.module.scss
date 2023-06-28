@@ -1,0 +1,24 @@
+// @import '../../styles/globals.scss';
+
+.productSection {
+  display: flex;
+  // justify-content: space-between;
+  padding: 50px;
+  .imageContainer {
+    position: relative;
+    width: 50%; /* Or any specific dimension */
+    height: 600px; /* Or any specific dimension */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .productDetails {
+    padding: 0 20px;
+
+    background-color: red;
+    h5 {
+      text-transform: uppercase;
+      color: pink;
+    }
+  }
+}

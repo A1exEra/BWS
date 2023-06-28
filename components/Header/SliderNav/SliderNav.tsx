@@ -1,4 +1,4 @@
-import { useRef, useEffect, use } from 'react';
+import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 type BurgerProps = {
   isOpen: boolean;
@@ -48,6 +48,7 @@ const SliderNavContainer = styled.nav`
     height: 100vh;
     opacity: 0.5;
     z-index: 10;
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
   position: fixed;
   top: 76px;

@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Header />
       <MainContainer>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </MainContainer>
     </ThemeProvider>
   );

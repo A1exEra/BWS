@@ -3,11 +3,21 @@ import styled from 'styled-components';
 type ProductIdProps = {
   bg?: string;
 };
-export const ProductId = styled.section<ProductIdProps>`
+const ProductId = styled.section<ProductIdProps>`
   display: flex;
   padding: 50px 0 80px 0;
   .imageContainer {
-    padding: 0 16px 0 64px;
+    position: relative;
+
+    width: 640px;
+    height: 457px;
+    margin: 0 16px 0 64px;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .productDetails {
     width: 720px;
@@ -92,3 +102,5 @@ export const ProductId = styled.section<ProductIdProps>`
     }
   }
 `;
+
+export default ProductId;

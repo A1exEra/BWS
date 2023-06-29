@@ -73,7 +73,7 @@ theme.mixins = {
     color: '#536758',
     fontStyle: 'normal',
     letterSpacing: '1.5px',
-    fontWeight: '300',
+    fontWeight: '600',
   },
   primaryProductName: {
     fontSize: theme.fontSizes.text46px,

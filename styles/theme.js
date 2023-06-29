@@ -13,7 +13,7 @@ const theme = {
     textXl: 'clamp(1.25rem, calc(1.18rem + 0.36vw), 1.5rem)', //min 20 max 24
     text20: 'clamp(1.06rem, calc(1.01rem + 0.27vw), 1.25rem)', //min 17 max 20
     textBase: 'clamp(0.88rem, calc(0.84rem + 0.18vw), 1rem)', // min 14, max 16
-    textXbase: 'clamp(0.81rem, calc(0.78rem + 0.18vw), 0.94rem)', // min 13, max 1
+    textXbase: 'clamp(0.81rem, calc(0.78rem + 0.18vw), 0.94rem)', // min 13, max 15
     textSm: 'clamp(0.75rem, calc(0.71rem + 0.18vw), 0.88rem)', // min 12, max 14
   },
   fonts: {

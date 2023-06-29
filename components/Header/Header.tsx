@@ -21,8 +21,10 @@ const Header = () => {
 };
 
 export const StyledHeader = styled.div`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  opacity: 0.5;
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => theme.colors.primary};
+  //   opacity: 0.5;
   padding: 18px 64px;
   display: flex;
   flex-direction: row;
@@ -35,20 +37,8 @@ export const StyledHeader = styled.div`
     letter-spacing: 10px;
     color: ${({ theme }) => theme.colors.whitePrimary};
   }
-  .burger-hidden {
-    display: none !important;
-  }
   @media (max-width: 768px) {
-    .burger-hidden {
-      display: block !important;
-    }
-    .navar-navitems {
-      display: none;
-    }
-    .navbar {
-      margin: 0;
-      padding: 1rem;
-    }
+    padding: 16px;
   }
 `;
 export default Header;

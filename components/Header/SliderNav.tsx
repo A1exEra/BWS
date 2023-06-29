@@ -41,7 +41,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
     left: 0px;
     width: 100vw;
     height: 100vh;
-    opacity: 0.5;
+    opacity: 0.8;
     z-index: 99;
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
@@ -50,7 +50,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
   left: 0px;
   width: 320px;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.whitePrimary};
+  background-color: ${({ theme }) => theme.colors.primary};
   z-index: 100;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isOpen }) =>

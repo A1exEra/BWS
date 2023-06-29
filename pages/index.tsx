@@ -3,7 +3,7 @@ import { BWS_DATA } from '@/helpers/api-util';
 import styles from '@/styles/Home.module.scss';
 import { getAllData } from '@/helpers/api-util';
 import Link from 'next/link';
-
+import MainPage from '@/components/MainPage/MainPage';
 const Home = (props: { bws_data: BWS_DATA[] }) => {
   return (
     <>
@@ -13,6 +13,7 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <MainPage />
       <main>
         <ul>
           {props.bws_data.map((el: BWS_DATA) => (

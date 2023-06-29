@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ProductsPage from '@/components/ProductsPage/ProductsPage';
 
 const AllProductsPage = (props: { products: BWS_DATA[] }) => {
   const router = useRouter();
@@ -15,23 +16,8 @@ const AllProductsPage = (props: { products: BWS_DATA[] }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>This is the AllProductsPage page</h1>
-      <ul>
-        {products.map((el: BWS_DATA) => (
-          <li key={el.id}>
-            <Link href={`/products/${el.id}`}>
-              <h3>{el.title}</h3>
-            </Link>
-            <p>{el.description}</p>
-            <Image
-              src={`${el.image}`}
-              alt={el.title}
-              width={304}
-              height={320}
-            />
-          </li>
-        ))}
-      </ul>
+
+      <ProductsPage products={products} />
       <Link href="/">Home</Link>
     </>
   );

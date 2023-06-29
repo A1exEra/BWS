@@ -14,6 +14,7 @@ const Header = () => {
       <SliderNav isOpen={isOpen} setIsOpen={setIsOpen} />
       <Burger setIsOpen={setIsOpen} isOpen={isOpen} />
       <h3>BSW</h3>
+
       <Image src={ShoppingCartIcon} alt="shopping-cart-icon" />
     </StyledHeader>
   );

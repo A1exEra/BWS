@@ -5,8 +5,6 @@ export const StyledProductCard = styled.div`
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
-  width: 976px;
-
   .product {
     text-align: center;
     width: 304px;

@@ -4,6 +4,7 @@ import SliderNav from './SliderNav';
 import { useState, useEffect } from 'react';
 import ShoppingCartIcon from '../icons/shopping_cart.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -13,8 +14,10 @@ const Header = () => {
     <StyledHeader>
       <SliderNav isOpen={isOpen} setIsOpen={setIsOpen} />
       <Burger setIsOpen={setIsOpen} isOpen={isOpen} />
-      <h3>BSW</h3>
 
+      <Link href="/">
+        <h3>BSW</h3>
+      </Link>
       <Image src={ShoppingCartIcon} alt="shopping-cart-icon" />
     </StyledHeader>
   );

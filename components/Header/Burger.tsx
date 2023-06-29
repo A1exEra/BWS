@@ -18,12 +18,14 @@ const StyledBurger = styled.div`
     border-radius: 2px;
     background-color: ${({ theme }) => theme.colors.whitePrimary};
     transition: 0.7s all ease-in-out;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
 
   .stripe-top {
     transform: translateY(12.5px) rotateZ(45deg);
     height: 3px;
     opacity: 0.8;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
 
   .stripe-middle {
@@ -35,6 +37,7 @@ const StyledBurger = styled.div`
     transform: translateY(-9px) rotateZ(-45deg);
     height: 3px;
     opacity: 0.8;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
 `;
 type BurgerProps = {

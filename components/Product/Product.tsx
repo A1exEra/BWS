@@ -13,19 +13,10 @@ import heart from '../../components/icons/heart.svg';
 
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
-  console.log(product);
   const choices = [choice1, choice2, choice3, choice4, choice5];
-
   return (
     <ProductId bg="purple">
       <div className="imageContainer">
-        {/* <Image
-            key={1}
-            src={product.image}
-            alt="img"
-            width={640}
-            height={457}
-          /> */}
         <img src={product.image} alt="img" className="image" />
       </div>
       <div className="productDetails">

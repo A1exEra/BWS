@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 type SliderProps = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,6 +30,12 @@ const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
         <li>Menu Item 1</li>
         <li>Menu Item 2</li>
         <li>Menu Item 3</li>
+        <li>
+          <Link href="/">HOME</Link>
+        </li>
+        <li>
+          <Link href="/products">PRODUCTS</Link>
+        </li>
       </ul>
     </SliderNavContainer>
   );
@@ -38,7 +45,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
   .background {
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: 320px;
     width: 100vw;
     height: 100vh;
     opacity: 0.8;

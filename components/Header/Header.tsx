@@ -16,7 +16,7 @@ const Header = () => {
       <Burger setIsOpen={setIsOpen} isOpen={isOpen} />
 
       <Link href="/">
-        <h3>BSW</h3>
+        <h3>BWS</h3>
       </Link>
       <Image src={ShoppingCartIcon} alt="shopping-cart-icon" />
     </StyledHeader>

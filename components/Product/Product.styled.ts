@@ -20,7 +20,7 @@ const ProductId = styled.section<ProductIdProps>`
     }
   }
   .productDetails {
-    width: 720px;
+    max-width: 720px;
     padding: 0 176px 0 96px;
     margin-bottom: 70px;
 

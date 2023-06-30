@@ -17,7 +17,7 @@ const Button: FC<BtnProps> = (props) => {
     <StyledButton
       type="button"
       onClick={props.onClick}
-      bg={props.backgroundColor}
+      backgroundColor={props.backgroundColor}
       className={`${props.className}`}>
       {props.children}
     </StyledButton>
@@ -28,13 +28,13 @@ const Button: FC<BtnProps> = (props) => {
     // </StyledButton>
   );
 };
-const StyledButton = styled.button`
+const StyledButton = styled.button<BtnProps>`
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1ps solid ${({ bg }) => bg || 'none'};
-  background: ${({ bg }) => bg || 'none'};
+  border: 1ps solid ${({ backgroundColor }) => backgroundColor || 'none'};
+  background: ${({ backgroundColor }) => backgroundColor || 'none'};
   // color: ${({ theme }) => theme.colors.whitePrimary};
   img {
     object-fit: covetr;

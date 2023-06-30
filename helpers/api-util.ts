@@ -10,6 +10,8 @@ export interface BWS_DATA {
   isLiked: boolean;
   onSale: boolean;
   color: string;
+  isTrending: boolean;
+  category: string;
 }
 
 export const getAllData = async () => {
@@ -26,6 +28,8 @@ export const getAllData = async () => {
       isLiked: data[key].isLiked,
       onSale: data[key].onSale,
       color: data[key].color,
+      isTrending: data[key].isTrending,
+      category: data[key].category,
     });
   }
   return bws_data;

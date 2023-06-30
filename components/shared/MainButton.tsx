@@ -38,19 +38,19 @@ const StyledButton = styled.div`
   .Btn {
     height: 100%;
     width: 100%;
-    border: none;
+    border: 1px solid ${({ bg }) => (!bg ? 'white' : 'black')};
     background: ${({ bg }) => bg || 'none'};
-    color: ${({ theme }) => theme.colors.whitePrimary};
+    // color: ${({ theme }) => theme.colors.whitePrimary};
     transition: all 0.5s ease;
     cursor: pointer;
     font-size: 18px;
     border-radius: 4px;
     p {
       font-size: 18px;
-      color: ${({ bg }) => (bg ? 'white' : 'black')};
+      color: ${({ bg }) => (!bg ? 'white' : 'black')};
     }
     &:hover {
-      border: 1px solid black;
+      border: 1px solid ${({ bg }) => (!bg ? 'black' : 'white')};
       box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
     }
     &:active {

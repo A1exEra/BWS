@@ -17,7 +17,8 @@ const Button: FC<BtnProps> = (props) => {
     <StyledButton
       type="button"
       onClick={props.onClick}
-      bg={props.backgroundColor}>
+      bg={props.backgroundColor}
+      className={`${props.className}`}>
       {props.children}
     </StyledButton>
     // <StyledButton>

@@ -6,6 +6,7 @@ const theme = {
     whitePrimary: '#ffffff',
     whiteSecondary: '#f9f9f9',
     black: '#000000',
+    grey: '#939393',
   },
   fontSizes: {
     text2xl: 'clamp(5.63rem, calc(5.27rem + 1.79vw), 6.88rem)', // min 90 max 110

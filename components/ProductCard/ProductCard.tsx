@@ -11,8 +11,8 @@ const ProductCard = (props: any) => {
   return (
     <StyledProductCard>
       {products.map((el: BWS_DATA) => (
-        <Link href={`/products/${el.id}`}>
-          <div key={el.id} className="product">
+        <Link key={el.id} href={`/products/${el.id}`}>
+          <div className="product">
             {/* <p>{el.description}</p> */}
 
             <Image

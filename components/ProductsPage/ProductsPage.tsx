@@ -7,8 +7,6 @@ import downarrow from '../../public/images/color-options/downarrow.svg';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
-  console.log(products);
-
   return (
     <StyledProducts>
       <div className="productCategories">

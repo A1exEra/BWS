@@ -33,7 +33,7 @@ const StyledDescription = styled.div`
   }
   p{
     font-size: ${({ theme }) => theme.fontSizes.textXbase};
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.grey};
     margin-bottom:62px;
   }
   &:hover{
@@ -45,7 +45,8 @@ const StyledDescription = styled.div`
   }
 @media (max-width: 768px) {
     width:320px;
-    padding:0 20px;
+    height:auto;
+    padding:30px 20px;
 }
 `;
 export default DescriptionCard;

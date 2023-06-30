@@ -5,8 +5,6 @@ import Product from '../../components/Product/Product';
 
 const ProductDetailPage = (props: { product: BWS_DATA }) => {
   const { product } = props;
-  console.log(product);
-
   if (!product) {
     return (
       <>

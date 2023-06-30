@@ -7,6 +7,7 @@ import Trending from './Trending';
 import WhoWeAre from './WhoWeAre';
 import Reviews from './Reviews';
 import { BWS_DATA } from '@/helpers/api-util';
+import GetInTouch from './GetInTouch';
 interface Data {
   title: string;
   description: string;
@@ -70,6 +71,7 @@ const MainPage = (props: { products: BWS_DATA[] }) => {
       <Trending products={props.products} />
       <WhoWeAre />
       <Reviews />
+      <GetInTouch />
     </StyledMainPage>
   );
 };

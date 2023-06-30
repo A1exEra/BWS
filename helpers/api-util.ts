@@ -28,8 +28,10 @@ export const getAllData = async () => {
       isLiked: data[key].isLiked,
       onSale: data[key].onSale,
       color: data[key].color,
-      isTrending: data[key].isTrending,
       category: data[key].category,
+      isTrending: data[key].isTrending,
+
+
     });
   }
   return bws_data;

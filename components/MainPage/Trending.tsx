@@ -2,7 +2,8 @@ import { styled } from 'styled-components';
 import MainButton from '../shared/MainButton';
 import ProductCard from '../ProductCard/ProductCard';
 import { useState } from 'react';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '../../helpers/api-util';
+import React from 'react';
 interface StyledTrendingProps {
   isOpen: boolean;
 }
@@ -25,10 +26,14 @@ const Trending = (props: { products: BWS_DATA[] }) => {
           className="MainButton"
           label="See All"
           onClick={ShowTrendingHandler}
-          backgroundColor="#536758"></MainButton>
+
+          backgroundColor="#536758"
+        ></MainButton>
       </div>
       <div className="cardsContainer">
-        <ProductCard products={props.products} />
+        {props.products.map((product: BWS_DATA) => (
+          <ProductCard product={product} />
+        ))}
       </div>
     </StyledTrending>
   );
@@ -37,7 +42,6 @@ const Trending = (props: { products: BWS_DATA[] }) => {
 const StyledTrending = styled.div<StyledTrendingProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 100px 64px;
-
   .textContainer {
     display: flex;
     justify-content: space-between;
@@ -52,6 +56,11 @@ const StyledTrending = styled.div<StyledTrendingProps>`
     max-height: ${({ isOpen }) => (isOpen ? 'none' : '450px')};
     overflow: hidden;
     transition: max-height 0.3s ease;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
   }
   @media (max-width: 768px) {
     padding: 100px 8px;

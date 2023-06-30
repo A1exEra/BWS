@@ -30,6 +30,8 @@ export const getAllData = async () => {
       color: data[key].color,
       category: data[key].category,
       isTrending: data[key].isTrending,
+
+
     });
   }
   return bws_data;

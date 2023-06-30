@@ -12,7 +12,12 @@ interface MainBtnProps {
   height?: string;
   backgroundColor?: string;
 }
-const MainButton: FC<MainBtnProps> = (props) => {
+interface StyledButtonProps {
+  bg: string;
+  width: string;
+  height: string;
+}
+const MainButton: FC<MainBtnProps> = (props: any) => {
   return (
     <StyledButton
       className={`${props.className}`}
@@ -29,7 +34,7 @@ const MainButton: FC<MainBtnProps> = (props) => {
     </StyledButton>
   );
 };
-const StyledButton = styled.div`
+const StyledButton = styled.div<StyledButtonProps>`
   width: ${({ width }) => width || '200px'};
   height: ${({ height }) => height || '54px'};
   display: flex;
@@ -38,16 +43,17 @@ const StyledButton = styled.div`
   .Btn {
     height: 100%;
     width: 100%;
-    border: 1px solid ${({ bg }) => (!bg ? 'white' : 'black')};
+    border: 1px solid
+      ${({ bg }) => (bg ? ({ theme }) => theme.colors.grey : 'black')};
     background: ${({ bg }) => bg || 'none'};
-    // color: ${({ theme }) => theme.colors.whitePrimary};
     transition: all 0.5s ease;
     cursor: pointer;
     font-size: 18px;
     border-radius: 4px;
     p {
       font-size: 18px;
-      color: ${({ bg }) => (!bg ? 'white' : 'black')};
+      // color: ${({ theme }) => theme.colors.whitePrimary};
+      color: ${({ bg }) => (bg ? 'white' : 'black')};
     }
     &:hover {
       border: 1px solid ${({ bg }) => (!bg ? 'black' : 'white')};

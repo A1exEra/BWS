@@ -67,3 +67,4 @@ const Categories = ({ products }) => {
 };
 
 export default Categories;
+

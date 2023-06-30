@@ -15,12 +15,11 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
       </Head>
       <MainPage products={props.bws_data} />
       <main>
-        <ul>
+        {/* <ul>
           {props.bws_data.map((el: BWS_DATA) => (
             <li key={el.id}>{el.title}</li>
           ))}
-        </ul>
-        <Link href="/products">Products</Link>
+        </ul> */}
       </main>
     </>
   );

@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "styles/theme.ts",
-    "components/ProductsPage/Categories/categories.js"
+    "components/ProductsPage/Categories/categoriyList.js"
   ],
   "exclude": ["node_modules"]
 }

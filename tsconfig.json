@@ -18,6 +18,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "styles/theme.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "styles/theme.ts",
+    "components/ProductsPage/Categories/categoriyList.js"
+  ],
   "exclude": ["node_modules"]
 }

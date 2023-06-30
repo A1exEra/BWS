@@ -10,10 +10,11 @@ import choice4 from '../../public/images/color-options/oval 4.png';
 import choice5 from '../../public/images/color-options/oval 5.png';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import heart from '../../components/icons/heart.svg';
-
+import ColorPicker from '../shared/Colors/ColorPicker';
+import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
-  const choices = [choice1, choice2, choice3, choice4, choice5];
+  // const choices = [choice1, choice2, choice3, choice4, choice5];
   return (
     <ProductId bg="purple">
       <div className="imageContainer">
@@ -25,16 +26,8 @@ const Product = (props: { product: BWS_DATA }) => {
         <h4>${product.price} per sqm</h4>
         <p>{product.description}</p>
         <div className="optionSelector">
-          <div className="colors">
-            <p>Colors</p>
-            <div className="choices">
-              {choices.map((choice, index) => (
-                <div key={index} className="choice">
-                  <Image src={choice} alt="color choice" />
-                </div>
-              ))}
-            </div>
-          </div>
+          <ColorPicker choices={choices} />
+
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />

@@ -46,20 +46,20 @@ const ProductId = styled.section<ProductIdProps>`
       justify-content: space-between;
       align-items: flex-end;
 
-      .colors {
-        p {
-          ${({ theme }) => theme.mixins.primarySidebarTitle}
-          margin-top: 0;
-          margin-bottom: 10px;
-        }
-        .choices {
-          display: flex;
-          gap: 5px;
-          .choice {
-            cursor: pointer;
-          }
-        }
-      }
+      //   .colors {
+      //     p {
+      //       ${({ theme }) => theme.mixins.primarySidebarTitle}
+      //       margin-top: 0;
+      //       margin-bottom: 10px;
+      //     }
+      //     .choices {
+      //       display: flex;
+      //       gap: 5px;
+      //       .choice {
+      //         cursor: pointer;
+      //       }
+      //     }
+      //   }
       .border {
         border: 1px solid rgba(32, 32, 32, 0.15);
         display: flex;

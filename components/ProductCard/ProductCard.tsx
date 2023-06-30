@@ -3,15 +3,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styled';
 import heart from '../../components/icons/heart.svg';
-import cart from '../icons/shopping_cart.svg';
+import cart from '../../public/images/mdi-light_cart.svg';
 import { useEffect } from 'react';
+
 const ProductCard = (props: any) => {
   const product = props.product;
+
   return (
     <StyledProductCard>
       <Link href={`/products/${product.id}`}>
         <div className="product">
           {/* <p>{el.description}</p> */}
+
           <Image
             src={`${product.image}`}
             alt={product.title}
@@ -33,4 +36,5 @@ const ProductCard = (props: any) => {
     </StyledProductCard>
   );
 };
+
 export default ProductCard;

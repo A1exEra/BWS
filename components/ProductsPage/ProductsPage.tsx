@@ -8,10 +8,13 @@ import downarrow from '../../public/images/color-options/downarrow.svg';
 import sort from '../icons/groupsort.svg';
 import Categories from './Categories/Categories';
 import { StyledCategories } from './Categories/Categories.styled';
+
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
+
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
+
   const onSortHandler = () => {
     // console.log(sortedProducts.slice(0, 9));
     if (sortOrder === 'desc') {
@@ -26,9 +29,11 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       setSortOrder('desc');
     }
   };
+
   return (
     <StyledProducts>
       <Categories products={sortedProducts.slice(0, 9)} />
+
       <div className="productsList">
         <div className="productSorter">
           <div className="sort">
@@ -51,4 +56,5 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
     </StyledProducts>
   );
 };
+
 export default ProductsPage;

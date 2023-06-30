@@ -9,6 +9,7 @@ export const StyledProductCard = styled.div`
     text-align: center;
     width: 304px;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
     &:hover{
         box-shadow: 0px 2px 12px 2px rgba(0, 0, 0, 0.2);
     

@@ -18,7 +18,6 @@ const AllProductsPage = (props: { products: BWS_DATA[] }) => {
       </Head>
 
       <ProductsPage products={products} />
-      <Link href="/">Home</Link>
     </>
   );
 };

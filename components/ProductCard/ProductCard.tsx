@@ -5,9 +5,6 @@ import { StyledProductCard } from './ProductCard.styled';
 import heart from '../../components/icons/heart.svg';
 
 import cart from '../icons/shopping_cart.svg';
-
-import { useEffect } from 'react';
-
 const ProductCard = (props: any) => {
   const product = props.product;
 

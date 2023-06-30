@@ -7,7 +7,6 @@ import ProductCard from '../ProductCard/ProductCard';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import sort from '../icons/groupsort.svg';
 import Categories from './Categories/Categories';
-import { StyledCategories } from './Categories/Categories.styled';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
@@ -48,7 +47,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
           </div>
         </div>
         <div className="products">
-          {products.map((el: BWS_DATA) => (
+          {sortedProducts.map((el: BWS_DATA) => (
             <ProductCard product={el} />
           ))}
         </div>

@@ -1,7 +1,5 @@
 import { BWS_DATA, getAllData } from '@/helpers/api-util';
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ProductsPage from '@/components/ProductsPage/ProductsPage';
 

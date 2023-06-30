@@ -44,8 +44,7 @@ const StyledDealer = styled.div`
     }
     p {
       ${({ theme }) => theme.mixins.primaryComponentTitle}
-      color: ${({ theme }) => theme.colors.whitePrimary};
-      opacity: 0.6;
+      color: ${({ theme }) => theme.colors.grey};
     }
   }
   @media (max-width: 1000px) {

@@ -7,13 +7,16 @@ import ProductCard from '../ProductCard/ProductCard';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import sort from '../icons/groupsort.svg';
 import Categories from './Categories/Categories';
+import { StyledCategories } from './Categories/Categories.styled';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
+
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
 
   const onSortHandler = () => {
+    // console.log(sortedProducts.slice(0, 9));
     if (sortOrder === 'desc') {
       setSortedProducts(
         [...sortedProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
@@ -29,7 +32,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
 
   return (
     <StyledProducts>
-      <Categories />
+      <Categories products={sortedProducts.slice(0, 9)} />
 
       <div className="productsList">
         <div className="productSorter">
@@ -44,26 +47,11 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
             <Image src={sort} alt="uparrow" />
           </div>
         </div>
-
-        <ProductCard products={sortedProducts} />
-
-        {/* <div className="products">
+        <div className="products">
           {products.map((el: BWS_DATA) => (
-            <div key={el.id} className="product">
-              <Link href={`/products/${el.id}`}>
-                <h3>{el.title}</h3>
-              </Link>
-              <p>{el.description}</p>
-
-              <Image
-                src={`${el.image}`}
-                alt={el.title}
-                width={304}
-                height={320}
-              />
-            </div>
+            <ProductCard product={el} />
           ))}
-        </div> */}
+        </div>
       </div>
     </StyledProducts>
   );

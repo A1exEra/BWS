@@ -102,14 +102,14 @@ theme.mixins = {
     color: '#939393',
     fontStyle: 'normal',
     letterSpacing: '-0.1px',
-    fontWeight: '300',
+    fontWeight: '400',
   },
   secondarySidebarSelected: {
     fontSize: theme.fontSizes.textSm,
     color: '#536758',
     fontStyle: 'normal',
     letterSpacing: '-0.1px',
-    fontWeight: '300',
+    fontWeight: '400',
   },
 };
 

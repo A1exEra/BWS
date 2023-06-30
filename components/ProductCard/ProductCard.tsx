@@ -4,36 +4,35 @@ import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styled';
 import heart from '../../components/icons/heart.svg';
 import cart from '../../public/images/mdi-light_cart.svg';
+import { useEffect } from 'react';
 
 const ProductCard = (props: any) => {
-  const products = props.products;
+  const product = props.product;
 
   return (
     <StyledProductCard>
-      {products.map((el: BWS_DATA) => (
-        <Link key={el.id} href={`/products/${el.id}`}>
-          <div className="product">
-            {/* <p>{el.description}</p> */}
+      <Link href={`/products/${product.id}`}>
+        <div className="product">
+          {/* <p>{el.description}</p> */}
 
-            <Image
-              src={`${el.image}`}
-              alt={el.title}
-              width={304}
-              height={320}
-            />
-            <h3>{el.title}</h3>
-            <div className="priceContainer">
-              <p>${el.price}</p>
-              <div className="heart">
-                <Image src={heart} alt="heart" />
-              </div>
-              <div className="cart">
-                <Image src={cart} alt="cart" />
-              </div>
+          <Image
+            src={`${product.image}`}
+            alt={product.title}
+            width={304}
+            height={320}
+          />
+          <h3>{product.title}</h3>
+          <div className="priceContainer">
+            <p>${product.price}</p>
+            <div className="heart">
+              <Image src={heart} alt="heart" />
+            </div>
+            <div className="cart">
+              <Image src={cart} alt="cart" />
             </div>
           </div>
-        </Link>
-      ))}
+        </div>
+      </Link>
     </StyledProductCard>
   );
 };

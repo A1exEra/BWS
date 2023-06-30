@@ -3,6 +3,11 @@ import HeroSection from './HeroSection';
 import DescriptionCard from './DescriptionCard';
 import CatalogueCard from './CatalogueCard';
 import FindADealer from './FindADealer';
+import Trending from './Trending';
+import WhoWeAre from './WhoWeAre';
+import Reviews from './Reviews';
+import { BWS_DATA } from '@/helpers/api-util';
+import GetInTouch from './GetInTouch';
 interface Data {
   title: string;
   description: string;
@@ -48,7 +53,7 @@ const catalogue: Catalogue[] = [
     image: '/images/granite.jpg',
   },
 ];
-const MainPage = () => {
+const MainPage = (props: { products: BWS_DATA[] }) => {
   return (
     <StyledMainPage>
       <HeroSection />
@@ -63,6 +68,10 @@ const MainPage = () => {
         ))}
       </div>
       <FindADealer />
+      <Trending products={props.products} />
+      <WhoWeAre />
+      <Reviews />
+      <GetInTouch />
     </StyledMainPage>
   );
 };

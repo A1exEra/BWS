@@ -27,26 +27,26 @@ const StyledDescription = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
   h3 {
-    margin:50px 0 16px 0;
+    margin: 50px 0 16px 0;
     font-size: ${({ theme }) => theme.fontSizes.text20};
-    color: font-size: ${({ theme }) => theme.colors.black};
+    // color: ${({ theme }) => theme.colors.black};
   }
-  p{
+  p {
     font-size: ${({ theme }) => theme.fontSizes.textXbase};
     color: ${({ theme }) => theme.colors.grey};
-    margin-bottom:62px;
+    margin-bottom: 62px;
   }
-  &:hover{
+  &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
     h4 {
       color: ${({ theme }) => theme.colors.whitePrimary};
     }
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
-@media (max-width: 768px) {
-    width:320px;
-    height:auto;
-    padding:30px 20px;
-}
+  @media (max-width: 768px) {
+    width: 320px;
+    height: auto;
+    padding: 30px 20px;
+  }
 `;
 export default DescriptionCard;

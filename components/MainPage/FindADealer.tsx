@@ -12,7 +12,10 @@ const FindADealer = () => {
         </p>
       </div>
       <div className="MainButtonContainer">
-        <MainButton className="MainButton" label="Get inTouch"></MainButton>
+        <MainButton
+          className="MainButton"
+          label="Get inTouch"
+          backgroundColor="#2a2a2a"></MainButton>
       </div>
     </StyledDealer>
   );

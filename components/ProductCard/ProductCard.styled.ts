@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const StyledProductCard = styled.div`
   margin-top: 25px;
   display: flex;
@@ -11,7 +10,6 @@ export const StyledProductCard = styled.div`
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
     &:hover{
         box-shadow: 0px 2px 12px 2px rgba(0, 0, 0, 0.2);
-    
       }
     h3 {
       text-transform: uppercase;
@@ -26,7 +24,7 @@ export const StyledProductCard = styled.div`
         p {
             width: 185px;
             padding: 11px;
-        color: #2b2b2b;
+        color: #2B2B2B;
         border-right: 1px solid #E5E5E5;
       }
       .heart{
@@ -39,13 +37,10 @@ export const StyledProductCard = styled.div`
       }
       .cart{
         width:60px;
-
         // padding:11px 10px 11px 5px;
-
         display: flex;
         justify-content: center;
         align-items: center;
-      
       }
     }
   }

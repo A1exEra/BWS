@@ -133,5 +133,14 @@ const Styled = styled.div`
     gap: 36px;
     align-items: center;
   }
+  @media (max-width: 768px) {
+    padding: 100px 64px;
+    form {
+      width: 100%;
+      .btn {
+        width: 100%;
+      }
+    }
+  }
 `;
 export default GetInTouch;

@@ -12,13 +12,6 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainPage products={props.bws_data} />
-      <main>
-        {/* <ul>
-          {props.bws_data.map((el: BWS_DATA) => (
-            <li key={el.id}>{el.title}</li>
-          ))}
-        </ul> */}
-      </main>
     </>
   );
 };

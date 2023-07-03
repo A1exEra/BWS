@@ -2,9 +2,8 @@ import { BWS_DATA } from '@/helpers/api-util';
 import Link from 'next/link';
 import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styled';
-import heart from '../../components/icons/heart.svg';
-
-import cart from '../icons/shopping_cart.svg';
+import heart from '@/public/icons/heart.svg';
+import cart from '@/public/icons/mdi-light_cart.svg';
 const ProductCard = (props: any) => {
   const product = props.product;
 

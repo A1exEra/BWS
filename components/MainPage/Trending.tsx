@@ -23,7 +23,8 @@ const Trending = (props: { products: BWS_DATA[] }) => {
           className="MainButton"
           label="See All"
           onClick={showTrendingHandler}
-          backgroundColor="#536758"></MainButton>
+          backgroundColor="#536758"
+        ></MainButton>
       </div>
       <div className="cardsContainer">
         {trendingProducts.map((product: BWS_DATA) => (
@@ -33,20 +34,17 @@ const Trending = (props: { products: BWS_DATA[] }) => {
     </StyledTrending>
   );
 };
-
 const StyledTrending = styled.div<StyledTrendingProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 100px 64px;
   .textContainer {
     display: flex;
     justify-content: space-between;
-
     h3 {
       ${({ theme }) => theme.mixins.primaryHeroRegular}
       color: ${({ theme }) => theme.colors.whitePrimary};
     }
   }
-
   .cardsContainer {
     max-height: ${({ isOpen }) => (isOpen ? 'none' : '450px')};
     overflow: hidden;

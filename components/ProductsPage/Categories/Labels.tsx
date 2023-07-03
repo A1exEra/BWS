@@ -1,4 +1,5 @@
 // import { categories } from './categoryList';
+import React from 'react';
 import { StyledLabel, StyledCheckbox, CheckboxIcon } from './Categories.styled';
 interface LabelsProps {
   selectedCategory: string;

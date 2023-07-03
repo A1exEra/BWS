@@ -13,7 +13,7 @@ export const StyledCategories = styled.div<StyledLabelProps>`
   .categories {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
     padding-bottom: 25px;
     margin-bottom: 25px;
     border-bottom: 1px solid rgba(217, 217, 217, 0.5);
@@ -21,8 +21,13 @@ export const StyledCategories = styled.div<StyledLabelProps>`
   color: ${(props) => (props.isSelected ? '#536758' : '#000')};
   .priceRange {
     border-top: 1px solid rgba(217, 217, 217, 0.5);
-    margin-top: 15px;
-    padding-top: 15px;
+    margin-top: 25px;
+    padding-top: 25px;
+    .range {
+      display: flex;
+      justify-content: space-between;
+      ${({ theme }) => theme.mixins.secondarySidebar}
+    }
   }
 `;
 

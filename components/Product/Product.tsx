@@ -27,6 +27,7 @@ const Product = (props: { product: BWS_DATA }) => {
         <p>{product.description}</p>
         <div className="optionSelector">
           <ColorPicker choices={choices} />
+
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />

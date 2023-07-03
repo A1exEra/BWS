@@ -22,12 +22,12 @@ const Trending = (props: { products: BWS_DATA[] }) => {
         <MainButton
           className="MainButton"
           label="See All"
-          onClick={showTrendingHandler}
+          onClick={ShowTrendingHandler}
           backgroundColor="#536758"
         ></MainButton>
       </div>
       <div className="cardsContainer">
-        {trendingProducts.map((product: BWS_DATA) => (
+        {props.products.map((product: BWS_DATA) => (
           <ProductCard product={product} />
         ))}
       </div>

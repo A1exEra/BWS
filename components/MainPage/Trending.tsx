@@ -22,32 +22,29 @@ const Trending = (props: { products: BWS_DATA[] }) => {
         <MainButton
           className="MainButton"
           label="See All"
-          onClick={ShowTrendingHandler}
+          onClick={showTrendingHandler}
           backgroundColor="#536758"
         ></MainButton>
       </div>
       <div className="cardsContainer">
-        {props.products.map((product: BWS_DATA) => (
+        {trendingProducts.map((product: BWS_DATA) => (
           <ProductCard product={product} />
         ))}
       </div>
     </StyledTrending>
   );
 };
-
 const StyledTrending = styled.div<StyledTrendingProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 100px 64px;
   .textContainer {
     display: flex;
     justify-content: space-between;
-
     h3 {
       ${({ theme }) => theme.mixins.primaryHeroRegular}
       color: ${({ theme }) => theme.colors.whitePrimary};
     }
   }
-
   .cardsContainer {
     max-height: ${({ isOpen }) => (isOpen ? 'none' : '450px')};
     overflow: hidden;

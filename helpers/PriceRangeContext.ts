@@ -1,5 +1,12 @@
 import React from 'react';
 
-const PriceRangeContext = React.createContext();
+type RangeContextType = {
+  rangeValues: number[];
+  setRangeValues: React.Dispatch<React.SetStateAction<number[]>>;
+};
+
+const PriceRangeContext = React.createContext<RangeContextType | undefined>(
+  undefined
+);
 
 export default PriceRangeContext;

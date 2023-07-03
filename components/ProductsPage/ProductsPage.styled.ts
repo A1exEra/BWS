@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const StyledProducts = styled.section`
   display: flex;
-  
   margin-left: 64px;
   margin-right: 64px;
   margin-top: 50px;
+  margin-bottom: 80px;
   gap: 70px;
   .products{
     margin-top: 25px;
@@ -15,7 +15,7 @@ export const StyledProducts = styled.section`
 }
 
   .productSorter {
-    min-width:976px;
+    max-width:976px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,7 +46,6 @@ export const StyledProducts = styled.section`
        
        }
     }
-
   }
   }
 `;

@@ -13,15 +13,10 @@ import PriceRangeContext from '../../helpers/PriceRangeContext';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
-
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
   const [rangeValues, setRangeValues] = useState([50, 80]);
-
-  console.log(sortedProducts);
-
   const onSortHandler = () => {
-    console.log(sortedProducts);
     if (sortOrder === 'desc') {
       setSortedProducts(
         [...sortedProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
@@ -39,7 +34,6 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
     <PriceRangeContext.Provider value={{ rangeValues, setRangeValues }}>
       <StyledProducts>
         <Categories products={sortedProducts.slice(0, 9)} />
-
         <div className="productsList">
           <div className="productSorter">
             <div className="sort">

@@ -1,0 +1,134 @@
+import {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  ReactNode,
+  useCallback,
+} from 'react';
+import { BWS_DATA } from './api-util';
+
+interface CartItem extends BWS_DATA {
+  quantity: number;
+  totalItemPrice: number;
+}
+
+interface CartContextType {
+  cartItems: CartItem[];
+  children?: ReactNode;
+  addToCart: (product: BWS_DATA) => void;
+  removeFromCart: (productId: string) => void;
+  clearCart: () => void;
+  incrementItem: (productId: string) => void;
+  decrementItem: (productId: string) => void;
+}
+
+const CartContext = createContext<CartContextType>({
+  cartItems: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+  clearCart: () => {},
+  incrementItem: () => {},
+  decrementItem: () => {},
+});
+interface CartProviderProps {
+  children: React.ReactNode;
+}
+export function useCart() {
+  return useContext(CartContext);
+}
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addToCart = (product: BWS_DATA) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                totalItemPrice: +(product.price * (item.quantity + 1)).toFixed(
+                  2
+                ),
+              }
+            : item
+        )
+      );
+    } else {
+      setCartItems((prevItems) => [
+        ...prevItems,
+        { ...product, quantity: 1, totalItemPrice: product.price },
+      ]);
+    }
+  };
+  const removeFromCart = useCallback((productId: string) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== productId)
+    );
+  }, []);
+  const clearCart = () => {
+    setCartItems([]);
+  };
+  const incrementItem = useCallback((productId: string) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === productId) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+            totalItemPrice: (item.quantity + 1) * item.price,
+          };
+        }
+        return item;
+      });
+    });
+  }, []);
+
+  const decrementItem = useCallback((productId: string) => {
+    setCartItems((prevItems: any) => {
+      return prevItems
+        .map((item: CartItem) => {
+          if (item.id === productId) {
+            const updatedQuantity = Math.max(item.quantity - 1, 0);
+            if (updatedQuantity === 0) {
+              return null;
+            }
+            return {
+              ...item,
+              quantity: updatedQuantity,
+              totalItemPrice: updatedQuantity * item.price,
+            };
+          }
+          return item;
+        })
+        .filter(Boolean);
+    });
+  }, []);
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        clearCart,
+        removeFromCart,
+        incrementItem,
+        decrementItem,
+      }}>
+      {children}
+    </CartContext.Provider>
+  );
+};

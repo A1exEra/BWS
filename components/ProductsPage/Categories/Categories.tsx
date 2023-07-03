@@ -10,6 +10,7 @@ import React from 'react';
 import Labels from './Labels';
 import ColorPicker from '@/components/shared/Colors/ColorPicker';
 import { choices } from '@/components/Product/choices';
+import PriceRange from './PriceRange/PriceRange';
 
 interface CategorySchema {
   id: number;
@@ -17,12 +18,13 @@ interface CategorySchema {
 }
 
 const Categories = ({ products }) => {
-  console.log(categories);
+  //   console.log(categories);
 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sideProducts, setSideProducts] = useState(products.slice(0, 9));
+  const [rangeValues, setRangeValues] = useState([50, 80]);
 
-  const handleCheckboxChange = (category: CategorySchema) => {
+  const handleCheckboxChange = (category: any) => {
     setSelectedCategory(category);
   };
 
@@ -58,10 +60,7 @@ const Categories = ({ products }) => {
         />
       </div>
       <ColorPicker choices={choices} />
-      <div className="priceRange">
-        <h5>Price Range</h5>
-        <h1>????</h1>
-      </div>
+      <PriceRange />
     </StyledCategories>
   );
 };

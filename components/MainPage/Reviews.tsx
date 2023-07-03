@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import img from '@/public/images/Bakery.jpg';
 import Button from '../shared/Button_Dummy';
-import arrowIcon from '../icons/ArrowIcon.svg';
+import arrowIcon from '../../public/icons/ArrowIcon.svg';
 import Image from 'next/image';
 import { useState } from 'react';
 const reviews: { name: string; description: string; job: string }[] = [

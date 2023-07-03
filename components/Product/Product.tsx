@@ -9,7 +9,7 @@ import choice3 from '../../public/images/color-options/oval 3.png';
 import choice4 from '../../public/images/color-options/oval 4.png';
 import choice5 from '../../public/images/color-options/oval 5.png';
 import downarrow from '../../public/images/color-options/downarrow.svg';
-import heart from '../../components/icons/heart.svg';
+import heart from '../../public/icons/heart.svg';
 import ColorPicker from '../shared/Colors/ColorPicker';
 import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
@@ -27,7 +27,6 @@ const Product = (props: { product: BWS_DATA }) => {
         <p>{product.description}</p>
         <div className="optionSelector">
           <ColorPicker choices={choices} />
-
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />

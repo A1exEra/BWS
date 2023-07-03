@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { BWS_DATA } from '@/helpers/api-util';
-import styles from '@/styles/Home.module.scss';
 import { getAllData } from '@/helpers/api-util';
-import Link from 'next/link';
 import MainPage from '@/components/MainPage/MainPage';
 const Home = (props: { bws_data: BWS_DATA[] }) => {
   return (
@@ -14,13 +12,6 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainPage products={props.bws_data} />
-      <main>
-        {/* <ul>
-          {props.bws_data.map((el: BWS_DATA) => (
-            <li key={el.id}>{el.title}</li>
-          ))}
-        </ul> */}
-      </main>
     </>
   );
 };

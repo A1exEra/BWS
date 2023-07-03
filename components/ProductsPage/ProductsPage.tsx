@@ -1,13 +1,11 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/api-util';
 import { StyledProducts } from './ProductsPage.styled';
 import ProductCard from '../ProductCard/ProductCard';
 import downarrow from '../../public/images/color-options/downarrow.svg';
-import sort from '../icons/groupsort.svg';
+import sort from '@/public/icons/groupsort.svg';
 import Categories from './Categories/Categories';
-import { StyledCategories } from './Categories/Categories.styled';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
@@ -48,7 +46,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
           </div>
         </div>
         <div className="products">
-          {products.map((el: BWS_DATA) => (
+          {sortedProducts.map((el: BWS_DATA) => (
             <ProductCard product={el} />
           ))}
         </div>

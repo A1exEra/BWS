@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Button from '../shared/Button_Dummy';
-import ArrowRight from '../../public/icons/ArrowRightGrey.svg';
+import ArrowRight from '@/public/icons/ArrowRightGrey.svg';
 import Image from 'next/image';
 const CatalogueCard = (props: {
   data: { title: string; description: string; image: string };

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import Burger from './Burger';
 import SliderNav from './SliderNav';
 import { useState, useEffect } from 'react';
-import ShoppingCartIcon from '../../public/icons/shopping_cart.svg';
+import ShoppingCartIcon from '@/public/icons/shopping_cart.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
       <Burger setIsOpen={setIsOpen} isOpen={isOpen} />
 
       <Link href="/">
-        <h3>BSW</h3>
+        <h3>BWS</h3>
       </Link>
       <Image src={ShoppingCartIcon} alt="shopping-cart-icon" />
     </StyledHeader>

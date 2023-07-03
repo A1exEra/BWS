@@ -74,5 +74,15 @@ const StyledWhoWeAre = styled.div`
       max-width: 100%;
     }
   }
+  @media (max-width: 768px) {
+    padding: 36px 0;
+    .img_container {
+      width: 100%;
+    }
+    .text_container {
+      padding: 0px 36px;
+      max-width: 100%;
+    }
+  }
 `;
 export default WhoWeAre;

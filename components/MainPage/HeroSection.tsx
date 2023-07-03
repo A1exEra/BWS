@@ -1,5 +1,4 @@
 import { styled, css } from 'styled-components';
-import Image from 'next/image';
 import MainImage from '../../public/images/MainImage.jpg';
 import MainButton from '../shared/MainButton';
 const HeroSection = () => {

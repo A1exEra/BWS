@@ -9,15 +9,12 @@ interface StyledTrendingProps {
 }
 const Trending = (props: { products: BWS_DATA[] }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [displayCount, setDisplayCount] = useState<number>(4);
-  const trendingProducts = props.products.filter((product) => {
-    product.isTrending;
-  });
-  const ShowTrendingHandler = () => {
-    setDisplayCount(trendingProducts.length);
+  const trendingProducts = props.products.filter(
+    (product) => product.isTrending
+  );
+  const showTrendingHandler = () => {
     setIsOpen((prev) => !prev);
   };
-  console.log(isOpen);
   return (
     <StyledTrending isOpen={isOpen}>
       <div className="textContainer">
@@ -25,29 +22,32 @@ const Trending = (props: { products: BWS_DATA[] }) => {
         <MainButton
           className="MainButton"
           label="See All"
-          onClick={ShowTrendingHandler}
+          onClick={showTrendingHandler}
           backgroundColor="#536758"
         ></MainButton>
       </div>
       <div className="cardsContainer">
-        {props.products.map((product: BWS_DATA) => (
+        {trendingProducts.map((product: BWS_DATA) => (
           <ProductCard product={product} />
         ))}
       </div>
     </StyledTrending>
   );
 };
+
 const StyledTrending = styled.div<StyledTrendingProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 100px 64px;
   .textContainer {
     display: flex;
     justify-content: space-between;
+
     h3 {
       ${({ theme }) => theme.mixins.primaryHeroRegular}
       color: ${({ theme }) => theme.colors.whitePrimary};
     }
   }
+
   .cardsContainer {
     max-height: ${({ isOpen }) => (isOpen ? 'none' : '450px')};
     overflow: hidden;
@@ -55,6 +55,7 @@ const StyledTrending = styled.div<StyledTrendingProps>`
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+    justify-content: space-around;
   }
   @media (max-width: 768px) {
     padding: 100px 8px;

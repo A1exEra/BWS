@@ -2,7 +2,6 @@ import { BWS_DATA, getAllData, getItemById } from '@/helpers/api-util';
 import Head from 'next/head';
 import Link from 'next/link';
 import Product from '../../components/Product/Product';
-
 const ProductDetailPage = (props: { product: BWS_DATA }) => {
   const { product } = props;
   if (!product) {
@@ -15,7 +14,6 @@ const ProductDetailPage = (props: { product: BWS_DATA }) => {
       </>
     );
   }
-
   return (
     <>
       <Head>

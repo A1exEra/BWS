@@ -52,8 +52,14 @@ const GetInTouch = () => {
           name="message"
           placeholder="Message"
           value={formData.message}
-          onChange={handleChange}></textarea>
-        <MainButton label="Submit" type="submit"></MainButton>
+          onChange={handleChange}
+        ></textarea>
+        <MainButton
+          label="Submit"
+          type="submit"
+          className="btn"
+          backgroundColor="#fff"
+        ></MainButton>
       </form>
     </Styled>
   );
@@ -64,7 +70,7 @@ const Styled = styled.div`
   display: flex;
   padding: 100px 177px;
   justify-content: space-between;
-  height: 530px;
+  // height: 530px;
   .text_container {
     display: flex;
     flex-direction: column;
@@ -96,6 +102,11 @@ const Styled = styled.div`
     flex-direction: column;
     width: 528px;
     gap: 14px;
+    .btn {
+      p {
+        color: black;
+      }
+    }
     input {
       height: 48px;
       background: none;
@@ -116,6 +127,20 @@ const Styled = styled.div`
       &:active {
         border: 2px solid ${({ theme }) => theme.colors.whitePrimary};
         color: ${({ theme }) => theme.colors.whiteSecondary};
+      }
+    }
+  }
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    padding: 100px 64px;
+    form {
+      width: 100%;
+      .btn {
+        width: 100%;
       }
     }
   }

@@ -31,13 +31,13 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
 
   const onSortHandler = () => {
     if (sortOrder === 'desc') {
-      setSortedProducts(
-        [...sortedProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
+      setFilteredProducts(
+        [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
       );
       setSortOrder('asc');
     } else {
-      setSortedProducts(
-        [...sortedProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
+      setFilteredProducts(
+        [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
       );
       setSortOrder('desc');
     }
@@ -74,6 +74,8 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setCurrentPage,
         sortedProducts,
         setSortedProducts,
+        filteredProducts,
+        setFilteredProducts,
       }}
     >
       <StyledProducts>
@@ -94,7 +96,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
           </div>
 
           <div className="products">
-            {sortedProducts
+            {filteredProducts
               .filter(
                 (p) => p.price >= rangeValues[0] && p.price < rangeValues[1]
               )

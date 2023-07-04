@@ -1,6 +1,4 @@
-const firebase_URL =
-  'https://nextjs-client-side-db43a-default-rtdb.europe-west1.firebasedatabase.app/bws.json';
-
+const firebase_URL: string | undefined = process.env.URL;
 export interface BWS_DATA {
   id: string;
   title: string;
@@ -15,7 +13,7 @@ export interface BWS_DATA {
 }
 
 export const getAllData = async () => {
-  const response = await fetch(firebase_URL);
+  const response = await fetch(firebase_URL!);
   const data = await response.json();
   const bws_data: BWS_DATA[] = [];
   for (const key in data) {
@@ -32,6 +30,7 @@ export const getAllData = async () => {
       isTrending: data[key].isTrending,
     });
   }
+  console.log(bws_data);
   return bws_data;
 };
 export const getOnSaleItems = async () => {

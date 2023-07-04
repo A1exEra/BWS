@@ -6,6 +6,7 @@ type StyledLabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
 
 export const StyledCategories = styled.div<StyledLabelProps>`
   min-width: 266px;
+
   h5 {
     ${({ theme }) => theme.mixins.primarySidebarTitle}
     margin-bottom: 16px;

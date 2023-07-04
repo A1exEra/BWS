@@ -51,9 +51,9 @@ const Burger = ({ isOpen, setIsOpen }: BurgerProps) => {
   };
   return (
     <StyledBurger onClick={handleClick}>
-      <div className={`stripe ${isOpen ? 'stripe-top' : ''}`}>god</div>
-      <div className={`stripe ${isOpen ? 'stripe-middle' : ''}`}>of</div>
-      <div className={`stripe ${isOpen ? 'stripe-bottom' : ''}`}>code</div>
+      <div className={`stripe ${isOpen ? 'stripe-top' : ''}`}></div>
+      <div className={`stripe ${isOpen ? 'stripe-middle' : ''}`}></div>
+      <div className={`stripe ${isOpen ? 'stripe-bottom' : ''}`}></div>
     </StyledBurger>
   );
 };

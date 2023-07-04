@@ -6,6 +6,7 @@ export const StyledProducts = styled.section`
   margin-left: 64px;
   margin-right: 64px;
   margin-top: 50px;
+  margin-bottom: 80px;
   gap: 70px;
   .products{
     margin-top: 25px;
@@ -50,7 +51,6 @@ export const StyledProducts = styled.section`
        
        }
     }
-
   }
   }
 `;

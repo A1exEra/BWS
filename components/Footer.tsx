@@ -7,7 +7,6 @@ interface StyledProps {
 }
 const Footer = () => {
   const { pathname } = useRouter();
-  console.log(pathname);
   return (
     <StyledFooter pathname={pathname}>
       <ul className="left_container">
@@ -44,11 +43,13 @@ const Footer = () => {
 };
 
 const StyledFooter = styled.div<StyledProps>`
+  position: relative;
   padding: 26px 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 36px;
+  z-index: 100;
   background: ${({ pathname }) =>
     pathname === '/'
       ? ({ theme }) => theme.colors.secondary

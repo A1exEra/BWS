@@ -7,11 +7,11 @@ type SliderProps = {
 };
 const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
   const sliderRef = useRef<HTMLUListElement>(null);
-  const divRef = useRef<HTMLUListElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (isOpen) {
-        if (divRef.current?.contains(event.target)) {
+        if (divRef.current?.contains(event.target as Node)) {
           setIsOpen(false);
         }
       }
@@ -50,15 +50,16 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
     height: 100vh;
     opacity: 0.8;
     z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
   position: fixed;
-  top: 72px;
+  top: 76px;
   left: 0px;
   width: 320px;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.primary};
-  z-index: 100;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.whiteSecondary};
+  z-index: 99;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isOpen }) =>
     isOpen ? 'translateX(0)' : 'translateX(-100%)'};

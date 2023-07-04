@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/api-util';
 import { StyledProducts } from './ProductsPage.styled';
@@ -14,7 +14,6 @@ import Pagination from './Pagination/Pagination';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
-
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
   const [rangeValues, setRangeValues] = useState([10, 95]);

@@ -5,8 +5,13 @@ import { useState, useEffect } from 'react';
 import ShoppingCartIcon from '@/public/icons/shopping_cart.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import Cart from './Cart';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const isCartOpenHandler = () => {
+    setIsCartOpen(!isCartOpen);
+  };
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }, [isOpen]);
@@ -18,7 +23,12 @@ const Header = () => {
       <Link href="/">
         <h3>BWS</h3>
       </Link>
-      <Image src={ShoppingCartIcon} alt="shopping-cart-icon" />
+      <Image
+        src={ShoppingCartIcon}
+        alt="shopping-cart-icon"
+        onClick={isCartOpenHandler}
+      />
+      <Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </StyledHeader>
   );
 };
@@ -39,6 +49,9 @@ export const StyledHeader = styled.div`
     font-weight: 500;
     letter-spacing: 10px;
     color: ${({ theme }) => theme.colors.whitePrimary};
+  }
+  img {
+    cursor: pointer;
   }
   @media (max-width: 768px) {
     padding: 16px;

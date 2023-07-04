@@ -4,6 +4,7 @@ export const StyledProductCard = styled.div`
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+  cursor: pointer;
   .product {
     text-align: center;
     width: 304px;
@@ -35,6 +36,11 @@ export const StyledProductCard = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        &:hover{
+          svg{
+            stroke:red;
+          }
+        }
       }
       .cart{
         width:60px;

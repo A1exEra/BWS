@@ -8,6 +8,8 @@ type RangeContextType = {
   sortedProducts: any[];
   setSortedProducts: React.Dispatch<React.SetStateAction<object[]>>;
   handlePageChange?: (page: number) => void;
+  filterdProducts: any[];
+  setFilterdProducts: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 const PriceRangeContext = React.createContext<RangeContextType | undefined>(

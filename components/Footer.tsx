@@ -43,13 +43,11 @@ const Footer = () => {
 };
 
 const StyledFooter = styled.div<StyledProps>`
-  position: relative;
   padding: 26px 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 36px;
-  z-index: 10;
   background: ${({ pathname }) =>
     pathname === '/'
       ? ({ theme }) => theme.colors.secondary

@@ -16,7 +16,7 @@ export const StyledProducts = styled.section`
 }
 
   .productSorter {
-    min-width:976px;
+    max-width:976px;
     display: flex;
     justify-content: space-between;
     align-items: center;

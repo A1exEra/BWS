@@ -24,7 +24,7 @@ const Header = () => {
       <Link href="/">
         <h3>BWS</h3>
       </Link>
-      <div>
+      <div className="cart_container">
         {quantity > 0 && <span className="indicator">{quantity}</span>}
         <Image
           src={ShoppingCartIcon}
@@ -53,7 +53,7 @@ export const StyledHeader = styled.div`
   align-items: center;
   h3 {
     font-size: 32px;
-    font-family: ${({ theme }) => theme.fonts.secondary};
+    font-family: ${({ theme }) => theme.fontSizes.text2xl};
     font-weight: 500;
     letter-spacing: 10px;
     color: ${({ theme }) => theme.colors.whitePrimary};
@@ -61,20 +61,24 @@ export const StyledHeader = styled.div`
   img {
     cursor: pointer;
   }
-  .indicator {
-    position: absolute;
-    top: 15px;
-    right: 3.5%;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .cart_container {
+    position: relative;
+    .indicator {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
+
   @media (max-width: 768px) {
     padding: 16px;
   }

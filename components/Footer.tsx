@@ -49,7 +49,7 @@ const StyledFooter = styled.div<StyledProps>`
   justify-content: space-between;
   align-items: center;
   gap: 36px;
-  z-index: 100;
+  z-index: 10;
   background: ${({ pathname }) =>
     pathname === '/'
       ? ({ theme }) => theme.colors.secondary

@@ -9,6 +9,7 @@ import Cart from './Cart';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [quantity, setQuantity] = useState(0);
   const isCartOpenHandler = () => {
     setIsCartOpen(!isCartOpen);
   };
@@ -23,12 +24,19 @@ const Header = () => {
       <Link href="/">
         <h3>BWS</h3>
       </Link>
-      <Image
-        src={ShoppingCartIcon}
-        alt="shopping-cart-icon"
-        onClick={isCartOpenHandler}
+      <div>
+        {quantity > 0 && <span className="indicator">{quantity}</span>}
+        <Image
+          src={ShoppingCartIcon}
+          alt="shopping-cart-icon"
+          onClick={isCartOpenHandler}
+        />
+      </div>
+      <Cart
+        isCartOpen={isCartOpen}
+        setIsCartOpen={setIsCartOpen}
+        setQuantity={setQuantity}
       />
-      <Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </StyledHeader>
   );
 };
@@ -36,7 +44,7 @@ const Header = () => {
 export const StyledHeader = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.third};
   //   opacity: 0.5;
   padding: 18px 64px;
   display: flex;
@@ -52,6 +60,20 @@ export const StyledHeader = styled.div`
   }
   img {
     cursor: pointer;
+  }
+  .indicator {
+    position: absolute;
+    top: 15px;
+    right: 3.5%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   @media (max-width: 768px) {
     padding: 16px;

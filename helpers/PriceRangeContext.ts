@@ -1,4 +1,5 @@
 import React from 'react';
+import { BWS_DATA } from './api-util';
 
 type RangeContextType = {
   rangeValues: number[];
@@ -6,7 +7,7 @@ type RangeContextType = {
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   sortedProducts: any[];
-  setSortedProducts: React.Dispatch<React.SetStateAction<object[]>>;
+  setSortedProducts: React.Dispatch<React.SetStateAction<BWS_DATA[]>>;
   handlePageChange?: (page: number) => void;
 };
 

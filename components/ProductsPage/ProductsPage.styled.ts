@@ -28,15 +28,19 @@ export const StyledProducts = styled.section`
             display: flex;
             gap: 5px;
             align-items: center;
+            button{
+                cursor:pointer;
+             background-color:#fff;
+             border:none;
+             
+             ${({ theme }) => theme.mixins.secondarySidebar}
+             color: #536758;
+             font-Weight:400;
+         }
+         img{
+            cursor:pointer;
+         }
         }
-       button{
-        background-color:#fff;
-        border:none;
-        
-        ${({ theme }) => theme.mixins.secondarySidebar}
-        color: #536758;
-        font-Weight:400;
-    }
     p{
            ${({ theme }) => theme.mixins.primarySidebarTitle}
            font-weight:400;

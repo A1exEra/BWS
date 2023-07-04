@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/api-util';
 import { StyledProducts } from './ProductsPage.styled';
@@ -105,7 +105,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
           </div>
 
           <Pagination
-            products={sortedProducts}
+            products={filteredProducts}
             handleNextPage={handleNextPage}
             handlePrevPage={handlePrevPage}
           />

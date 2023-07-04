@@ -6,7 +6,7 @@ type RangeContextType = {
   setRangeValues: React.Dispatch<React.SetStateAction<number[]>>;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  sortedProducts: any[];
+  sortedProducts: BWS_DATA[];
   setSortedProducts: React.Dispatch<React.SetStateAction<BWS_DATA[]>>;
   handlePageChange?: (page: number) => void;
   filteredProducts: any[];

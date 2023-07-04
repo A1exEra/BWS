@@ -31,10 +31,14 @@ const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
         <li>Menu Item 2</li>
         <li>Menu Item 3</li>
         <li>
-          <Link href="/">HOME</Link>
+          <Link href="/">
+            <h3>HOME</h3>
+          </Link>
         </li>
         <li>
-          <Link href="/products">PRODUCTS</Link>
+          <Link href="/products">
+            <h3>PRODUCTS</h3>
+          </Link>
         </li>
       </ul>
     </SliderNavContainer>
@@ -53,6 +57,15 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  }
+  a {
+    h3 {
+      font-size: 32px;
+      font-family: ${({ theme }) => theme.fontSizes.text20};
+      font-weight: 500;
+      letter-spacing: 10px;
+      color: ${({ theme }) => theme.colors.third};
+    }
   }
   position: fixed;
   top: 76px;

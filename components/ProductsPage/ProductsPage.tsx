@@ -22,7 +22,6 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const numPages = Math.ceil(sortedProducts.length / 9);
 
   useEffect(() => {
-    console.log(sortedProducts);
     setFilteredProducts(
       sortedProducts.filter(
         (p) => p.price >= rangeValues[0] && p.price < rangeValues[1]

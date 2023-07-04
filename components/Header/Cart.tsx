@@ -6,8 +6,9 @@ import { BWS_DATA } from '@/helpers/api-util';
 type SliderProps = {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
-const Cart = ({ isCartOpen, setIsCartOpen }: SliderProps) => {
+const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
   // const { cartItems, setCartItems } = useContext(CartContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
@@ -28,6 +29,17 @@ const Cart = ({ isCartOpen, setIsCartOpen }: SliderProps) => {
     };
   }, [isCartOpen, setIsCartOpen]);
   ////
+  useEffect(() => {
+    const calculateTotalQuantity = () => {
+      const totalQuantity = cartItems.reduce(
+        (prev, curr) => prev + curr.quantity,
+        0
+      );
+      setQuantity(totalQuantity);
+    };
+
+    calculateTotalQuantity();
+  }, [cartItems, setQuantity]);
   const handleRemoveItem = (productId: string) => {
     removeFromCart(productId);
   };
@@ -66,9 +78,10 @@ const SliderCartContainer = styled.nav<{ isCartOpen: boolean }>`
     top: 0px;
     right: 320px;
     width: 100vw;
-    height: 100vh;
+    height: 100vw;
     opacity: 0.8;
-    z-index: 99;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
     display: ${({ isCartOpen }) => (isCartOpen ? 'block' : 'none')};
   }
   position: fixed;

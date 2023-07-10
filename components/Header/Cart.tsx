@@ -8,11 +8,11 @@ import { deleteIcon } from '@/public/icons/deleteIcon';
 import arrow from '@/public/icons/ArrowIcon.svg';
 import MainButton from '../shared/MainButton';
 type SliderProps = {
-  isCartOpen: boolean;
+  iscartopen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
-const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
+const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -20,7 +20,7 @@ const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (isCartOpen) {
+      if (iscartopen) {
         if (divRef.current?.contains(event.target as Node)) {
           setIsCartOpen(false);
         }
@@ -31,7 +31,7 @@ const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [isCartOpen, setIsCartOpen]);
+  }, [iscartopen, setIsCartOpen]);
   ////
   useEffect(() => {
     const calculateTotalQuantity = () => {
@@ -66,7 +66,7 @@ const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
     console.log({ ...cartItems, totalPrice });
   };
   return (
-    <SliderCartContainer isCartOpen={isCartOpen}>
+    <SliderCartContainer $iscartopen={iscartopen}>
       <div className="background" ref={divRef}></div>
       <ul ref={sliderRef}>
         {cartItems.map((item) => (
@@ -97,16 +97,18 @@ const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: SliderProps) => {
         <MainButton
           onClick={handleClearCart}
           label="Clear Cart"
-          backgroundColor="#536758"></MainButton>
+          backgroundColor="#536758"
+        ></MainButton>
         <MainButton
           onClick={handleCheckout}
           backgroundColor="#2a2a2a"
-          label="Checkout"></MainButton>
+          label="Checkout"
+        ></MainButton>
       </div>
     </SliderCartContainer>
   );
 };
-const SliderCartContainer = styled.nav<{ isCartOpen: boolean }>`
+const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
   .background {
     position: absolute;
     top: 0px;
@@ -116,7 +118,7 @@ const SliderCartContainer = styled.nav<{ isCartOpen: boolean }>`
     opacity: 0.8;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.5);
-    display: ${({ isCartOpen }) => (isCartOpen ? 'block' : 'none')};
+    display: ${({ $iscartopen }) => ($iscartopen ? 'block' : 'none')};
   }
   position: fixed;
   top: 76px;
@@ -127,8 +129,8 @@ const SliderCartContainer = styled.nav<{ isCartOpen: boolean }>`
   z-index: 100;
   padding: 16px;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isCartOpen }) =>
-    isCartOpen ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${({ $iscartopen }) =>
+    $iscartopen ? 'translateX(0)' : 'translateX(100%)'};
 
   h2 {
     ${({ theme }) => theme.mixins.primaryComponentTitle};

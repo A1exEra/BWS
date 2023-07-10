@@ -1,17 +1,28 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useContext } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
-import PriceRangeContext from '../../../helpers/PriceRangeContext';
+import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
+import { BWS_DATA } from '@/helpers/api-util';
 
-const ColorPicker = ({ choices }) => {
-  const { sortedProducts, setFilteredProducts } = useContext(PriceRangeContext);
+interface ColorProps {
+  choices: {
+    id: number;
+    choice: StaticImageData;
+    title: string;
+  }[];
+}
+const ColorPicker = ({ choices }: ColorProps) => {
+  const { sortedProducts, setFilteredProducts } =
+    useContext<any>(PriceRangeContext);
 
-  const handleColorClick = (color) => {
+  const handleColorClick = (color: string) => {
     // const displayedProducts = filteredProducts.filter(
     //   (product) => product.color.toLowerCase() === color
     // );
     setFilteredProducts(
-      sortedProducts.filter((product) => product.color.toLowerCase() === color)
+      sortedProducts.filter(
+        (product: BWS_DATA) => product.color.toLowerCase() === color
+      )
     );
   };
   return (

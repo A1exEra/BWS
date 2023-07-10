@@ -1,11 +1,21 @@
 import Image from 'next/image';
 import { useContext } from 'react';
-import PriceRangeContext from '../../../helpers/PriceRangeContext';
+import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import arrow from '../../../public/icons/arrow-right.svg';
 import { StyledPagination } from './Pagination.styled';
+import { BWS_DATA } from '@/helpers/api-util';
 
-const Pagination = ({ products, handleNextPage, handlePrevPage }) => {
-  const { currentPage, setCurrentPage } = useContext(PriceRangeContext);
+interface PaginationProps {
+  products: BWS_DATA[];
+  handleNextPage: () => void;
+  handlePrevPage: () => void;
+}
+const Pagination = ({
+  products,
+  handleNextPage,
+  handlePrevPage,
+}: PaginationProps) => {
+  const { currentPage, setCurrentPage } = useContext<any>(PriceRangeContext);
 
   const handlePageClick = (e: any) => {
     setCurrentPage(parseInt(e.target.innerText));

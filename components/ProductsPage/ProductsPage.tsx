@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/api-util';
 import { StyledProducts } from './ProductsPage.styled';
@@ -9,14 +9,15 @@ import sort from '../../public/icons/groupsort.svg';
 import Categories from './Categories/Categories';
 import { StyledCategories } from './Categories/Categories.styled';
 import React from 'react';
-import PriceRangeContext from '../../helpers/PriceRangeContext';
+import { PriceRangeContext } from '../../helpers/PriceRangeContext';
 import Pagination from './Pagination/Pagination';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
+  const { rangeValues, setRangeValues } = useContext<any>(PriceRangeContext);
   const { products } = props;
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
-  const [rangeValues, setRangeValues] = useState([10, 95]);
+  // const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const numPages = Math.ceil(sortedProducts.length / 9);
@@ -34,6 +35,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       setFilteredProducts(
         [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
       );
+
       setSortOrder('asc');
     } else {
       setFilteredProducts(

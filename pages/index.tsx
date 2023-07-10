@@ -17,7 +17,7 @@ const Home = (props: { bws_data: BWS_DATA[] }) => {
 };
 export const getStaticProps = async () => {
   const items = await getAllData();
-  console.log(items);
+
   return {
     props: {
       bws_data: items,

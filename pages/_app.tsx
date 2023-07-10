@@ -8,21 +8,14 @@ import theme from '../styles/theme';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/helpers/cartContext';
-import PriceRangeContext from '../helpers/PriceRangeContext';
+import { PriceRangeContext } from '../helpers/PriceRangeContext';
+import { BWS_DATA } from '@/helpers/api-util';
+import { TheAppProvider } from '../helpers/PriceRangeContext';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [sortedProducts, setSortedProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   return (
-    <ThemeProvider theme={theme}>
-      <PriceRangeContext.Provider
-        value={{
-          sortedProducts,
-          setSortedProducts,
-          filteredProducts,
-          setFilteredProducts,
-        }}
-      >
+    <TheAppProvider>
+      <ThemeProvider theme={theme}>
         <CartProvider>
           <Header />
           <MainContainer>
@@ -30,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </MainContainer>
           <Footer />
         </CartProvider>
-      </PriceRangeContext.Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </TheAppProvider>
   );
 }

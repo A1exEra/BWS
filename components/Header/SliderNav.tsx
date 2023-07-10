@@ -2,15 +2,15 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 type SliderProps = {
-  isOpen: boolean;
+  isopen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
+const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
   const sliderRef = useRef<HTMLUListElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (isOpen) {
+      if (isopen) {
         if (divRef.current?.contains(event.target as Node)) {
           setIsOpen(false);
         }
@@ -21,10 +21,10 @@ const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [isOpen, setIsOpen]);
+  }, [isopen, setIsOpen]);
 
   return (
-    <SliderNavContainer isOpen={isOpen}>
+    <SliderNavContainer $isopen={isopen}>
       <div className="background" ref={divRef}></div>
       <ul ref={sliderRef}>
         <li>Menu Item 1</li>
@@ -45,7 +45,7 @@ const SliderNav = ({ isOpen, setIsOpen }: SliderProps) => {
   );
 };
 
-const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
+const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   z-index: 100000;
   .background {
     position: absolute;
@@ -56,7 +56,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
     opacity: 0.8;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.5);
-    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    display: ${({ $isopen }) => ($isopen ? 'block' : 'none')};
   }
   a {
     h3 {
@@ -75,7 +75,7 @@ const SliderNavContainer = styled.nav<{ isOpen: boolean }>`
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
   z-index: 99;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) =>
-    isOpen ? 'translateX(0)' : 'translateX(-100%)'};
+  transform: ${({ $isopen }) =>
+    $isopen ? 'translateX(0)' : 'translateX(-100%)'};
 `;
 export default SliderNav;

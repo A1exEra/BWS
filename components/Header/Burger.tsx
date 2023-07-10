@@ -41,19 +41,19 @@ const StyledBurger = styled.div`
   }
 `;
 type BurgerProps = {
-  isOpen: boolean;
+  isopen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Burger = ({ isOpen, setIsOpen }: BurgerProps) => {
+const Burger = ({ isopen, setIsOpen }: BurgerProps) => {
   const handleClick = () => {
     setIsOpen((prev: boolean) => !prev);
   };
   return (
     <StyledBurger onClick={handleClick}>
-      <div className={`stripe ${isOpen ? 'stripe-top' : ''}`}></div>
-      <div className={`stripe ${isOpen ? 'stripe-middle' : ''}`}></div>
-      <div className={`stripe ${isOpen ? 'stripe-bottom' : ''}`}></div>
+      <div className={`stripe ${isopen ? 'stripe-top' : ''}`}></div>
+      <div className={`stripe ${isopen ? 'stripe-middle' : ''}`}></div>
+      <div className={`stripe ${isopen ? 'stripe-bottom' : ''}`}></div>
     </StyledBurger>
   );
 };

@@ -1,9 +1,9 @@
 import { Range, getTrackBackground } from 'react-range';
 import { useState, useContext } from 'react';
-import PriceRangeContext from '../../../../helpers/PriceRangeContext';
+import { PriceRangeContext } from '../../../../helpers/PriceRangeContext';
 
 const PriceRange = () => {
-  const { rangeValues, setRangeValues } = useContext(PriceRangeContext);
+  const { rangeValues, setRangeValues } = useContext<any>(PriceRangeContext);
   return (
     <div className="priceRange">
       <h5>Price Range</h5>

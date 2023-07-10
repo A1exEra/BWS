@@ -16,7 +16,7 @@ const Trending = (props: { products: BWS_DATA[] }) => {
     setIsOpen((prev) => !prev);
   };
   return (
-    <StyledTrending isOpen={isOpen}>
+    <StyledTrending $isopen={isOpen}>
       <div className="textContainer">
         <h3>TRENDING PRODUCTS</h3>
         <MainButton
@@ -28,13 +28,13 @@ const Trending = (props: { products: BWS_DATA[] }) => {
       </div>
       <div className="cardsContainer">
         {trendingProducts.map((product: BWS_DATA) => (
-          <ProductCard product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </StyledTrending>
   );
 };
-const StyledTrending = styled.div<StyledTrendingProps>`
+const StyledTrending = styled.div<{ $isopen: boolean }>`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 100px 64px;
   .textContainer {
@@ -46,7 +46,9 @@ const StyledTrending = styled.div<StyledTrendingProps>`
     }
   }
   .cardsContainer {
-    max-height: ${({ isOpen }) => (isOpen ? 'none' : '450px')};
+    max-height: ${({ $isopen }) => ($isopen ? 'none' : '450px')};
+    max-height: ${({ $isopen }) => ($isopen ? 'none' : '450px')};
+
     overflow: hidden;
     transition: max-height 0.3s ease;
     display: flex;

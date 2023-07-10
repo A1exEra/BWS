@@ -30,7 +30,6 @@ export const getAllData = async () => {
       isTrending: data[key].isTrending,
     });
   }
-  console.log(bws_data);
   return bws_data;
 };
 export const getOnSaleItems = async () => {

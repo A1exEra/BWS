@@ -35,7 +35,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       setFilteredProducts(
         [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
       );
-      console.log(filteredProducts);
+
       setSortOrder('asc');
     } else {
       setFilteredProducts(

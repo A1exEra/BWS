@@ -17,7 +17,6 @@ const GetInTouch = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log('Submitted Data:', formData);
   };
   return (
     <Styled>

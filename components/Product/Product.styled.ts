@@ -6,6 +6,7 @@ type ProductIdProps = {
 const ProductId = styled.section<ProductIdProps>`
   display: flex;
   padding: 50px 0 80px 0;
+  height: 90vh;
   .imageContainer {
     position: relative;
 

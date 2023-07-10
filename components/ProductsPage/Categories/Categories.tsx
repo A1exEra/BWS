@@ -11,13 +11,16 @@ import Labels from './Labels';
 import ColorPicker from '@/components/shared/Colors/ColorPicker';
 import { choices } from '@/components/Product/choices';
 import PriceRange from './PriceRange/PriceRange';
+import { BWS_DATA } from '@/helpers/api-util';
 
 interface CategorySchema {
   id: number;
   name: string;
 }
-
-const Categories = ({ products }) => {
+interface CategoriesProps {
+  products: BWS_DATA[];
+}
+const Categories: React.FC<CategoriesProps> = ({ products }) => {
   //   console.log(categories);
 
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -42,12 +45,12 @@ const Categories = ({ products }) => {
         <StyledLabel
           htmlFor="all"
           className="category"
-          isSelected={selectedCategory === 'all'}
+          $isSelected={selectedCategory === 'all'}
           onClick={() => handleCheckboxChange('all')}
           style={{ marginBottom: '15px' }}
         >
           <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon isSelected={selectedCategory === 'all'} />
+          <CheckboxIcon $isSelected={selectedCategory === 'all'} />
           {'all'
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1))

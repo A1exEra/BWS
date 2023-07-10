@@ -4,9 +4,9 @@ import { StyledLabel, StyledCheckbox, CheckboxIcon } from './Categories.styled';
 interface LabelsProps {
   selectedCategory: string;
   labels: any[];
-  handChange: any;
+  handleChange: any;
 }
-const Labels = ({ selectedCategory, labels, handleChange }) => {
+const Labels = ({ selectedCategory, labels, handleChange }: LabelsProps) => {
   return (
     <div className="categories">
       {labels.map((label) => (
@@ -14,14 +14,14 @@ const Labels = ({ selectedCategory, labels, handleChange }) => {
           key={label.id}
           htmlFor={label.title}
           className="category"
-          isSelected={selectedCategory === label.title}
+          $isSelected={selectedCategory === label.title}
           onClick={() => handleChange(label.title)}
         >
           <StyledCheckbox type="checkbox" id={label.title} />
-          <CheckboxIcon isSelected={selectedCategory === label.title} />
+          <CheckboxIcon $isSelected={selectedCategory === label.title} />
           {label.title
             .split(' ')
-            .map((word) => word[0].toUpperCase() + word.slice(1))
+            .map((word: string) => word[0].toUpperCase() + word.slice(1))
             .join(' ')}
         </StyledLabel>
       ))}

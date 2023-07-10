@@ -11,7 +11,6 @@ import { CartProvider } from '@/helpers/cartContext';
 import { PriceRangeContext } from '../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/api-util';
 import { TheAppProvider } from '../helpers/PriceRangeContext';
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <TheAppProvider>

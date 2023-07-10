@@ -14,8 +14,14 @@ import { TheAppProvider } from '../helpers/PriceRangeContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <TheAppProvider>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <PriceRangeContext.Provider
+        value={{
+          sortedProducts,
+          setSortedProducts,
+          filteredProducts,
+          setFilteredProducts,
+        }}>
         <CartProvider>
           <Header />
           <MainContainer>

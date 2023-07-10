@@ -1,5 +1,4 @@
 const firebase_URL: string | undefined = process.env.URL;
-
 export interface BWS_DATA {
   id: string;
   title: string;
@@ -31,6 +30,7 @@ export const getAllData = async () => {
       isTrending: data[key].isTrending,
     });
   }
+  console.log(bws_data);
   return bws_data;
 };
 export const getOnSaleItems = async () => {

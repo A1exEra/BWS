@@ -129,8 +129,8 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
   z-index: 100;
   padding: 16px;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ iscartopen }) =>
-    iscartopen ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${({ $iscartopen }) =>
+    $iscartopen ? 'translateX(0)' : 'translateX(100%)'};
 
   h2 {
     ${({ theme }) => theme.mixins.primaryComponentTitle};

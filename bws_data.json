@@ -7,7 +7,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Brown",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": false
   },
   "item2": {
@@ -18,7 +18,7 @@
     "isLiked": false,
     "onSale": true,
     "color": "White",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item3": {
@@ -40,7 +40,7 @@
     "isLiked": false,
     "onSale": true,
     "color": "Light Brown",
-    "category": "pavers",
+    "category": "steps",
     "isTrending": false
   },
   "item5": {
@@ -51,7 +51,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Dark Gray",
-    "category": "pavers",
+    "category": "enviro",
     "isTrending": false
   },
   "item6": {
@@ -62,7 +62,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Beige",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": true
   },
   "item7": {
@@ -73,7 +73,7 @@
     "isLiked": false,
     "onSale": true,
     "color": "Brown",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item8": {
@@ -95,7 +95,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "White",
-    "category": "pavers",
+    "category": "steps",
     "isTrending": true
   },
   "item10": {
@@ -106,7 +106,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Brown",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": false
   },
   "item11": {
@@ -128,7 +128,7 @@
     "isLiked": false,
     "onSale": false,
     "color": "Gray",
-    "category": "pavers",
+    "category": "enviro",
     "isTrending": true
   },
   "item13": {
@@ -139,7 +139,7 @@
     "isLiked": true,
     "onSale": true,
     "color": "Red",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": false
   },
   "item14": {
@@ -150,7 +150,7 @@
     "isLiked": false,
     "onSale": false,
     "color": "Golden",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item15": {
@@ -172,7 +172,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Brown",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": false
   },
   "item17": {
@@ -183,7 +183,7 @@
     "isLiked": true,
     "onSale": true,
     "color": "Gray",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item18": {
@@ -205,7 +205,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Beige",
-    "category": "pavers",
+    "category": "enviro",
     "isTrending": false
   },
   "item20": {
@@ -216,7 +216,7 @@
     "isLiked": true,
     "onSale": true,
     "color": "Light Brown",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": true
   },
   "item21": {
@@ -227,7 +227,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Light Brown",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item22": {
@@ -249,7 +249,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Light Brown",
-    "category": "pavers",
+    "category": "steps",
     "isTrending": true
   },
   "item24": {
@@ -271,7 +271,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Brown",
-    "category": "pavers",
+    "category": "walls",
     "isTrending": false
   },
   "item26": {
@@ -282,7 +282,7 @@
     "isLiked": true,
     "onSale": false,
     "color": "Gray",
-    "category": "pavers",
+    "category": "slabs",
     "isTrending": true
   },
   "item27": {

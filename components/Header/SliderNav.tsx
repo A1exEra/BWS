@@ -54,7 +54,7 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
     width: 100vw;
     height: 100vh;
     opacity: 0.8;
-    z-index: 99;
+    z-index: 998;
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ $isopen }) => ($isopen ? 'block' : 'none')};
   }
@@ -73,7 +73,7 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   width: 320px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
-  z-index: 99;
+  z-index: 999;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $isopen }) =>
     $isopen ? 'translateX(0)' : 'translateX(-100%)'};

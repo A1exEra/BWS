@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import { StyledProducts } from './ProductsPage.styled';
 import ProductCard from '../ProductCard/ProductCard';
 import downarrow from '../../public/images/color-options/downarrow.svg';
@@ -78,8 +78,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       <StyledProducts>
         <Categories products={filteredProducts.slice(0, 9)} />
 

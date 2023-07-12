@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BWS_DATA } from './api-util';
+import { BWS_DATA } from './types';
 
 type RangeContextType = {
   rangeValues: number[];
@@ -41,8 +41,7 @@ const TheAppProvider: React.FC<ProviderProps> = ({ children }) => {
         handlePageChange,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       {children}
     </PriceRangeContext.Provider>
   );

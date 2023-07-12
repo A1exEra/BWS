@@ -55,6 +55,7 @@ const ColorPicker = ({ choices }: ColorProps) => {
     }
   }, [selectedColors]);
   useEffect(() => {
+    console.log(sortedProducts);
     if (isChecked) {
       setFilteredProducts(sortedProducts);
     } else {

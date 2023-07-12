@@ -18,8 +18,6 @@ const GetInTouch = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-<<<<<<< HEAD
-=======
     notificationCtx.setNotification({
       title: 'Submitting...',
       message: 'Getting ready to submit your feedback...',
@@ -57,7 +55,6 @@ const GetInTouch = () => {
         status: 'error',
       });
     }
->>>>>>> 5c13c918010142a61aaec6fad99d8a7878feffdf
   };
   return (
     <Styled>
@@ -92,12 +89,14 @@ const GetInTouch = () => {
           name="message"
           placeholder="Message"
           value={formData.message}
-          onChange={handleInputChange}></textarea>
+          onChange={handleInputChange}
+        ></textarea>
         <MainButton
           label="Submit"
           type="submit"
           className="btn"
-          backgroundColor="#fff"></MainButton>
+          backgroundColor="#fff"
+        ></MainButton>
       </form>
     </Styled>
   );

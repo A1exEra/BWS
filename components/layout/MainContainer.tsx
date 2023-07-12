@@ -1,7 +1,22 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import styled from 'styled-components';
-const MainContainer = ({ children }: { children: ReactNode }) => {
-  return <MainContainerWrapper>{children}</MainContainerWrapper>;
+import Notification from '../ui/Notification';
+import NotificationContext from '@/helpers/Notificationcontext';
+const MainContainer = (props: { children: ReactNode }) => {
+  const notificationCtx: any = useContext(NotificationContext);
+  const activeNotification = notificationCtx.notification;
+  return (
+    <MainContainerWrapper>
+      {props.children}
+      {activeNotification && (
+        <Notification
+          title={activeNotification.title}
+          message={activeNotification.message}
+          status={activeNotification.status}
+        />
+      )}
+    </MainContainerWrapper>
+  );
 };
 
 const MainContainerWrapper = styled.div`

@@ -1,22 +1,60 @@
 import { styled } from 'styled-components';
 import MainButton from '../shared/MainButton';
-import { useState } from 'react';
+import NotificationContext from '@/helpers/Notificationcontext';
+import { useState, useContext } from 'react';
 const GetInTouch = () => {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
+    name: '',
     message: '',
   });
-
-  const handleChange = (e: { target: { name: string; value: string } }) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
+  const notificationCtx = useContext(NotificationContext);
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    notificationCtx.setNotification({
+      title: 'Submitting...',
+      message: 'Getting ready to submit your feedback...',
+      status: 'pending',
+    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (!response.ok) {
+        notificationCtx.setNotification({
+          title: 'Error',
+          message: 'Error sending to Database...',
+          status: 'error',
+        });
+        return;
+      }
+      const data = await response.json();
+      notificationCtx.setNotification({
+        title: 'Success!',
+        message: 'Successfully submitted your feedback!',
+        status: 'success',
+      });
+      setFormData({
+        email: '',
+        name: '',
+        message: '',
+      });
+    } catch (error: any) {
+      notificationCtx.setNotification({
+        title: 'Error!',
+        message: error.message || 'something went wrong...',
+        status: 'error',
+      });
+    }
   };
   return (
     <Styled>
@@ -38,27 +76,25 @@ const GetInTouch = () => {
           name="name"
           placeholder="Name"
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <input
           type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <textarea
           name="message"
           placeholder="Message"
           value={formData.message}
-          onChange={handleChange}
-        ></textarea>
+          onChange={handleInputChange}></textarea>
         <MainButton
           label="Submit"
           type="submit"
           className="btn"
-          backgroundColor="#fff"
-        ></MainButton>
+          backgroundColor="#fff"></MainButton>
       </form>
     </Styled>
   );
@@ -69,7 +105,6 @@ const Styled = styled.div`
   display: flex;
   padding: 100px 177px;
   justify-content: space-between;
-  // height: 530px;
   .text_container {
     display: flex;
     flex-direction: column;

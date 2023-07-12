@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import Button from '@/components/shared/Button/Button';
 import ProductId from './Product.styled';
 import choice1 from '../../public/images/color-options/oval 1.png';

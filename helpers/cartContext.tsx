@@ -6,7 +6,7 @@ import {
   ReactNode,
   useCallback,
 } from 'react';
-import { BWS_DATA } from './api-util';
+import { BWS_DATA } from './types';
 
 interface CartItem extends BWS_DATA {
   quantity: number;

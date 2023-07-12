@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import { getAllData } from '@/helpers/api-util';
 import MainPage from '@/components/MainPage/MainPage';
 const Home = (props: { bws_data: BWS_DATA[] }) => {

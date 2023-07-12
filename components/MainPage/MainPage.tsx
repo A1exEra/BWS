@@ -6,7 +6,7 @@ import FindADealer from './FindADealer';
 import Trending from './Trending';
 import WhoWeAre from './WhoWeAre';
 import Reviews from './Reviews';
-import { BWS_DATA } from '../../helpers/api-util';
+import { BWS_DATA } from '../../helpers/types';
 import GetInTouch from './GetInTouch';
 interface Data {
   title: string;

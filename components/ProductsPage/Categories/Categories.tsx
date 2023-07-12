@@ -11,7 +11,7 @@ import Labels from './Labels';
 import ColorPicker from '@/components/shared/Colors/ColorPicker';
 import { choices } from '@/components/Product/choices';
 import PriceRange from './PriceRange/PriceRange';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 
 interface CategorySchema {
   id: number;
@@ -47,8 +47,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           className="category"
           $isSelected={selectedCategory === 'all'}
           onClick={() => handleCheckboxChange('all')}
-          style={{ marginBottom: '15px' }}
-        >
+          style={{ marginBottom: '15px' }}>
           <StyledCheckbox type="checkbox" id={'all'} />
           <CheckboxIcon $isSelected={selectedCategory === 'all'} />
           {'all'

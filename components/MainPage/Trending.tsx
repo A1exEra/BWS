@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import MainButton from '../shared/MainButton';
 import ProductCard from '../ProductCard/ProductCard';
 import { useState } from 'react';
-import { BWS_DATA } from '../../helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import React from 'react';
 interface StyledTrendingProps {
   isOpen: boolean;
@@ -23,8 +23,7 @@ const Trending = (props: { products: BWS_DATA[] }) => {
           className="MainButton"
           label="See All"
           onClick={showTrendingHandler}
-          backgroundColor="#536758"
-        ></MainButton>
+          backgroundColor="#536758"></MainButton>
       </div>
       <div className="cardsContainer">
         {trendingProducts.map((product: BWS_DATA) => (

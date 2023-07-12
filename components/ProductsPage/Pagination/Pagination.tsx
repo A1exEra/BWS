@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import arrow from '../../../public/icons/arrow-right.svg';
 import { StyledPagination } from './Pagination.styled';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 
 interface PaginationProps {
   products: BWS_DATA[];
@@ -31,8 +31,7 @@ const Pagination = ({
           <p
             key={i}
             className={currentPage === i + 1 ? 'active' : ''}
-            onClick={handlePageClick}
-          >
+            onClick={handlePageClick}>
             {i + 1}
           </p>
         ))}

@@ -1,4 +1,5 @@
-import { BWS_DATA, getAllData, getItemById } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
+import { getAllData, getItemById } from '@/helpers/api-util';
 import Head from 'next/head';
 import Link from 'next/link';
 import Product from '../../components/Product/Product';

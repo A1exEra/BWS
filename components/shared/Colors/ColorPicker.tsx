@@ -17,7 +17,6 @@ const choices = [
   { id: 4, title: 'gray' },
   { id: 5, title: 'brown' },
 ];
-// constcolors = ['beige', 'golden', 'red', 'gray', 'yellow'];
 const ColorPicker = () => {
   const {
     sortedProducts,
@@ -104,7 +103,7 @@ const ColorPicker = () => {
               onClick={() => handleColorClick(choice.title)}>
               <div className="color-name">{choice.title}</div>
               <Image
-                src={`/images/color-options/oval${choice.id}.jpg`}
+                src={`/images/color-options/oval${choice.id}.png`}
                 alt="color choice"
                 width={27}
                 height={27}

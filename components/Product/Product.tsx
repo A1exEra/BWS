@@ -9,8 +9,6 @@ import ColorPicker from '../shared/Colors/ColorPicker';
 // import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
-
-  // const choices = [choice1, choice2, choice3, choice4, choice5];
   return (
     <ProductId bg="purple">
       <div className="imageContainer">
@@ -22,7 +20,6 @@ const Product = (props: { product: BWS_DATA }) => {
         <h4>${product.price} per sqm</h4>
         <p>{product.description}</p>
         <div className="optionSelector">
-          {/* <ColorPicker choices={choices} /> */}
           <ColorPicker />
 
           <div className="border">

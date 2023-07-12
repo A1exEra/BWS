@@ -14,10 +14,37 @@ export const StyledCategories = styled.div<StyledLabelProps>`
   .categories {
     display: flex;
     flex-direction: column;
+    max-height: 420px;
+    overflow-y: hidden;
+
     gap: 25px;
     padding-bottom: 25px;
     margin-bottom: 25px;
     border-bottom: 1px solid rgba(217, 217, 217, 0.5);
+
+    &::-webkit-scrollbar {
+      width: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #939393;
+      border-radius: 20px;
+      border: 4px solid transparent;
+      background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #536758;
+    }
+
+    &:hover {
+      overflow-y: scroll;
+    }
   }
   color: ${(props) => (props.$isSelected ? '#536758' : '#000')};
   .priceRange {
@@ -43,7 +70,7 @@ export const StyledLabel = styled.label.attrs(
 `;
 
 export const StyledCheckbox = styled.input`
-  display: none; // hides the original checkbox
+  display: none;
 `;
 export const CheckboxIcon = styled.div<StyledLabelProps>`
   width: 16px;

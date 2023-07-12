@@ -14,6 +14,7 @@ import ColorPicker from '../shared/Colors/ColorPicker';
 import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
+  console.log(product);
 
   // const choices = [choice1, choice2, choice3, choice4, choice5];
   return (

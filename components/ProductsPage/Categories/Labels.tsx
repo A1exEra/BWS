@@ -1,5 +1,5 @@
 // import { categories } from './categoryList';
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyledLabel, StyledCheckbox, CheckboxIcon } from './Categories.styled';
 interface LabelsProps {
   selectedCategory: string;
@@ -7,8 +7,26 @@ interface LabelsProps {
   handleChange: any;
 }
 const Labels = ({ selectedCategory, labels, handleChange }: LabelsProps) => {
+  const labelsRef = useRef();
+  const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+  useEffect(() => {
+    const container: any = labelsRef.current;
+    console.log(isOverflowing);
+    if (container.scrollHeight < container.clientHeight) {
+      setIsOverflowing(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(isOverflowing);
+  }, [isOverflowing]);
+
   return (
-    <div className="categories">
+    <div
+      className="categories"
+      ref={labelsRef}
+      style={!isOverflowing ? { overflowY: 'hidden' } : {}}
+    >
       {labels.map((label) => (
         <StyledLabel
           key={label.id}

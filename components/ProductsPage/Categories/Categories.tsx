@@ -21,13 +21,13 @@ interface CategoriesProps {
   products: BWS_DATA[];
 }
 const Categories: React.FC<CategoriesProps> = ({ products }) => {
-  //   console.log(categories);
-
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [sideProducts, setSideProducts] = useState(products.slice(0, 9));
+  const [sideProducts, setSideProducts] = useState(products);
   const [rangeValues, setRangeValues] = useState([50, 80]);
 
   const handleCheckboxChange = (category: any) => {
+    console.log(products);
+    console.log(sideProducts);
     setSelectedCategory(category);
   };
 

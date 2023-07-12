@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { useContext } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 
 interface ColorProps {
   choices: {
@@ -34,8 +34,7 @@ const ColorPicker = ({ choices }: ColorProps) => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}
-            >
+              onClick={() => handleColorClick(choice.title)}>
               <div className="color-name">{choice.title}</div>
               <Image src={choice.choice} alt="color choice" />
             </div>

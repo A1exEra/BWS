@@ -25,6 +25,9 @@ const ProductCard = (props: { product: BWS_DATA }) => {
       status: 'success',
     });
     /////////////
+    useEffect(() => {
+      console.log(product);
+    }, [product]);
   };
   return (
     <StyledProductCard>
@@ -48,7 +51,8 @@ const ProductCard = (props: { product: BWS_DATA }) => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <g id="mdi-light:heart">
                 <path
                   id="Vector"

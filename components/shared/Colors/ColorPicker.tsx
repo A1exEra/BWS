@@ -12,8 +12,12 @@ interface ColorProps {
   }[];
 }
 const ColorPicker = ({ choices }: ColorProps) => {
-  const { sortedProducts, setFilteredProducts, setSortedProducts } =
-    useContext<any>(PriceRangeContext);
+  const {
+    sortedProducts,
+    setFilteredProducts,
+    setSortedProducts,
+    filteredProducts,
+  } = useContext<any>(PriceRangeContext);
   const [isChecked, setIsChecked] = useState<boolean>(true);
   const [displayedProducts, setDisplayedProducts] = useState<any>([]);
   const [isColorSelected, setIsColorSelected] = useState<boolean>(false);
@@ -24,11 +28,13 @@ const ColorPicker = ({ choices }: ColorProps) => {
     if (isChecked) {
       setIsChecked(false);
     }
-    // Updating selectedColors state
+
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color));
     } else {
+      console.log(selectedColors);
       setSelectedColors([...selectedColors, color]);
+      console.log(selectedColors);
     }
   };
   useEffect(() => {
@@ -40,9 +46,10 @@ const ColorPicker = ({ choices }: ColorProps) => {
           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
       );
       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+      console.log(newDisplayedProducts);
     });
     setDisplayedProducts(newDisplayedProducts);
-  }, [selectedColors, sortedProducts]);
+  }, [selectedColors]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedColors([]);
@@ -55,13 +62,18 @@ const ColorPicker = ({ choices }: ColorProps) => {
     }
   }, [selectedColors]);
   useEffect(() => {
-    console.log(sortedProducts);
+    // console.log(sortedProducts);
+
     if (isChecked) {
+      console.log(isChecked);
       setFilteredProducts(sortedProducts);
     } else {
+      console.log(isChecked);
+      // console.log(displayedProducts);
       setFilteredProducts(displayedProducts);
+      console.log(filteredProducts);
     }
-  }, [isChecked, sortedProducts, displayedProducts]);
+  }, [displayedProducts]);
 
   return (
     <StyledColorPicker $ischecked={isChecked}>

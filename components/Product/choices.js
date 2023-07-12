@@ -1,8 +1,8 @@
-import choice1 from '@/public/images/color-options/oval1.png';
-import choice2 from '@/public/images/color-options/oval2.png';
-import choice3 from '@/public/images/color-options/oval3.png';
-import choice4 from '@/public/images/color-options/oval4.png';
-import choice5 from '@/public/images/color-options/oval5.png';
+import choice1 from '/images/color-options/oval1.png';
+import choice2 from '/images/color-options/oval2.png';
+import choice3 from '/images/color-options/oval3.png';
+import choice4 from '/images/color-options/oval4.png';
+import choice5 from '/images/color-options/oval5.png';
 
 export const choices = [
   { id: 1, choice: choice1, title: 'beige' },

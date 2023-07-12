@@ -6,6 +6,7 @@ import ShoppingCartIcon from '@/public/icons/shopping_cart.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import Cart from './Cart';
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);

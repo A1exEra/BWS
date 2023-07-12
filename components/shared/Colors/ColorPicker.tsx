@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { useContext, useState, useEffect } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 
 interface ColorProps {
   choices: {

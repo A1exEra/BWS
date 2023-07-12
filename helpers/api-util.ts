@@ -1,16 +1,14 @@
-const firebase_URL: string | undefined = process.env.URL;
-export interface BWS_DATA {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  price: number;
-  isLiked: boolean;
-  onSale: boolean;
-  color: string;
-  isTrending: boolean;
-  category: string;
-}
+import { BWS_DATA } from './types';
+import { db } from './firebse';
+import { MESSAGE } from './types';
+// Usage example
+// sendFeedback(
+//   'john@example.com',
+//   'John Doe',
+//   'Great app! Keep up the good work.'
+// );
+
+const firebase_URL: string | undefined = process.env.PRODUCTS_URL;
 
 export const getAllData = async () => {
   const response = await fetch(firebase_URL!);
@@ -54,4 +52,17 @@ export const getItemById = async (id: string) => {
 //   });
 
 //   return filteredEvents;
+// };
+// export const sendFeedback = async (newMessage: MESSAGE) => {
+//   try {
+//     await db.collection('bws-feedback').add({
+//       email: newMessage.email,
+//       name: newMessage.name,
+//       message: newMessage.message,
+//       timestamp: db.firestore.FieldValue.serverTimestamp(),
+//     });
+//     console.log('Feedback sent successfully');
+//   } catch (error) {
+//     console.error('Error sending feedback:', error);
+//   }
 // };

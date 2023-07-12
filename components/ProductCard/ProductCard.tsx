@@ -4,25 +4,26 @@ import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styled';
 import heart from '../../public/icons/heart.svg';
 import cart from '@/public/icons/mdi-light_cart.svg';
-import { BWS_DATA } from '../../helpers/api-util';
+import { BWS_DATA } from '../../helpers/types';
 import { useCart } from '@/helpers/cartContext';
-// import ManageCart from '@/helpers/ManageCart';
+import NotificationContext from '@/helpers/Notificationcontext';
 
 interface CartItem extends BWS_DATA {
   quantity: number;
   totalItemPrice: number;
 }
 const ProductCard = (props: { product: BWS_DATA }) => {
-  // const { addToCart } = ManageCart();
+  const notificationCtx = useContext(NotificationContext);
   const { addToCart } = useCart();
-  // const { cartItems, setCartItems } = useContext(CartContext);
-  // localStorage.setItem('BWS_Cart_Items', JSON.stringify([]));
-  // const storedItems: any = localStorage.getItem('BWS_Cart_Items');
   const product = props.product;
   const onAddItemHandler = () => {
-    // setCartItems((prev: BWS_DATA[]) => [...prev, product]);
     addToCart(product);
     //////////////
+    notificationCtx.setNotification({
+      title: 'Item Added...',
+      message: `${product.title} is in your shopping cart!`,
+      status: 'success',
+    });
     /////////////
   };
   return (
@@ -47,8 +48,7 @@ const ProductCard = (props: { product: BWS_DATA }) => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <g id="mdi-light:heart">
                 <path
                   id="Vector"

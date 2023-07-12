@@ -1,4 +1,5 @@
-import { BWS_DATA, getAllData } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
+import { getAllData } from '@/helpers/api-util';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ProductsPage from '@/components/ProductsPage/ProductsPage';

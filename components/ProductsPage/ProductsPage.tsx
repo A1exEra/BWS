@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import { StyledProducts } from './ProductsPage.styled';
 import ProductCard from '../ProductCard/ProductCard';
 import downarrow from '../../public/images/color-options/downarrow.svg';
@@ -17,7 +17,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
-
+  // const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const numPages = Math.ceil(filteredProducts.length / 9);
@@ -95,8 +95,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       <StyledProducts>
         <Categories products={filteredProducts} />
 

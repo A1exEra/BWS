@@ -1,18 +1,20 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/helpers/cartContext';
-import { BWS_DATA } from '@/helpers/api-util';
 import { deleteIcon } from '@/public/icons/deleteIcon';
 import arrow from '@/public/icons/ArrowIcon.svg';
 import MainButton from '../shared/MainButton';
+import { BWS_DATA } from '@/helpers/types';
+import NotificationContext from '@/helpers/Notificationcontext';
 type SliderProps = {
   iscartopen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
 const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
+  const notificationCtx = useContext(NotificationContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -49,17 +51,37 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
   }, [cartItems, setQuantity]);
   const handleRemoveItem = (productId: string) => {
     removeFromCart(productId);
+    notificationCtx.setNotification({
+      title: 'Items removed...',
+      message: `All items were removed from shopping cart!`,
+      status: 'error',
+    });
   };
 
   const handleClearCart = () => {
     clearCart();
+    notificationCtx.setNotification({
+      title: 'Items removed...',
+      message: `Your Shopping Cart Is Empty!`,
+      status: 'error',
+    });
   };
-  const handleIncrementItem = (productId: string) => {
+  const handleIncrementItem = (productId: string, productTitle: string) => {
     incrementItem(productId);
+    notificationCtx.setNotification({
+      title: 'Item added...',
+      message: `${productTitle} is in your shopping cart`,
+      status: 'success',
+    });
   };
 
-  const handleDecrementItem = (productId: string) => {
+  const handleDecrementItem = (productId: string, productTitle: string) => {
     decrementItem(productId);
+    notificationCtx.setNotification({
+      title: 'Item removed...',
+      message: `${productTitle} was removed from shopping cart!`,
+      status: 'success',
+    });
   };
 
   const handleCheckout = () => {
@@ -76,14 +98,14 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
               <Image
                 src={arrow}
                 alt="arrow"
-                onClick={() => handleDecrementItem(item.id)}
+                onClick={() => handleDecrementItem(item.id, item.title)}
               />
               <p>{item.quantity}</p>
               <Image
                 className="img2"
                 src={arrow}
                 alt="arrow"
-                onClick={() => handleIncrementItem(item.id)}
+                onClick={() => handleIncrementItem(item.id, item.title)}
               />
               <span onClick={() => handleRemoveItem(item.id)}>
                 {deleteIcon}
@@ -116,7 +138,7 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
     width: 100vw;
     height: 100vh;
     opacity: 0.8;
-    z-index: 100;
+    z-index: 998;
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ $iscartopen }) => ($iscartopen ? 'block' : 'none')};
   }
@@ -126,7 +148,7 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
   width: 320px;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
-  z-index: 100;
+  z-index: 999;
   padding: 16px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $iscartopen }) =>

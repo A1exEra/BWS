@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BWS_DATA } from '@/helpers/api-util';
+import { BWS_DATA } from '@/helpers/types';
 import Button from '@/components/shared/Button/Button';
 import ProductId from './Product.styled';
 import choice1 from '../../public/images/color-options/oval 1.png';
@@ -14,7 +14,10 @@ import ColorPicker from '../shared/Colors/ColorPicker';
 import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
+<<<<<<< HEAD
   console.log(product);
+=======
+>>>>>>> 5c13c918010142a61aaec6fad99d8a7878feffdf
 
   // const choices = [choice1, choice2, choice3, choice4, choice5];
   return (

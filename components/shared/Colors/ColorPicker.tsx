@@ -104,7 +104,7 @@ const ColorPicker = () => {
               onClick={() => handleColorClick(choice.title)}>
               <div className="color-name">{choice.title}</div>
               <Image
-                src={`/images/color-options/oval${choice.id}.jpg`}
+                src={`/images/color-options/oval${choice.id}.png`}
                 alt="color choice"
                 width={27}
                 height={27}

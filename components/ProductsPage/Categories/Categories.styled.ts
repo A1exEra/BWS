@@ -15,6 +15,7 @@ export const StyledCategories = styled.div<StyledLabelProps>`
     display: flex;
     flex-direction: column;
     max-height: 420px;
+    // height: auto;
     overflow-y: hidden;
 
     gap: 25px;

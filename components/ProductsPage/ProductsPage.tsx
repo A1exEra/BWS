@@ -20,7 +20,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const numPages = Math.ceil(sortedProducts.length / 9);
+  const numPages = Math.ceil(filteredProducts.length / 9);
 
   useEffect(() => {
     setFilteredProducts(

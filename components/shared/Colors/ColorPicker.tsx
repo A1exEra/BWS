@@ -17,7 +17,6 @@ const choices = [
   { id: 4, title: 'gray' },
   { id: 5, title: 'brown' },
 ];
-// constcolors = ['beige', 'golden', 'red', 'gray', 'yellow'];
 const ColorPicker = () => {
   const {
     sortedProducts,

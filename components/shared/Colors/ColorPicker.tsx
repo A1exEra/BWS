@@ -3,7 +3,6 @@ import { useContext, useState, useEffect } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
-
 interface ColorProps {
   choices: {
     id: number;
@@ -11,7 +10,15 @@ interface ColorProps {
     title: string;
   }[];
 }
-const ColorPicker = ({ choices }: ColorProps) => {
+const choices = [
+  { id: 1, title: 'beige' },
+  { id: 2, title: 'golden' },
+  { id: 3, title: 'red' },
+  { id: 4, title: 'gray' },
+  { id: 5, title: 'brown' },
+];
+// constcolors = ['beige', 'golden', 'red', 'gray', 'yellow'];
+const ColorPicker = () => {
   const {
     sortedProducts,
     setFilteredProducts,
@@ -94,11 +101,14 @@ const ColorPicker = ({ choices }: ColorProps) => {
               className={`choice ${
                 selectedColors.includes(choice.title) ? 'selected' : ''
               }`}
-              onClick={() => handleColorClick(choice.title)}
-            >
-
+              onClick={() => handleColorClick(choice.title)}>
               <div className="color-name">{choice.title}</div>
-              <Image src={choice.choice} alt="color choice" />
+              <Image
+                src={`/images/color-options/oval${choice.id}.jpg`}
+                alt="color choice"
+                width={27}
+                height={27}
+              />
             </div>
           ))}
         </div>

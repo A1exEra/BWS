@@ -119,11 +119,13 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
         <MainButton
           onClick={handleClearCart}
           label="Clear Cart"
-          backgroundColor="#536758"></MainButton>
+          backgroundColor="#536758"
+        ></MainButton>
         <MainButton
           onClick={handleCheckout}
           backgroundColor="#2a2a2a"
-          label="Checkout"></MainButton>
+          label="Checkout"
+        ></MainButton>
       </div>
     </SliderCartContainer>
   );

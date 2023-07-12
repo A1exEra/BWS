@@ -19,8 +19,10 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const [sortOrder, setSortOrder] = useState('desc');
   // const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
+  // const { filteredProducts, setFilteredProducts } =
+  //   useContext(PriceRangeContext);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const numPages = Math.ceil(sortedProducts.length / 9);
+  const numPages = Math.ceil(filteredProducts.length / 9);
 
   useEffect(() => {
     setFilteredProducts(
@@ -29,20 +31,39 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       )
     );
   }, [sortedProducts, rangeValues]);
+  useEffect(() => {
+    console.log(filteredProducts);
+  }, [filteredProducts]);
+  // const onSortHandler = () => {
+  //   if (sortOrder === 'desc') {
+  //     setFilteredProducts(
+  //       [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
+  //     );
 
+  //     setSortOrder('asc');
+  //   } else {
+  //     setFilteredProducts(
+  //       [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
+  //     );
+  //     setSortOrder('desc');
+  //   }
+  // };
   const onSortHandler = () => {
-    if (sortOrder === 'desc') {
-      setFilteredProducts(
-        [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
-      );
+    setSortOrder((prevSortOrder) => {
+      const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';
 
-      setSortOrder('asc');
-    } else {
-      setFilteredProducts(
-        [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
-      );
-      setSortOrder('desc');
-    }
+      setFilteredProducts((prevFilteredProducts) => {
+        return [...prevFilteredProducts].sort((a, b) => {
+          if (newSortOrder === 'desc') {
+            return a.price > b.price ? -1 : 1;
+          } else {
+            return a.price > b.price ? 1 : -1;
+          }
+        });
+      });
+
+      return newSortOrder;
+    });
   };
 
   const handlePageChange = (newPage: number) => {
@@ -78,9 +99,10 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}>
+      }}
+    >
       <StyledProducts>
-        <Categories products={filteredProducts.slice(0, 9)} />
+        <Categories products={filteredProducts} />
 
         <div className="productsList">
           <div className="productSorter">

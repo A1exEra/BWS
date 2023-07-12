@@ -89,12 +89,14 @@ const GetInTouch = () => {
           name="message"
           placeholder="Message"
           value={formData.message}
-          onChange={handleInputChange}></textarea>
+          onChange={handleInputChange}
+        ></textarea>
         <MainButton
           label="Submit"
           type="submit"
           className="btn"
-          backgroundColor="#fff"></MainButton>
+          backgroundColor="#fff"
+        ></MainButton>
       </form>
     </Styled>
   );

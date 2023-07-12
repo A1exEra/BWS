@@ -9,8 +9,8 @@ type RangeContextType = {
   sortedProducts: BWS_DATA[];
   setSortedProducts: React.Dispatch<React.SetStateAction<BWS_DATA[]>>;
   handlePageChange?: (page: number) => void;
-  filteredProducts: any[];
-  setFilteredProducts: React.Dispatch<React.SetStateAction<any[]>>;
+  filteredProducts?: any[];
+  setFilteredProducts?: React.Dispatch<React.SetStateAction<any[]>>;
 };
 type ProviderProps = {
   children: React.ReactNode;
@@ -41,7 +41,8 @@ const TheAppProvider: React.FC<ProviderProps> = ({ children }) => {
         handlePageChange,
         filteredProducts,
         setFilteredProducts,
-      }}>
+      }}
+    >
       {children}
     </PriceRangeContext.Provider>
   );

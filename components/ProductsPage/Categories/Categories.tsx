@@ -9,7 +9,7 @@ import { categories } from './categoryList.js';
 import React from 'react';
 import Labels from './Labels';
 import ColorPicker from '@/components/shared/Colors/ColorPicker';
-import { choices } from '@/components/Product/choices';
+// import { choices } from '@/components/Product/choices';
 import PriceRange from './PriceRange/PriceRange';
 import { BWS_DATA } from '@/helpers/types';
 import { PriceRangeContext } from '@/helpers/PriceRangeContext';
@@ -62,8 +62,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           className="category"
           $isSelected={selectedCategory === 'all'}
           onClick={() => handleCheckboxChange('all')}
-          style={{ marginBottom: '25px' }}
-        >
+          style={{ marginBottom: '25px' }}>
           <StyledCheckbox type="checkbox" id={'all'} />
           <CheckboxIcon $isSelected={selectedCategory === 'all'} />
           {'all'
@@ -78,7 +77,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           handleChange={handleCheckboxChange}
         />
       </div>
-      <ColorPicker choices={choices} />
+      <ColorPicker />
       <PriceRange />
     </StyledCategories>
   );

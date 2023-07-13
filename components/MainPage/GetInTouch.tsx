@@ -89,14 +89,12 @@ const GetInTouch = () => {
           name="message"
           placeholder="Message"
           value={formData.message}
-          onChange={handleInputChange}
-        ></textarea>
+          onChange={handleInputChange}></textarea>
         <MainButton
           label="Submit"
           type="submit"
           className="btn"
-          backgroundColor="#fff"
-        ></MainButton>
+          backgroundColor="#fff"></MainButton>
       </form>
     </Styled>
   );
@@ -113,7 +111,7 @@ const Styled = styled.div`
     justify-content: space-between;
     h4 {
       ${({ theme }) => theme.mixins.primaryComponentTitle}
-      color: ${({ theme }) => theme.colors.grey};
+      color: ${({ theme }) => theme.colors.whiteSecondary};
     }
     h2 {
       ${({ theme }) => theme.mixins.productTitle46}
@@ -121,6 +119,7 @@ const Styled = styled.div`
     }
     p {
       ${({ theme }) => theme.mixins.primaryFontRegular300}
+      color: ${({ theme }) => theme.colors.whiteSecondary};
     }
     .text_container_top {
       display: flex;
@@ -147,18 +146,26 @@ const Styled = styled.div`
       height: 48px;
       background: none;
       border: 1px solid ${({ theme }) => theme.colors.grey};
-      color: ${({ theme }) => theme.colors.grey};
+      color: ${({ theme }) => theme.colors.whiteSecondary};
+      border-radius: 4px;
       padding: 16px;
       &:active {
         border: 2px solid ${({ theme }) => theme.colors.whitePrimary};
         color: ${({ theme }) => theme.colors.whiteSecondary};
       }
     }
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.whiteSecondary};
+      opacity: 0.8;
+    }
     textarea {
+      resize: none;
       height: 132px;
+      max-width: 100%;
       background: none;
+      border-radius: 4px;
       border: 1px solid ${({ theme }) => theme.colors.grey};
-      color: ${({ theme }) => theme.colors.grey};
+      color: ${({ theme }) => theme.colors.whiteSecondary};
       padding: 16px;
       &:active {
         border: 2px solid ${({ theme }) => theme.colors.whitePrimary};

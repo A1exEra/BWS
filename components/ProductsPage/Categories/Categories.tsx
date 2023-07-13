@@ -117,6 +117,8 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           onClick={() => handleCheckboxChange('all')}
           style={{ marginBottom: '25px' }}
         >
+          style={{ marginBottom: '25px' }}
+        >
           <StyledCheckbox type="checkbox" id={'all'} />
           <CheckboxIcon
             $isSelected={selectedSideItems.includes('all')}

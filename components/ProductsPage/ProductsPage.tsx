@@ -83,8 +83,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       <StyledProducts>
         <Categories products={filteredProducts} />
 

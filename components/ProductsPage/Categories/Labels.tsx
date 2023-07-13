@@ -29,6 +29,10 @@ const Labels = ({
   }, []);
 
   useEffect(() => {
+    console.log(selectedC);
+  }, [selectedC]);
+
+  useEffect(() => {
     setTimeout(() => {
       if (selectedProducts.length > 0) {
         setSortedProducts(selectedProducts);

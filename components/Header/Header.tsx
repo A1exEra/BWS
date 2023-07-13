@@ -10,6 +10,7 @@ import Cart from './Cart';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  console.log({ isOpen, isCartOpen });
   const [quantity, setQuantity] = useState(0);
   const isCartOpenHandler = () => {
     setIsCartOpen(!isCartOpen);

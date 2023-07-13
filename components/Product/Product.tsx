@@ -6,9 +6,24 @@ import ProductId from './Product.styled';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import heart from '../../public/icons/heart.svg';
 import ColorPicker from '../shared/Colors/ColorPicker';
+import cart from '@/public/icons/mdi-light_cart.svg';
+import { useCart } from '@/helpers/cartContext';
+import NotificationContext from '@/helpers/Notificationcontext';
+import { useContext } from 'react';
 // import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
+  const notificationCtx = useContext(NotificationContext);
+  const { addToCart } = useCart();
+  const onAddItemHandler = () => {
+    addToCart(product);
+    //////////////
+    notificationCtx.setNotification({
+      title: 'Item Added...',
+      message: `${product.title} is in your shopping cart!`,
+      status: 'success',
+    });
+  };
   return (
     <ProductId bg="purple">
       <div className="imageContainer">
@@ -21,14 +36,15 @@ const Product = (props: { product: BWS_DATA }) => {
         <p>{product.description}</p>
         <div className="optionSelector">
           <ColorPicker />
-
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />
           </div>
         </div>
         <div className="buyComponent">
-          <Button />
+          <button className="btn" onClick={onAddItemHandler}>
+            Add To Cart
+          </button>
           <div className="wish">
             <Image src={heart} alt="heart" />
           </div>

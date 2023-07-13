@@ -90,14 +90,13 @@ const ColorPicker = () => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}
-            >
+              onClick={() => handleColorClick(choice.title)}>
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${
                   selectedColors.includes(choice.title) ? 'selected' : ''
                 }`}
-                src={`/images/color-options/oval${choice.id}.png`}
+                src={`/images/colors/Oval${choice.id}.png`}
                 alt="color choice"
                 width={27}
                 height={27}

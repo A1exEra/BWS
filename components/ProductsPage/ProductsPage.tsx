@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/types';
 import { StyledProducts } from './ProductsPage.styled';
 import ProductCard from '../ProductCard/ProductCard';
-import downarrow from '../../public/images/color-options/downarrow.svg';
+import downarrow from '../../public/images/colors/downarrow.svg';
 import sort from '../../public/icons/groupsort.svg';
 import Categories from './Categories/Categories';
 import { StyledCategories } from './Categories/Categories.styled';
@@ -99,8 +99,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       <StyledProducts>
         <Categories products={filteredProducts} />
 

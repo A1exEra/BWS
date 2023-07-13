@@ -2,8 +2,8 @@ export const categories = [
   { id: 1, title: 'walls' },
   { id: 2, title: 'slabs' },
   { id: 3, title: 'pavers' },
-  { id: 4, title: 'steps, caps & curbs' },
-  { id: 5, title: 'enviro products' },
+  { id: 4, title: 'steps' },
+  { id: 5, title: 'enviro' },
   { id: 6, title: 'features' },
 ];
 export const productNames = [

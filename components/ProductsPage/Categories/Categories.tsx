@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import {
   StyledCategories,
   StyledLabel,
@@ -25,10 +25,35 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [sideProducts, setSideProducts] = useState(products);
-  const [rangeValues, setRangeValues] = useState([50, 80]);
-  const { filteredProducts, setSortedProducts } = useContext(PriceRangeContext);
+  const {
+    filteredProducts,
+    setSortedProducts,
+    sortedProducts,
+    setFilteredProducts,
+  } = useContext(PriceRangeContext);
 
   const handleCheckboxChange = (category: any) => {
+    console.log(categories);
+    categories.forEach((cat) => {
+      if (cat.title === category) {
+        setFilteredProducts(
+          filteredProducts.filter((prod) => prod.category === cat.title)
+        );
+      }
+    });
+
+    setTimeout(() => {
+      if (selectedCategories.includes(category)) {
+        setSelectedCategories(
+          selectedCategories.filter((item) => {
+            return item !== category;
+          })
+        );
+      } else {
+        setSelectedCategories([...new Set([...selectedCategories, category])]);
+      }
+    }, 10);
+
     setSelectedProducts([
       ...selectedProducts,
       ...sideProducts.filter(
@@ -39,9 +64,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
-    // console.log(selectedProducts);
     setSortedProducts(sideProducts);
-    setSelectedCategory(category);
   };
 
   return (
@@ -49,7 +72,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedCategory={selectedCategory}
+          selectedC={selectedCategories}
           selectedProducts={selectedProducts}
           labels={categories}
           handleChange={handleCheckboxChange}
@@ -59,19 +82,23 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
         <StyledLabel
           htmlFor="all"
           className="category"
-          $isSelected={selectedCategory === 'all'}
+          $isSelected={selectedCategories.includes('all')}
           onClick={() => handleCheckboxChange('all')}
-          style={{ marginBottom: '25px' }}>
+          style={{ marginBottom: '25px' }}
+        >
           <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon $isSelected={selectedCategory === 'all'} />
+          <CheckboxIcon
+            $isSelected={selectedCategories.includes('all')}
+            onClick={() => handleCheckboxChange('all')}
+          />
           {'all'
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1))
             .join(' ')}
         </StyledLabel>
         <Labels
-          selectedCategory={selectedCategory}
-          selectedProducts={selectedCategories}
+          selectedC={selectedCategories}
+          selectedProducts={selectedProducts}
           labels={sideProducts}
           handleChange={handleCheckboxChange}
         />

@@ -11,6 +11,8 @@ type RangeContextType = {
   handlePageChange?: (page: number) => void;
   filteredProducts?: any[];
   setFilteredProducts?: React.Dispatch<React.SetStateAction<any[]>>;
+  selectedCategories?: any[];
+  setSelectedCategories?: React.Dispatch<React.SetStateAction<any[]>>;
 };
 type ProviderProps = {
   children: React.ReactNode;
@@ -24,6 +26,7 @@ const TheAppProvider: React.FC<ProviderProps> = ({ children }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [sortedProducts, setSortedProducts] = useState<BWS_DATA[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<BWS_DATA[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<BWS_DATA[]>([]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -41,6 +44,8 @@ const TheAppProvider: React.FC<ProviderProps> = ({ children }) => {
         handlePageChange,
         filteredProducts,
         setFilteredProducts,
+        selectedCategories,
+        setSelectedCategories,
       }}
     >
       {children}

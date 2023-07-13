@@ -90,7 +90,8 @@ const ColorPicker = () => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}>
+              onClick={() => handleColorClick(choice.title)}
+            >
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${

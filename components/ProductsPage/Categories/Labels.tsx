@@ -29,10 +29,6 @@ const Labels = ({
   }, []);
 
   useEffect(() => {
-    console.log(selectedC);
-  }, [selectedC]);
-
-  useEffect(() => {
     setTimeout(() => {
       if (selectedProducts.length > 0) {
         setSortedProducts(selectedProducts);
@@ -44,8 +40,7 @@ const Labels = ({
     <div
       className="categories"
       ref={labelsRef}
-      style={!isOverflowing ? { overflowY: 'hidden' } : {}}
-    >
+      style={!isOverflowing ? { overflowY: 'hidden' } : {}}>
       {labels.map((label) => (
         <StyledLabel
           key={label.id}
@@ -53,8 +48,7 @@ const Labels = ({
           className="category"
           // $isSelected={selectedCategory === label.title}
           $isSelected={selectedC.includes(label.title)}
-          onClick={() => handleChange(label.title)}
-        >
+          onClick={() => handleChange(label.title)}>
           <StyledCheckbox type="checkbox" id={label.title} />
           <CheckboxIcon
             //  $isSelected={selectedCategory === label.title}

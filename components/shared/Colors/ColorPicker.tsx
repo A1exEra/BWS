@@ -38,9 +38,7 @@ const ColorPicker = () => {
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color));
     } else {
-      console.log(selectedColors);
       setSelectedColors([...selectedColors, color]);
-      console.log(selectedColors);
     }
   };
   useEffect(() => {
@@ -52,7 +50,6 @@ const ColorPicker = () => {
           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
       );
       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
-      console.log(newDisplayedProducts);
     });
     setDisplayedProducts(newDisplayedProducts);
   }, [selectedColors]);
@@ -90,8 +87,7 @@ const ColorPicker = () => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}
-            >
+              onClick={() => handleColorClick(choice.title)}>
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${

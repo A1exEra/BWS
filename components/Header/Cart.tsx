@@ -14,7 +14,6 @@ type SliderProps = {
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
 const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
-  console.log({ iscartopen });
   const notificationCtx = useContext(NotificationContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
@@ -86,7 +85,7 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
   };
 
   const handleCheckout = () => {
-    console.log({ ...cartItems, totalPrice });
+    console.log('Item was purchased!!! - ', { ...cartItems, totalPrice });
   };
   return (
     <SliderCartContainer $iscartopen={iscartopen}>

@@ -57,7 +57,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
               ...sideProducts.filter((prod) => prod.category === cat.title),
             ]),
           ]);
-          console.log(selectedCategories);
         }
       });
     }, 200);

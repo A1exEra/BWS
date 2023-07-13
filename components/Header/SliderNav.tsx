@@ -48,7 +48,7 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
 const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   .background {
     position: absolute;
-    top: 0px;
+    top: -1px;
     left: 320px;
     width: 100vw;
     height: 100vh;
@@ -68,13 +68,13 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   }
   position: fixed;
   top: 76px;
-  left: 0px;
+  left: -320px;
   width: 320px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
   z-index: 999;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $isopen }) =>
-    $isopen ? 'translateX(0)' : 'translateX(-100%)'};
+    !$isopen ? 'translateX(0)' : 'translateX(100%)'};
 `;
 export default SliderNav;

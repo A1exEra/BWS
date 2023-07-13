@@ -14,6 +14,7 @@ type SliderProps = {
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
 const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
+  console.log({ iscartopen });
   const notificationCtx = useContext(NotificationContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
@@ -119,13 +120,11 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
         <MainButton
           onClick={handleClearCart}
           label="Clear Cart"
-          backgroundColor="#536758"
-        ></MainButton>
+          backgroundColor="#536758"></MainButton>
         <MainButton
           onClick={handleCheckout}
           backgroundColor="#2a2a2a"
-          label="Checkout"
-        ></MainButton>
+          label="Checkout"></MainButton>
       </div>
     </SliderCartContainer>
   );
@@ -144,7 +143,7 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
   }
   position: fixed;
   top: 76px;
-  right: 0px;
+  right: -320px;
   width: 320px;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
@@ -152,7 +151,7 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
   padding: 16px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $iscartopen }) =>
-    $iscartopen ? 'translateX(0)' : 'translateX(100%)'};
+    !$iscartopen ? 'translateX(0)' : 'translateX(-100%)'};
 
   h2 {
     ${({ theme }) => theme.mixins.primaryComponentTitle};

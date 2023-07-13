@@ -3,7 +3,6 @@ import { useContext, useState, useEffect } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
-
 interface ColorProps {
   choices: {
     id: number;
@@ -11,7 +10,14 @@ interface ColorProps {
     title: string;
   }[];
 }
-const ColorPicker = ({ choices }: ColorProps) => {
+const choices = [
+  { id: 1, title: 'beige' },
+  { id: 2, title: 'golden' },
+  { id: 3, title: 'red' },
+  { id: 4, title: 'gray' },
+  { id: 5, title: 'brown' },
+];
+const ColorPicker = () => {
   const {
     sortedProducts,
     setFilteredProducts,
@@ -50,11 +56,8 @@ const ColorPicker = ({ choices }: ColorProps) => {
     });
     setDisplayedProducts(newDisplayedProducts);
   }, [selectedColors]);
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onClickHandler = () => {
     setSelectedColors([]);
-    // setDisplayedProducts([]);
-    setIsChecked(e.target.checked);
   };
   useEffect(() => {
     if (selectedColors.length === 0) {
@@ -62,16 +65,10 @@ const ColorPicker = ({ choices }: ColorProps) => {
     }
   }, [selectedColors]);
   useEffect(() => {
-    // console.log(sortedProducts);
-
     if (isChecked) {
-      console.log(isChecked);
       setFilteredProducts(sortedProducts);
     } else {
-      console.log(isChecked);
-      // console.log(displayedProducts);
       setFilteredProducts(displayedProducts);
-      console.log(filteredProducts);
     }
   }, [displayedProducts]);
 
@@ -80,24 +77,31 @@ const ColorPicker = ({ choices }: ColorProps) => {
       <div className="colors">
         <p>Colors</p>
         <div className="choices">
-          <label className="checkbox-container">
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
+          <button onClick={onClickHandler}>
+            <Image
+              src="/icons/check-icon.svg"
+              width={27}
+              height={27}
+              alt="check icon"
             />
             <span className="checkmark"></span>
-          </label>
+          </button>
           {choices.map((choice) => (
             <div
               key={choice.id}
-              className={`choice ${
-                selectedColors.includes(choice.title) ? 'selected' : ''
-              }`}
+              className="choice"
               onClick={() => handleColorClick(choice.title)}
             >
-              <div className="color-name">{choice.title}</div>
-              <Image src={choice.choice} alt="color choice" />
+              <div className="color_name">{choice.title}</div>
+              <Image
+                className={`${
+                  selectedColors.includes(choice.title) ? 'selected' : ''
+                }`}
+                src={`/images/color-options/oval${choice.id}.png`}
+                alt="color choice"
+                width={27}
+                height={27}
+              />
             </div>
           ))}
         </div>

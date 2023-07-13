@@ -9,7 +9,6 @@ import { categories } from './categoryList.js';
 import React from 'react';
 import Labels from './Labels';
 import ColorPicker from '@/components/shared/Colors/ColorPicker';
-import { choices } from '@/components/Product/choices';
 import PriceRange from './PriceRange/PriceRange';
 import { BWS_DATA } from '@/helpers/types';
 import { PriceRangeContext } from '@/helpers/PriceRangeContext';
@@ -104,7 +103,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           handleChange={handleCheckboxChange}
         />
       </div>
-      <ColorPicker choices={choices} />
+      <ColorPicker />
       <PriceRange />
     </StyledCategories>
   );

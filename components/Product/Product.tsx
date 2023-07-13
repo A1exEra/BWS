@@ -3,19 +3,27 @@ import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/types';
 import Button from '@/components/shared/Button/Button';
 import ProductId from './Product.styled';
-import choice1 from '../../public/images/color-options/oval 1.png';
-import choice2 from '../../public/images/color-options/oval 2.png';
-import choice3 from '../../public/images/color-options/oval 3.png';
-import choice4 from '../../public/images/color-options/oval 4.png';
-import choice5 from '../../public/images/color-options/oval 5.png';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import heart from '../../public/icons/heart.svg';
 import ColorPicker from '../shared/Colors/ColorPicker';
-import { choices } from './choices';
+import cart from '@/public/icons/mdi-light_cart.svg';
+import { useCart } from '@/helpers/cartContext';
+import NotificationContext from '@/helpers/Notificationcontext';
+import { useContext } from 'react';
+// import { choices } from './choices';
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
-
-  // const choices = [choice1, choice2, choice3, choice4, choice5];
+  const notificationCtx = useContext(NotificationContext);
+  const { addToCart } = useCart();
+  const onAddItemHandler = () => {
+    addToCart(product);
+    //////////////
+    notificationCtx.setNotification({
+      title: 'Item Added...',
+      message: `${product.title} is in your shopping cart!`,
+      status: 'success',
+    });
+  };
   return (
     <ProductId bg="purple">
       <div className="imageContainer">
@@ -27,15 +35,16 @@ const Product = (props: { product: BWS_DATA }) => {
         <h4>${product.price} per sqm</h4>
         <p>{product.description}</p>
         <div className="optionSelector">
-          <ColorPicker choices={choices} />
-
+          <ColorPicker />
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />
           </div>
         </div>
         <div className="buyComponent">
-          <Button />
+          <button className="btn" onClick={onAddItemHandler}>
+            Add To Cart
+          </button>
           <div className="wish">
             <Image src={heart} alt="heart" />
           </div>

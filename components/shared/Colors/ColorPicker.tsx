@@ -56,11 +56,8 @@ const ColorPicker = () => {
     });
     setDisplayedProducts(newDisplayedProducts);
   }, [selectedColors]);
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onClickHandler = () => {
     setSelectedColors([]);
-    setDisplayedProducts([]);
-    setIsChecked(e.target.checked);
   };
   useEffect(() => {
     if (selectedColors.length === 0) {
@@ -68,16 +65,10 @@ const ColorPicker = () => {
     }
   }, [selectedColors]);
   useEffect(() => {
-    // console.log(sortedProducts);
-
     if (isChecked) {
-      console.log(isChecked);
       setFilteredProducts(sortedProducts);
     } else {
-      console.log(isChecked);
-      // console.log(displayedProducts);
       setFilteredProducts(displayedProducts);
-      console.log(filteredProducts);
     }
   }, [displayedProducts]);
 
@@ -86,23 +77,25 @@ const ColorPicker = () => {
       <div className="colors">
         <p>Colors</p>
         <div className="choices">
-          <label className="checkbox-container">
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
+          <button onClick={onClickHandler}>
+            <Image
+              src="/icons/check-icon.svg"
+              width={27}
+              height={27}
+              alt="check icon"
             />
             <span className="checkmark"></span>
-          </label>
+          </button>
           {choices.map((choice) => (
             <div
               key={choice.id}
-              className={`choice ${
-                selectedColors.includes(choice.title) ? 'selected' : ''
-              }`}
+              className="choice"
               onClick={() => handleColorClick(choice.title)}>
-              <div className="color-name">{choice.title}</div>
+              <div className="color_name">{choice.title}</div>
               <Image
+                className={`${
+                  selectedColors.includes(choice.title) ? 'selected' : ''
+                }`}
                 src={`/images/color-options/oval${choice.id}.png`}
                 alt="color choice"
                 width={27}

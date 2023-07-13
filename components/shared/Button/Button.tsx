@@ -1,6 +1,6 @@
 import { StyledButton } from './Button.styled';
 
-const Button = () => {
+const Button = (props) => {
   return (
     <StyledButton>
       <button>Add To Cart</button>

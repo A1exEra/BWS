@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styled';
 import heart from '../../public/icons/heart.svg';
 import cart from '@/public/icons/mdi-light_cart.svg';
-import { BWS_DATA } from '../../helpers/types';
+import { BWS_DATA } from '@/helpers/types';
 import { useCart } from '@/helpers/cartContext';
 import NotificationContext from '@/helpers/Notificationcontext';
 

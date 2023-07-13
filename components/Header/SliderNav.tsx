@@ -46,7 +46,7 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
 };
 
 const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
-  z-index: 100000;
+  z-index: 998;
   .background {
     position: absolute;
     top: 0px;

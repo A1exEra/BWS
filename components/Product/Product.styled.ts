@@ -8,17 +8,23 @@ const ProductId = styled.section<ProductIdProps>`
   padding: 50px 0 80px 0;
   height: 90vh;
   .imageContainer {
-    position: relative;
-
     width: 640px;
     height: 457px;
     margin: 0 16px 0 64px;
     img {
-      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+  }
+  .btn {
+    background-color: ${({ theme }) => theme.colors.primary};
+    border: none;
+    width: 382px;
+    padding: 15px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
   }
   .productDetails {
     max-width: 720px;
@@ -44,23 +50,11 @@ const ProductId = styled.section<ProductIdProps>`
     .optionSelector {
       margin-top: 20px;
       display: flex;
+      gap:16px;
       justify-content: space-between;
       align-items: flex-end;
+      flex-wrap:wrap;
 
-      //   .colors {
-      //     p {
-      //       ${({ theme }) => theme.mixins.primarySidebarTitle}
-      //       margin-top: 0;
-      //       margin-bottom: 10px;
-      //     }
-      //     .choices {
-      //       display: flex;
-      //       gap: 5px;
-      //       .choice {
-      //         cursor: pointer;
-      //       }
-      //     }
-      //   }
       .border {
         border: 1px solid rgba(32, 32, 32, 0.15);
         display: flex;
@@ -74,6 +68,7 @@ const ProductId = styled.section<ProductIdProps>`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       .wish {
         display: flex;
         align-items: center;
@@ -100,6 +95,37 @@ const ProductId = styled.section<ProductIdProps>`
           height: 20px;
         }
       }
+    }
+  }
+  @media (max-width: 1440px) {
+    flex-direction: column;
+    gap: 56px;
+    align-items: center;
+    height: 100%;
+    .productDetails {
+      // width: auto;
+      padding: 0px;
+      margin: 0px auto;
+    }
+    .imageContainer {
+      width: 80%;
+      height: auto;
+      margin: 0px auto;
+    }
+  @media (max-width: 540px) {
+    flex-direction: column;
+    gap: 56px;
+    align-items: center;
+    height: 100%;
+    .productDetails {
+      width: 100%;
+      padding: 0px 8px;
+      margin: 0px;
+    }
+    .imageContainer {
+      width: 100%;
+      height: auto;
+      margin: 0px 8px;
     }
   }
 `;

@@ -96,7 +96,7 @@ const ColorPicker = () => {
                 className={`${
                   selectedColors.includes(choice.title) ? 'selected' : ''
                 }`}
-                src={`/images/colors/Oval${choice.id}.png`}
+                src={`/images/colors/oval${choice.id}.png`}
                 alt="color choice"
                 width={27}
                 height={27}

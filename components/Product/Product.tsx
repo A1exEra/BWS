@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/types';
 import Button from '@/components/shared/Button/Button';
 import ProductId from './Product.styled';
-import downarrow from '../../public/images/colors/downarrow.svg';
+import downarrow from '../../public/images/color-options/downarrow.svg';
 import heart from '../../public/icons/heart.svg';
 import ColorPicker from '../shared/Colors/ColorPicker';
 import cart from '@/public/icons/mdi-light_cart.svg';

@@ -16,7 +16,8 @@ const Labels = ({
   labels,
   handleChange,
 }: LabelsProps) => {
-  const { sortedProducts, setSortedProducts } = useContext(PriceRangeContext);
+  const { sortedProducts, setSortedProducts, setFilteredProducts } =
+    useContext(PriceRangeContext);
   const labelsRef = useRef();
   const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
 
@@ -26,10 +27,6 @@ const Labels = ({
       setIsOverflowing(true);
     }
   }, []);
-
-  useEffect(() => {
-    console.log(selectedC);
-  }, [selectedC]);
 
   useEffect(() => {
     setTimeout(() => {

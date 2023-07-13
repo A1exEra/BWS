@@ -22,9 +22,10 @@ interface CategoriesProps {
 }
 const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedSideItems, setSelectedSideItems] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [sideProducts, setSideProducts] = useState(products);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const {
     filteredProducts,
     setSortedProducts,
@@ -33,26 +34,45 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   } = useContext(PriceRangeContext);
 
   const handleCheckboxChange = (category: any) => {
-    console.log(categories);
-    categories.forEach((cat) => {
-      if (cat.title === category) {
-        setFilteredProducts(
-          filteredProducts.filter((prod) => prod.category === cat.title)
-        );
-      }
-    });
+    setTimeout(() => {
+      setTimeout(() => {
+        if (selectedCategories.length > 0) {
+          selectedCategories.forEach((cat) => {
+            if (cat.category === category) {
+              setSelectedCategories(
+                selectedCategories.filter((cur) => {
+                  return cur.category !== category;
+                })
+              );
+            }
+          });
+        }
+      });
+
+      categories.forEach((cat) => {
+        if (cat.title === category) {
+          setSelectedCategories([
+            ...new Set([
+              ...selectedCategories,
+              ...sideProducts.filter((prod) => prod.category === cat.title),
+            ]),
+          ]);
+          console.log(selectedCategories);
+        }
+      });
+    }, 200);
 
     setTimeout(() => {
-      if (selectedCategories.includes(category)) {
-        setSelectedCategories(
-          selectedCategories.filter((item) => {
+      if (selectedSideItems.includes(category)) {
+        setSelectedSideItems(
+          selectedSideItems.filter((item) => {
             return item !== category;
           })
         );
       } else {
-        setSelectedCategories([...new Set([...selectedCategories, category])]);
+        setSelectedSideItems([...new Set([...selectedSideItems, category])]);
       }
-    }, 10);
+    }, 100);
 
     setSelectedProducts([
       ...selectedProducts,
@@ -64,40 +84,51 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
-    setSortedProducts(sideProducts);
+
+    // setSortedProducts(sideProducts);
   };
+
+  // this will set the product list back to default state if no category is selected
+  // or to selectedCategories if selectedCategories has items in it
+  useEffect(() => {
+    if (selectedCategories.length > 0) {
+      setFilteredProducts(selectedCategories);
+    } else {
+      setFilteredProducts(sortedProducts);
+    }
+  }, [selectedCategories]);
 
   return (
     <StyledCategories>
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedC={selectedCategories}
+          selectedC={selectedSideItems}
           selectedProducts={selectedProducts}
           labels={categories}
           handleChange={handleCheckboxChange}
         />
 
         <h5>Products</h5>
-        <StyledLabel
+        {/* <StyledLabel
           htmlFor="all"
           className="category"
-          $isSelected={selectedCategories.includes('all')}
+          $isSelected={selectedSideItems.includes('all')}
           onClick={() => handleCheckboxChange('all')}
           style={{ marginBottom: '25px' }}
         >
           <StyledCheckbox type="checkbox" id={'all'} />
           <CheckboxIcon
-            $isSelected={selectedCategories.includes('all')}
+            $isSelected={selectedSideItems.includes('all')}
             onClick={() => handleCheckboxChange('all')}
           />
           {'all'
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1))
             .join(' ')}
-        </StyledLabel>
+        </StyledLabel> */}
         <Labels
-          selectedC={selectedCategories}
+          selectedC={selectedSideItems}
           selectedProducts={selectedProducts}
           labels={sideProducts}
           handleChange={handleCheckboxChange}

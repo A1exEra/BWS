@@ -31,23 +31,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       )
     );
   }, [sortedProducts, rangeValues]);
-  useEffect(() => {
-    console.log(filteredProducts);
-  }, [filteredProducts]);
-  // const onSortHandler = () => {
-  //   if (sortOrder === 'desc') {
-  //     setFilteredProducts(
-  //       [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
-  //     );
 
-  //     setSortOrder('asc');
-  //   } else {
-  //     setFilteredProducts(
-  //       [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
-  //     );
-  //     setSortOrder('desc');
-  //   }
-  // };
   const onSortHandler = () => {
     setSortOrder((prevSortOrder) => {
       const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';

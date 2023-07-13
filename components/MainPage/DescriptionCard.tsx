@@ -41,6 +41,12 @@ const StyledDescription = styled.div`
     h4 {
       color: ${({ theme }) => theme.colors.whitePrimary};
     }
+    h3 {
+      color: ${({ theme }) => theme.colors.whitePrimary};
+    }
+    p {
+      color: ${({ theme }) => theme.colors.whiteSecondary};
+    }
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
   @media (max-width: 768px) {

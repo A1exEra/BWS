@@ -26,10 +26,35 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [sideProducts, setSideProducts] = useState(products);
-  const [rangeValues, setRangeValues] = useState([50, 80]);
-  const { filteredProducts, setSortedProducts } = useContext(PriceRangeContext);
+  const {
+    filteredProducts,
+    setSortedProducts,
+    sortedProducts,
+    setFilteredProducts,
+  } = useContext(PriceRangeContext);
 
   const handleCheckboxChange = (category: any) => {
+    console.log(categories);
+    categories.forEach((cat) => {
+      if (cat.title === category) {
+        setFilteredProducts(
+          filteredProducts.filter((prod) => prod.category === cat.title)
+        );
+      }
+    });
+
+    setTimeout(() => {
+      if (selectedCategories.includes(category)) {
+        setSelectedCategories(
+          selectedCategories.filter((item) => {
+            return item !== category;
+          })
+        );
+      } else {
+        setSelectedCategories([...new Set([...selectedCategories, category])]);
+      }
+    }, 10);
+
     setSelectedProducts([
       ...selectedProducts,
       ...sideProducts.filter(
@@ -40,20 +65,8 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
-    console.log(category);
     setSortedProducts(sideProducts);
-    setSelectedCategory(category);
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(
-        selectedCategories.filter((item) => item !== category)
-      );
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
-    }
   };
-  useEffect(() => {
-    console.log(selectedCategories);
-  }, [selectedCategories]);
 
   return (
     <StyledCategories>
@@ -75,7 +88,10 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           style={{ marginBottom: '25px' }}
         >
           <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon $isSelected={selectedCategories.includes('all')} />
+          <CheckboxIcon
+            $isSelected={selectedCategories.includes('all')}
+            onClick={() => handleCheckboxChange('all')}
+          />
           {'all'
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1))

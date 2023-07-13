@@ -53,7 +53,7 @@ const ColorPicker = ({ choices }: ColorProps) => {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedColors([]);
-    setDisplayedProducts([]);
+    // setDisplayedProducts([]);
     setIsChecked(e.target.checked);
   };
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import {
   StyledCategories,
   StyledLabel,
@@ -40,17 +40,27 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
-    // console.log(selectedProducts);
+    console.log(category);
     setSortedProducts(sideProducts);
     setSelectedCategory(category);
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(
+        selectedCategories.filter((item) => item !== category)
+      );
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
   };
+  useEffect(() => {
+    console.log(selectedCategories);
+  }, [selectedCategories]);
 
   return (
     <StyledCategories>
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedCategory={selectedCategory}
+          selectedC={selectedCategories}
           selectedProducts={selectedProducts}
           labels={categories}
           handleChange={handleCheckboxChange}
@@ -60,20 +70,20 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
         <StyledLabel
           htmlFor="all"
           className="category"
-          $isSelected={selectedCategory === 'all'}
+          $isSelected={selectedCategories.includes('all')}
           onClick={() => handleCheckboxChange('all')}
           style={{ marginBottom: '25px' }}
         >
           <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon $isSelected={selectedCategory === 'all'} />
+          <CheckboxIcon $isSelected={selectedCategories.includes('all')} />
           {'all'
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1))
             .join(' ')}
         </StyledLabel>
         <Labels
-          selectedCategory={selectedCategory}
-          selectedProducts={selectedCategories}
+          selectedC={selectedCategories}
+          selectedProducts={selectedProducts}
           labels={sideProducts}
           handleChange={handleCheckboxChange}
         />

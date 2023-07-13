@@ -3,15 +3,15 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { StyledLabel, StyledCheckbox, CheckboxIcon } from './Categories.styled';
 import { PriceRangeContext } from '@/helpers/PriceRangeContext';
 interface LabelsProps {
-  selectedCategory: string;
-  selectedCategories?: any[];
+  // selectedCategory: string;
+  selectedC?: any[];
   selectedProducts?: any[];
   labels: any[];
   handleChange: any;
 }
 const Labels = ({
-  selectedCategory,
-  selectedCategories,
+  // selectedCategory,
+  selectedC,
   selectedProducts,
   labels,
   handleChange,
@@ -19,12 +19,17 @@ const Labels = ({
   const { sortedProducts, setSortedProducts } = useContext(PriceRangeContext);
   const labelsRef = useRef();
   const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+
   useEffect(() => {
     const container: any = labelsRef.current;
     if (container.scrollHeight > container.clientHeight) {
       setIsOverflowing(true);
     }
   }, []);
+
+  useEffect(() => {
+    console.log(selectedC);
+  }, [selectedC]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,11 +50,15 @@ const Labels = ({
           key={label.id}
           htmlFor={label.title}
           className="category"
-          $isSelected={selectedCategory === label.title}
+          // $isSelected={selectedCategory === label.title}
+          $isSelected={selectedC.includes(label.title)}
           onClick={() => handleChange(label.title)}
         >
           <StyledCheckbox type="checkbox" id={label.title} />
-          <CheckboxIcon $isSelected={selectedCategory === label.title} />
+          <CheckboxIcon
+            //  $isSelected={selectedCategory === label.title}
+            $isSelected={selectedC.includes(label.title)}
+          />
           {label.title
             .split(' ')
             .map((word: string) => word[0].toUpperCase() + word.slice(1))

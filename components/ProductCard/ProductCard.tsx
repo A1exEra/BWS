@@ -25,9 +25,6 @@ const ProductCard = (props: { product: BWS_DATA }) => {
       status: 'success',
     });
     /////////////
-    useEffect(() => {
-      console.log(product);
-    }, [product]);
   };
   return (
     <StyledProductCard>

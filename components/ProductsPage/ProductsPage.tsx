@@ -31,9 +31,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       )
     );
   }, [sortedProducts, rangeValues]);
-  useEffect(() => {
-    console.log(filteredProducts);
-  }, [filteredProducts]);
+
   // const onSortHandler = () => {
   //   if (sortOrder === 'desc') {
   //     setFilteredProducts(

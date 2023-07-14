@@ -20,6 +20,7 @@ const Labels = ({
     useContext(PriceRangeContext);
   const labelsRef = useRef();
   const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+  const [validSideProducts, setValidSideProducts] = useState([]);
 
   useEffect(() => {
     const container: any = labelsRef.current;
@@ -27,15 +28,18 @@ const Labels = ({
       setIsOverflowing(true);
     }
   }, []);
+  // useEffect(() => {
+  //   if
+  // },)
 
   useEffect(() => {
-    console.log(selectedC);
+    // console.log(selectedC);
   }, [selectedC]);
 
   useEffect(() => {
     setTimeout(() => {
       if (selectedProducts.length > 0) {
-        setSortedProducts(selectedProducts);
+        setFilteredProducts(selectedProducts);
       }
     }, 1);
   }, [selectedProducts]);

@@ -5,7 +5,7 @@ import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
 
 interface ColorProps {
-  selectedCategories: BWS_DATA[];
+  selectedCategories?: BWS_DATA[];
 }
 const choices = [
   { id: 1, title: 'beige' },
@@ -100,8 +100,7 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}
-            >
+              onClick={() => handleColorClick(choice.title)}>
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${

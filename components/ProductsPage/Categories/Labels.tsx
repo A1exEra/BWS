@@ -28,13 +28,6 @@ const Labels = ({
       setIsOverflowing(true);
     }
   }, []);
-  // useEffect(() => {
-  //   if
-  // },)
-
-  useEffect(() => {
-    // console.log(selectedC);
-  }, [selectedC]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,15 +48,11 @@ const Labels = ({
           key={label.id}
           htmlFor={label.title}
           className="category"
-          // $isSelected={selectedCategory === label.title}
           $isSelected={selectedC.includes(label.title)}
           onClick={() => handleChange(label.title)}
         >
           <StyledCheckbox type="checkbox" id={label.title} />
-          <CheckboxIcon
-            //  $isSelected={selectedCategory === label.title}
-            $isSelected={selectedC.includes(label.title)}
-          />
+          <CheckboxIcon $isSelected={selectedC.includes(label.title)} />
           {label.title
             .split(' ')
             .map((word: string) => word[0].toUpperCase() + word.slice(1))

@@ -38,13 +38,9 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const handleCheckboxChange = (category: any) => {
     setTimeout(() => {
       setTimeout(() => {
-        console.log('...');
         if (selectedCategories.length > 0) {
-          console.log('TRUE');
-          // console.log(selectedProducts);
           selectedCategories.forEach((cat) => {
             if (cat.category === category) {
-              console.log('category === cat.category: ' + category);
               setSelectedCategories(
                 selectedCategories.filter((cur) => {
                   return cur.category !== category;
@@ -62,7 +58,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
       categories.forEach((cat) => {
         if (cat.title === category) {
-          console.log(category);
           setSelectedSideCategories([...selectedSideCategories, category]);
           setSelectedCategories([
             ...new Set([
@@ -70,8 +65,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
               ...sortedProducts.filter((prod) => prod.category === cat.title),
             ]),
           ]);
-          console.log(selectedCategories);
-          console.log(selectedSideCategories);
         }
       });
     }, 200);
@@ -85,16 +78,11 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           })
         );
       } else {
-        //1. HERE I MANAGED TO ADD ONLY THE PRODUCT TITLES IN THE SELECTED SIDE ITEMS,  BUT AT THE SAME TIME I CANNOT SELECT MORE THAN A CATEGORY
         if (category.split(' ').length > 1) {
           setSelectedSideItems([...new Set([...selectedSideItems, category])]);
         }
-        // setSelectedSideCategories([
-        //   ...new Set([...selectedSideCategories, category]),
-        // ]);
       }
     }, 100);
-    // console.log(selectedCategories);
 
     setSelectedProducts([
       ...selectedProducts,
@@ -107,12 +95,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       ),
     ]);
   };
-  // useEffect(() => {
-  //   if (selectedCategories.length > 0) {
-  //     console.log(selectedCategories);
-
-  //   }
-  // }, [selectedCategories]);
 
   // this will set the product list back to default state if no category is selected
   // or to selectedCategories if selectedCategories has items in it
@@ -122,7 +104,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       setSideProducts(selectedCategories);
 
       setSelectedProducts([]);
-      // 2. HERE I SET SELECTED SIDE ITEMS TO EMPTY, MANAGING TO CLEAN CHECKBOXES,
       setSelectedSideItems([]);
     } else {
       setFilteredProducts(sortedProducts);
@@ -133,12 +114,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       setFilteredProducts(selectedCategories);
     }
   }, [selectedSideItems]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      // console.log(selectedProducts);
-    }, 101);
-  }, [selectedProducts]);
 
   return (
     <StyledCategories>
@@ -152,25 +127,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
         />
 
         <h5>Products</h5>
-        {/* <StyledLabel
-          htmlFor="all"
-          className="category"
-          $isSelected={selectedSideItems.includes('all')}
-          onClick={() => handleCheckboxChange('all')}
-          style={{ marginBottom: '25px' }}
-        >
-          style={{ marginBottom: '25px' }}
-        >
-          <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon
-            $isSelected={selectedSideItems.includes('all')}
-            onClick={() => handleCheckboxChange('all')}
-          />
-          {'all'
-            .split(' ')
-            .map((word) => word[0].toUpperCase() + word.slice(1))
-            .join(' ')}
-        </StyledLabel> */}
         <Labels
           selectedC={selectedSideItems} //HERE
           selectedProducts={selectedProducts}

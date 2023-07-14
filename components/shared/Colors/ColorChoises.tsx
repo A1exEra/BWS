@@ -1,32 +1,39 @@
 import Image from 'next/image';
 import { styled } from 'styled-components';
-const choices = [
-  { id: 1, title: 'beige' },
-  { id: 2, title: 'golden' },
-  { id: 3, title: 'red' },
-  { id: 4, title: 'gray' },
-  { id: 5, title: 'brown' },
-];
-const ColorChoises = (props) => {
+import { BWS_DATA } from '@/helpers/types';
+import { useState } from 'react';
+
+interface CHOISES {
+  setColor: (color: string) => void;
+  product: BWS_DATA;
+}
+const ColorChoises = (props: CHOISES) => {
+  const [selectedColor, setSelectedColor] = useState<string>(
+    props.product.colors[0].name
+  );
+  //passing the selected color on component loading because the handler function was not yet activated
+  props.setColor(selectedColor);
   const handleColorClick = (color: string) => {
     props.setColor(color);
+    setSelectedColor(color);
   };
   return (
     <StyledColors>
-      {choices.map((choice) => (
-        <div
-          className="color"
-          key={choice.id}
-          onClick={() => handleColorClick(choice.title)}>
-          <div className="color_name">{choice.title}</div>
-          <Image
-            src={`/images/color-options/Oval${choice.id}.png`}
-            alt="color choice"
-            width={27}
-            height={27}
-          />
-        </div>
-      ))}
+      {props.product.colors.map(
+        (color: { name: string; quantity: number }, i: number) => (
+          <div className="color" key={i}>
+            <div className="color_name">{color.name}</div>
+            <Image
+              className={`${selectedColor === color.name ? 'selected' : ''}`}
+              src={`/images/color-options/${color.name}.png`}
+              alt="color choice"
+              width={27}
+              height={27}
+              onClick={() => handleColorClick(color.name)}
+            />
+          </div>
+        )
+      )}
     </StyledColors>
   );
 };
@@ -53,13 +60,12 @@ const StyledColors = styled.div`
     &:hover .color_name {
       color: #939393;
     }
-
-    .selected {
-      border: 1px solid #536758;
-      border-radius: 100%;
-      padding: 1px;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
-    }
+  }
+  .selected {
+    border: 1px solid #536758;
+    border-radius: 100%;
+    padding: 1px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
   }
 `;
 export default ColorChoises;

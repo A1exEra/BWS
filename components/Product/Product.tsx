@@ -34,7 +34,7 @@ const Product = (props: { product: BWS_DATA }) => {
         <h4>${product.price} per sqm</h4>
         <p>{product.description}</p>
         <div className="optionSelector">
-          <ColorChoises setColor={setColor} />
+          <ColorChoises setColor={setColor} product={product} />
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />

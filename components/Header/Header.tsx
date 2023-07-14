@@ -10,7 +10,6 @@ import Cart from './Cart';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  console.log({ isOpen, isCartOpen });
   const [quantity, setQuantity] = useState(0);
   const isCartOpenHandler = () => {
     setIsCartOpen(!isCartOpen);
@@ -45,9 +44,9 @@ const Header = () => {
 
 export const StyledHeader = styled.div`
   position: sticky;
+  z-index: 999;
   top: 0;
   background-color: ${({ theme }) => theme.colors.third};
-  //   opacity: 0.5;
   padding: 18px 64px;
   display: flex;
   flex-direction: row;

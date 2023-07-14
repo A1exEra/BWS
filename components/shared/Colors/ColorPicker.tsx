@@ -38,9 +38,7 @@ const ColorPicker = ({ selectedCategories }) => {
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color));
     } else {
-      console.log(selectedColors);
       setSelectedColors([...selectedColors, color]);
-      console.log(selectedColors);
     }
   };
   useEffect(() => {

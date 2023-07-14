@@ -47,12 +47,11 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
 
 const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   .background {
-    position: absolute;
+    position: fixed;
     top: -1px;
     left: 320px;
     width: 100vw;
     height: 100vh;
-    opacity: 0.8;
     z-index: 998;
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ $isopen }) => ($isopen ? 'block' : 'none')};

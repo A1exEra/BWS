@@ -12,6 +12,7 @@ import ColorPicker from '@/components/shared/Colors/ColorPicker';
 import PriceRange from './PriceRange/PriceRange';
 import { BWS_DATA } from '@/helpers/types';
 import { PriceRangeContext } from '@/helpers/PriceRangeContext';
+import PriceSlider from '@/components/shared/PriceSlider/PriceSlider';
 
 interface CategorySchema {
   id: number;
@@ -179,6 +180,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       </div>
       <ColorPicker selectedCategories={selectedCategories} />
       <PriceRange />
+      <PriceSlider />
     </StyledCategories>
   );
 };

@@ -135,7 +135,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
         />
       </div>
       <ColorPicker selectedCategories={selectedCategories} />
-      <PriceRange selectedCategories={selectedCategories} />
+      <PriceRange/>
 
     </StyledCategories>
   );

@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
+
 interface ColorProps {
   selectedCategories?: BWS_DATA[];
 }
@@ -13,6 +14,7 @@ const choices = [
   { id: 4, title: 'gray' },
   { id: 5, title: 'brown' },
 ];
+
 const ColorPicker = ({ selectedCategories }: ColorProps) => {
   const {
     sortedProducts,

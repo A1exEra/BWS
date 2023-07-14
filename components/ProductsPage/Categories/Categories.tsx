@@ -27,6 +27,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [sideProducts, setSideProducts] = useState(products);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedSideCategories, setSelectedSideCategories] = useState([]);
   const {
     filteredProducts,
     setSortedProducts,
@@ -45,23 +46,30 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                   return cur.category !== category;
                 })
               );
+              setSelectedSideCategories(
+                selectedSideCategories.filter((cur) => {
+                  return cur !== category;
+                })
+              );
             }
           });
         }
-      });
+      }, 40);
 
       categories.forEach((cat) => {
         if (cat.title === category) {
+          setSelectedSideCategories([...selectedSideCategories, category]);
           setSelectedCategories([
             ...new Set([
               ...selectedCategories,
-              ...sideProducts.filter((prod) => prod.category === cat.title),
+              ...sortedProducts.filter((prod) => prod.category === cat.title),
             ]),
           ]);
         }
       });
     }, 200);
 
+    // ITEMS
     setTimeout(() => {
       if (selectedSideItems.includes(category)) {
         setSelectedSideItems(
@@ -70,7 +78,9 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           })
         );
       } else {
-        setSelectedSideItems([...new Set([...selectedSideItems, category])]);
+        if (category.split(' ').length > 1) {
+          setSelectedSideItems([...new Set([...selectedSideItems, category])]);
+        }
       }
     }, 100);
 
@@ -84,8 +94,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
-
-    // setSortedProducts(sideProducts);
   };
 
   // this will set the product list back to default state if no category is selected
@@ -93,50 +101,40 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   useEffect(() => {
     if (selectedCategories.length > 0) {
       setFilteredProducts(selectedCategories);
+      setSideProducts(selectedCategories);
+
+      setSelectedProducts([]);
+      setSelectedSideItems([]);
     } else {
       setFilteredProducts(sortedProducts);
     }
   }, [selectedCategories]);
+  useEffect(() => {
+    if (selectedSideItems.length === 0) {
+      setFilteredProducts(selectedCategories);
+    }
+  }, [selectedSideItems]);
 
   return (
     <StyledCategories>
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedC={selectedSideItems}
+          selectedC={selectedSideCategories} //HERE!!!!
           selectedProducts={selectedProducts}
           labels={categories}
           handleChange={handleCheckboxChange}
         />
 
         <h5>Products</h5>
-        {/* <StyledLabel
-          htmlFor="all"
-          className="category"
-          $isSelected={selectedSideItems.includes('all')}
-          onClick={() => handleCheckboxChange('all')}
-          style={{ marginBottom: '25px' }}
-        >
-          style={{ marginBottom: '25px' }}
-        >
-          <StyledCheckbox type="checkbox" id={'all'} />
-          <CheckboxIcon
-            $isSelected={selectedSideItems.includes('all')}
-            onClick={() => handleCheckboxChange('all')}
-          />
-          {'all'
-            .split(' ')
-            .map((word) => word[0].toUpperCase() + word.slice(1))
-            .join(' ')}
-        </StyledLabel> */}
         <Labels
-          selectedC={selectedSideItems}
+          selectedC={selectedSideItems} //HERE
           selectedProducts={selectedProducts}
           labels={sideProducts}
           handleChange={handleCheckboxChange}
         />
       </div>
-      <ColorPicker />
+      <ColorPicker selectedCategories={selectedCategories} />
       <PriceRange />
       <PriceSlider />
     </StyledCategories>

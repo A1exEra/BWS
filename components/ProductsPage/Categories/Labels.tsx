@@ -20,6 +20,7 @@ const Labels = ({
     useContext(PriceRangeContext);
   const labelsRef = useRef();
   const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+  const [validSideProducts, setValidSideProducts] = useState([]);
 
   useEffect(() => {
     const container: any = labelsRef.current;
@@ -31,7 +32,7 @@ const Labels = ({
   useEffect(() => {
     setTimeout(() => {
       if (selectedProducts.length > 0) {
-        setSortedProducts(selectedProducts);
+        setFilteredProducts(selectedProducts);
       }
     }, 1);
   }, [selectedProducts]);
@@ -40,20 +41,18 @@ const Labels = ({
     <div
       className="categories"
       ref={labelsRef}
-      style={!isOverflowing ? { overflowY: 'hidden' } : {}}>
+      style={!isOverflowing ? { overflowY: 'hidden' } : {}}
+    >
       {labels.map((label) => (
         <StyledLabel
           key={label.id}
           htmlFor={label.title}
           className="category"
-          // $isSelected={selectedCategory === label.title}
           $isSelected={selectedC.includes(label.title)}
-          onClick={() => handleChange(label.title)}>
+          onClick={() => handleChange(label.title)}
+        >
           <StyledCheckbox type="checkbox" id={label.title} />
-          <CheckboxIcon
-            //  $isSelected={selectedCategory === label.title}
-            $isSelected={selectedC.includes(label.title)}
-          />
+          <CheckboxIcon $isSelected={selectedC.includes(label.title)} />
           {label.title
             .split(' ')
             .map((word: string) => word[0].toUpperCase() + word.slice(1))

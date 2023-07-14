@@ -3,13 +3,13 @@ import { useContext, useState, useEffect } from 'react';
 import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
-interface ColorProps {
-  choices: {
-    id: number;
-    choice: StaticImageData;
-    title: string;
-  }[];
-}
+// interface ColorProps {
+//   choices: {
+//     id: number;
+//     choice: StaticImageData;
+//     title: string;
+//   }[];
+// }
 const choices = [
   { id: 1, title: 'beige' },
   { id: 2, title: 'golden' },
@@ -17,7 +17,7 @@ const choices = [
   { id: 4, title: 'gray' },
   { id: 5, title: 'brown' },
 ];
-const ColorPicker = () => {
+const ColorPicker = ({ selectedCategories }) => {
   const {
     sortedProducts,
     setFilteredProducts,
@@ -44,12 +44,21 @@ const ColorPicker = () => {
   useEffect(() => {
     let newDisplayedProducts: BWS_DATA[] = [];
     selectedColors.forEach((color) => {
-      const newProducts = sortedProducts.filter(
-        (product: BWS_DATA) =>
-          product.color.toLowerCase() === color &&
-          !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
-      );
-      newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+      if (selectedCategories.length > 0) {
+        const newProducts = selectedCategories.filter(
+          (product: BWS_DATA) =>
+            product.color.toLowerCase() === color &&
+            !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+        );
+        newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+      } else {
+        const newProducts = sortedProducts.filter(
+          (product: BWS_DATA) =>
+            product.color.toLowerCase() === color &&
+            !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+        );
+        newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+      }
     });
     setDisplayedProducts(newDisplayedProducts);
   }, [selectedColors]);
@@ -69,6 +78,12 @@ const ColorPicker = () => {
     }
   }, [displayedProducts]);
 
+  useEffect(() => {
+    if (filteredProducts.length === 27) {
+      setSelectedColors([]);
+    }
+  }, [filteredProducts]);
+
   return (
     <StyledColorPicker $ischecked={isChecked}>
       <div className="colors">
@@ -87,7 +102,8 @@ const ColorPicker = () => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}>
+              onClick={() => handleColorClick(choice.title)}
+            >
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${

@@ -136,7 +136,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       </div>
       <ColorPicker selectedCategories={selectedCategories} />
       <PriceRange />
-      <PriceSlider />
     </StyledCategories>
   );
 };

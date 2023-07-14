@@ -22,7 +22,8 @@ const PriceRange = () => {
               height: '36px',
               display: 'flex',
               width: '100%',
-            }}>
+            }}
+          >
             <div
               ref={props.ref}
               style={{
@@ -40,7 +41,8 @@ const PriceRange = () => {
                   max: 100,
                 }),
                 alignSelf: 'center',
-              }}>
+              }}
+            >
               {children}
             </div>
           </div>

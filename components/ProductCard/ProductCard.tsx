@@ -17,7 +17,7 @@ const ProductCard = (props: { product: BWS_DATA }) => {
   const { addToCart } = useCart();
   const product = props.product;
   const onAddItemHandler = () => {
-    addToCart(product);
+    // addToCart(product);
     //////////////
     notificationCtx.setNotification({
       title: 'Item Added...',
@@ -48,8 +48,7 @@ const ProductCard = (props: { product: BWS_DATA }) => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <g id="mdi-light:heart">
                 <path
                   id="Vector"

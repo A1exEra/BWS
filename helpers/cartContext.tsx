@@ -11,12 +11,13 @@ import { BWS_DATA } from './types';
 interface CartItem extends BWS_DATA {
   quantity: number;
   totalItemPrice: number;
+  chosenColor: string;
 }
 
 interface CartContextType {
   cartItems: CartItem[];
   children?: ReactNode;
-  addToCart: (product: BWS_DATA) => void;
+  addToCart: (product: BWS_DATA, chosenColor: string) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
   incrementItem: (productId: string) => void;
@@ -51,7 +52,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product: BWS_DATA) => {
+  const addToCart = (product: BWS_DATA, chosenColor: string) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
 
     if (existingItem) {
@@ -71,7 +72,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } else {
       setCartItems((prevItems) => [
         ...prevItems,
-        { ...product, quantity: 1, totalItemPrice: product.price },
+        { ...product, quantity: 1, totalItemPrice: product.price, chosenColor },
       ]);
     }
   };

@@ -6,7 +6,6 @@ import { useCart } from '@/helpers/cartContext';
 import { deleteIcon } from '@/public/icons/deleteIcon';
 import arrow from '@/public/icons/ArrowIcon.svg';
 import MainButton from '../shared/MainButton';
-import { BWS_DATA } from '@/helpers/types';
 import NotificationContext from '@/helpers/Notificationcontext';
 type SliderProps = {
   iscartopen: boolean;
@@ -94,6 +93,7 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
         {cartItems.map((item) => (
           <li key={item.id}>
             <p>{item.title}</p>
+            <p>Color:{item.chosenColor}</p>
             <div className="item_icons">
               <Image
                 src={arrow}

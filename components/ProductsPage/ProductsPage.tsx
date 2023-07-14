@@ -13,11 +13,11 @@ import { PriceRangeContext } from '../../helpers/PriceRangeContext';
 import Pagination from './Pagination/Pagination';
 
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
-  const { rangeValues, setRangeValues } = useContext<any>(PriceRangeContext);
+  // const { rangeValues, setRangeValues } = useContext<any>(PriceRangeContext);
   const { products } = props;
   const [sortedProducts, setSortedProducts] = useState(products);
   const [sortOrder, setSortOrder] = useState('desc');
-  // const [rangeValues, setRangeValues] = useState([10, 95]);
+  const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
   // const { filteredProducts, setFilteredProducts } =
   //   useContext(PriceRangeContext);
@@ -27,16 +27,17 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   useEffect(() => {
     setFilteredProducts(
       sortedProducts.filter(
-        (p) => p.price >= rangeValues[0] && p.price < rangeValues[1]
+        (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
       )
     );
-  }, [sortedProducts, rangeValues]);
+    console.log(rangeValues);
+  }, [rangeValues]);
 
   const onSortHandler = () => {
     setSortOrder((prevSortOrder) => {
       const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';
 
-      setFilteredProducts((prevFilteredProducts) => {
+      setSortedProducts((prevFilteredProducts) => {
         return [...prevFilteredProducts].sort((a, b) => {
           if (newSortOrder === 'desc') {
             return a.price > b.price ? -1 : 1;
@@ -69,6 +70,9 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   useEffect(() => {
     if (currentPage > numPages) {
       setCurrentPage(numPages);
+    }
+    if (filteredProducts.length === 0) {
+      setCurrentPage(1);
     }
   }, [numPages, currentPage]);
 
@@ -104,9 +108,9 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
 
           <div className="products">
             {filteredProducts
-              .filter(
-                (p) => p.price >= rangeValues[0] && p.price < rangeValues[1]
-              )
+              // .filter(
+              //   (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
+              // )
               .slice((currentPage - 1) * 9, currentPage * 9)
               .map((el: BWS_DATA) => (
                 <ProductCard product={el} key={el.id} />

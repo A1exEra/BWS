@@ -4,7 +4,7 @@ import { StyledColorPicker } from './ColorPicker.styled';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import { BWS_DATA } from '@/helpers/types';
 interface ColorProps {
-  selectedCategories: BWS_DATA[];
+  selectedCategories?: BWS_DATA[];
 }
 const choices = [
   { id: 1, title: 'beige' },

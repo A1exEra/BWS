@@ -18,6 +18,8 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const [sortOrder, setSortOrder] = useState('desc');
   const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const numPages = Math.ceil(filteredProducts.length / 9);
@@ -75,10 +77,6 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
     }
   }, [numPages, currentPage]);
 
-  useEffect(() => {
-    setFilteredProducts(sortedProducts);
-  }, [sortedProducts]);
-
   return (
     <PriceRangeContext.Provider
       value={{
@@ -93,7 +91,13 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
       }}
     >
       <StyledProducts>
-        <Categories products={filteredProducts} />
+        <Categories
+          products={filteredProducts}
+          selectedCategories={selectedCategories}
+          setSelectedCategories={setSelectedCategories}
+          selectedProducts={selectedProducts}
+          setSelectedProducts={setSelectedProducts}
+        />
 
         <div className="productsList">
           <div className="productSorter">

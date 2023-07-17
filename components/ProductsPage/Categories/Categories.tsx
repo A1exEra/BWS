@@ -20,6 +20,10 @@ interface CategorySchema {
 }
 interface CategoriesProps {
   products: BWS_DATA[];
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
+  selectedProducts: string[];
+  setSelectedProducts: (products: string[]) => void;
 }
 const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -33,20 +37,11 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   } = useContext(PriceRangeContext);
 
   const handleCategoryCheckboxChange = (labels: string[]) => {
-    console.log('[categories] handleCheckboxChange received:', labels);
-    setSelectedCategories((prevState) => {
-      // console.log('[categories] handleCheckboxChange set:', labels);
-      return labels;
-    });
+    setSelectedCategories(labels);
   };
-  useEffect(() => {
-    console.log('[Categories] selectedCategories:', selectedCategories);
-  }, [selectedCategories]);
+
   const handleProductCheckboxChange = (labels: string[]) => {
-    console.log('[products] handleCheckboxChange received:', labels);
     setSelectedProducts(labels);
-    // The log below won't reflect the immediate update due to useState's asynchronous behavior
-    console.log('[products] handleCheckboxChange set:', selectedProducts);
   };
   useEffect(() => {
     console.log('[Categories] selectedProducts:', selectedProducts);
@@ -57,6 +52,21 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       selectedCategories
     );
   }, [selectedCategories]);
+  useEffect(() => {
+    setFilteredProducts(sortedProducts);
+  }, [sortedProducts]);
+  useEffect(() => {
+    const newFilteredProducts = sortedProducts.filter((p) => {
+      const categoryMatch = selectedCategories.length
+        ? selectedCategories.includes(p.category)
+        : true;
+      const productMatch = selectedProducts.length
+        ? selectedProducts.includes(p.title)
+        : true;
+      return categoryMatch && productMatch;
+    });
+    setFilteredProducts(newFilteredProducts);
+  }, [sortedProducts, selectedCategories, selectedProducts]);
 
   return (
     <StyledCategories>

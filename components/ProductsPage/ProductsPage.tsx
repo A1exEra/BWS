@@ -28,11 +28,9 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
       )
     );
-    console.log(rangeValues);
   }, [rangeValues]);
 
   const onSortHandler = () => {
-    console.log(sortedProducts);
     setSortOrder((prevSortOrder) => {
       const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';
 
@@ -90,8 +88,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}
-    >
+      }}>
       <StyledProducts>
         <Categories products={filteredProducts} />
 

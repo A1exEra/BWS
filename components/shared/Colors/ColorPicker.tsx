@@ -39,28 +39,6 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
       setSelectedColors([...selectedColors, color]);
     }
   };
-  // useEffect(() => {
-  //   let newDisplayedProducts: BWS_DATA[] = [];
-  //   selectedColors.forEach((color) => {
-  //     if (selectedCategories.length > 0) {
-  //       const newProducts = selectedCategories.filter(
-  //         (product: BWS_DATA) =>
-  //           product.color.toLowerCase() === color &&
-  //           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
-  //       );
-  //       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
-  //     } else {
-  //       const newProducts = sortedProducts.filter(
-  //         (product: BWS_DATA) =>
-  //           product.color.toLowerCase() === color &&
-  //           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
-  //       );
-  //       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
-  //     }
-  //   });
-  //   setDisplayedProducts(newDisplayedProducts);
-
-  // }, [selectedColors]);
 
   useEffect(() => {
     let newDisplayedProducts: BWS_DATA[] = [];

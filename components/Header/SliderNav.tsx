@@ -48,7 +48,7 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
 const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   .background {
     position: fixed;
-    top: -1px;
+    top: -2px;
     left: 320px;
     width: 100vw;
     height: 100vh;
@@ -66,7 +66,7 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
     }
   }
   position: fixed;
-  top: 76px;
+  top: 72px;
   left: -320px;
   width: 320px;
   height: 100%;

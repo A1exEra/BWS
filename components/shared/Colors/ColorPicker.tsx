@@ -39,27 +39,55 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
       setSelectedColors([...selectedColors, color]);
     }
   };
+  // useEffect(() => {
+  //   let newDisplayedProducts: BWS_DATA[] = [];
+  //   selectedColors.forEach((color) => {
+  //     if (selectedCategories.length > 0) {
+  //       const newProducts = selectedCategories.filter(
+  //         (product: BWS_DATA) =>
+  //           product.color.toLowerCase() === color &&
+  //           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+  //       );
+  //       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+  //     } else {
+  //       const newProducts = sortedProducts.filter(
+  //         (product: BWS_DATA) =>
+  //           product.color.toLowerCase() === color &&
+  //           !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+  //       );
+  //       newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
+  //     }
+  //   });
+  //   setDisplayedProducts(newDisplayedProducts);
+
+  // }, [selectedColors]);
+
   useEffect(() => {
     let newDisplayedProducts: BWS_DATA[] = [];
-    selectedColors.forEach((color) => {
+    selectedColors.forEach((selectedColor) => {
       if (selectedCategories.length > 0) {
-        const newProducts = selectedCategories.filter(
-          (product: BWS_DATA) =>
-            product.color.toLowerCase() === color &&
-            !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+        const newProducts = selectedCategories.filter((product: BWS_DATA) =>
+          product.colors.some(
+            (color) =>
+              color.name.toLowerCase() === selectedColor &&
+              !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+          )
         );
         newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
       } else {
-        const newProducts = sortedProducts.filter(
-          (product: BWS_DATA) =>
-            product.color.toLowerCase() === color &&
-            !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+        const newProducts = sortedProducts.filter((product: BWS_DATA) =>
+          product.colors.some(
+            (color) =>
+              color.name.toLowerCase() === selectedColor &&
+              !newDisplayedProducts.some((p: BWS_DATA) => p.id === product.id)
+          )
         );
         newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
       }
     });
     setDisplayedProducts(newDisplayedProducts);
-  }, [selectedColors]);
+  }, [selectedColors, selectedCategories, sortedProducts]);
+
   const onClickHandler = () => {
     setSelectedColors([]);
   };
@@ -96,6 +124,24 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
             />
             <span className="checkmark"></span>
           </button>
+          {/* {choices.map((choice) => (
+            <div
+              key={choice.id}
+              className="choice"
+              onClick={() => handleColorClick(choice.title)}
+            >
+              <div className="color_name">{choice.title}</div>
+              <Image
+                className={`${
+                  selectedColors.includes(choice.title) ? 'selected' : ''
+                }`}
+                src={`/images/color-options/Oval${choice.id}.png`}
+                alt="color choice"
+                width={27}
+                height={27}
+              />
+            </div>
+          ))} */}
           {choices.map((choice) => (
             <div
               key={choice.id}

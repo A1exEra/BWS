@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledProducts = styled.section`
+.productsList {
+  height:100%;
+  width:100%;
+ 
+}
   display: flex;
   
   margin-left: 64px;
@@ -9,6 +14,7 @@ export const StyledProducts = styled.section`
   margin-bottom: 80px;
   gap: 70px;
   .products{
+    // height:100%;
     margin-top: 25px;
     display: flex;
     gap: 32px;

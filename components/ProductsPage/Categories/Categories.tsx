@@ -46,11 +46,17 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                   return cur.category !== category;
                 })
               );
-              setSelectedSideCategories(
-                selectedSideCategories.filter((cur) => {
-                  return cur !== category;
-                })
-              );
+              if (category === 'features') {
+                setSelectedSideCategories(
+                  selectedSideCategories.filter((cur) => cur !== 'features')
+                );
+              } else {
+                setSelectedSideCategories(
+                  selectedSideCategories.filter((cur) => {
+                    return cur !== category;
+                  })
+                );
+              }
             }
           });
         }
@@ -67,9 +73,18 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           ]);
         }
       });
+      setTimeout(() => {
+        if (
+          selectedSideCategories.includes('features') &&
+          category === 'features'
+        ) {
+          setSelectedSideCategories(
+            selectedSideCategories.filter((cat) => cat !== 'features')
+          );
+        }
+      }, 20);
     }, 200);
 
-    // ITEMS
     setTimeout(() => {
       if (selectedSideItems.includes(category)) {
         setSelectedSideItems(
@@ -94,10 +109,37 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           )
       ),
     ]);
+
+    // const productExists = selectedProducts.some(
+    //   (product) => product.title === category
+    // );
+    // let newSelectedProducts;
+
+    // if (productExists) {
+    //   newSelectedProducts = selectedProducts.filter(
+    //     (product) => product.title !== category
+    //   );
+    // } else {
+
+    //     newSelectedProducts = [
+    //       ...selectedProducts,
+    //       ...sideProducts.filter(
+    //         (product) =>
+    //           product.title === category &&
+    //           !selectedProducts.some(
+    //             (selectedProduct) => selectedProduct.id === product.id
+    //           )
+    //       ),
+    //     ];
+
+    // }
+
+    // setSelectedProducts(newSelectedProducts);
   };
 
   // this will set the product list back to default state if no category is selected
   // or to selectedCategories if selectedCategories has items in it
+
   useEffect(() => {
     if (selectedCategories.length > 0) {
       setFilteredProducts(selectedCategories);
@@ -107,6 +149,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
       setSelectedSideItems([]);
     } else {
       setFilteredProducts(sortedProducts);
+      setSideProducts(sortedProducts);
     }
   }, [selectedCategories]);
   useEffect(() => {
@@ -115,12 +158,16 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
     }
   }, [selectedSideItems]);
 
+  useEffect(() => {
+    console.log(selectedProducts);
+  }, [selectedProducts]);
+
   return (
     <StyledCategories>
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedC={selectedSideCategories} //HERE!!!!
+          selectedC={selectedSideCategories}
           selectedProducts={selectedProducts}
           labels={categories}
           handleChange={handleCheckboxChange}
@@ -128,7 +175,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
         <h5>Products</h5>
         <Labels
-          selectedC={selectedSideItems} //HERE
+          selectedC={selectedSideItems}
           selectedProducts={selectedProducts}
           labels={sideProducts}
           handleChange={handleCheckboxChange}

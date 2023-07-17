@@ -34,7 +34,10 @@ const Labels = ({
       if (selectedProducts.length > 0) {
         setFilteredProducts(selectedProducts);
       }
-    }, 1);
+      if (selectedProducts.length === 0) {
+        setFilteredProducts(sortedProducts);
+      }
+    }, 100);
   }, [selectedProducts]);
 
   return (

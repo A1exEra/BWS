@@ -116,7 +116,9 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
               )
               .slice((currentPage - 1) * 9, currentPage * 9)
               .map((el: BWS_DATA) => (
-                <ProductCard product={el} key={el.id} />
+                <div key={el.id}>
+                  <ProductCard product={el} key={el.id} />
+                </div>
               ))}
           </div>
 

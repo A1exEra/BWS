@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import ShoppingCartIcon from '@/public/icons/shopping_cart.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import Cart from './Cart';
+import Cart from './Cart/Cart';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,8 +49,9 @@ const Header = () => {
 };
 
 export const StyledHeader = styled.div`
-  position: sticky;
-  z-index: 999;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
   top: 0;
   background-color: ${({ theme }) => theme.colors.third};
   padding: 18px 64px;

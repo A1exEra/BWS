@@ -16,7 +16,13 @@ const Header = () => {
   };
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
-  }, [isOpen]);
+    if (isOpen) {
+      setIsCartOpen(false);
+    }
+    if (isCartOpen) {
+      setIsOpen(false);
+    }
+  }, [isOpen, isCartOpen]);
   return (
     <StyledHeader>
       <SliderNav isopen={isOpen} setIsOpen={setIsOpen} />

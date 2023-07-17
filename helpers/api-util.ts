@@ -23,7 +23,7 @@ export const getAllData = async () => {
       price: data[key].price,
       isLiked: data[key].isLiked,
       onSale: data[key].onSale,
-      color: data[key].color,
+      colors: data[key].colors,
       category: data[key].category,
       isTrending: data[key].isTrending,
     });

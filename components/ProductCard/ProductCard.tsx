@@ -19,11 +19,11 @@ const ProductCard = (props: { product: BWS_DATA }) => {
   const onAddItemHandler = () => {
     // addToCart(product);
     //////////////
-    notificationCtx.setNotification({
-      title: 'Item Added...',
-      message: `${product.title} is in your shopping cart!`,
-      status: 'success',
-    });
+    // notificationCtx.setNotification({
+    //   title: 'Item Added...',
+    //   message: `${product.title} is in your shopping cart!`,
+    //   status: 'success',
+    // });
     /////////////
   };
   return (

@@ -14,8 +14,13 @@ const Product = (props: { product: BWS_DATA }) => {
   const [chosenColor, setColor] = useState<string | null>(null);
   const notificationCtx = useContext(NotificationContext);
   const { addToCart } = useCart();
+  const newId = `${product.id}-${chosenColor}-${product.title
+    .split(' ')
+    .join('-')
+    .toLowerCase()}`;
   const onAddItemHandler = () => {
-    addToCart(product, chosenColor);
+    const updatedProduct: BWS_DATA = { ...product, id: newId };
+    addToCart(updatedProduct, chosenColor);
     //////////////
     notificationCtx.setNotification({
       title: 'Item Added...',

@@ -52,68 +52,35 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // const addToCart = (product: BWS_DATA, chosenColor: string) => {
-  //   const existingItem = cartItems.find((item) => item.id === product.id);
-  //   if (existingItem) {
-  //     if (existingItem.chosenColor !== chosenColor) {
-  //       setCartItems((prevItems) => [
-  //         ...prevItems,
-  //         {
-  //           ...product,
-  //           quantity: 1,
-  //           totalItemPrice: product.price,
-  //           chosenColor: chosenColor,
-  //         },
-  //       ]);
-  //       return;
-  //     }
-  //     setCartItems((prevItems) =>
-  //       prevItems.map((item) =>
-  //         item.id === product.id && item.chosenColor === chosenColor
-  //           ? {
-  //               ...item,
-  //               quantity: item.quantity + 1,
-  //               totalItemPrice: +(product.price * (item.quantity + 1)).toFixed(
-  //                 2
-  //               ),
-  //             }
-  //           : item
-  //       )
-  //     );
-  //   } else {
-  //     setCartItems((prevItems) => [
-  //       ...prevItems,
-  //       {
-  //         ...product,
-  //         quantity: 1,
-  //         totalItemPrice: product.price,
-  //         chosenColor: chosenColor,
-  //       },
-  //     ]);
-  //   }
-  // };
   const addToCart = (product: BWS_DATA, chosenColor: string) => {
-    const existingItemIndex = cartItems.findIndex(
-      (item) => item.id === product.id && item.chosenColor === chosenColor
-    );
-
-    if (existingItemIndex !== -1) {
-      // Item with the same name and color exists in the cart
+    const existingItem = cartItems.find((item) => item.id === product.id);
+    if (existingItem) {
+      if (existingItem.chosenColor !== chosenColor) {
+        setCartItems((prevItems) => [
+          ...prevItems,
+          {
+            ...product,
+            quantity: 1,
+            totalItemPrice: product.price,
+            chosenColor: chosenColor,
+          },
+        ]);
+        return;
+      }
       setCartItems((prevItems) =>
-        prevItems.map((item, index) => {
-          if (index === existingItemIndex) {
-            // Increment the quantity and update the totalItemPrice
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-              totalItemPrice: +(product.price * (item.quantity + 1)).toFixed(2),
-            };
-          }
-          return item;
-        })
+        prevItems.map((item) =>
+          item.id === product.id && item.chosenColor === chosenColor
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                totalItemPrice: +(product.price * (item.quantity + 1)).toFixed(
+                  2
+                ),
+              }
+            : item
+        )
       );
     } else {
-      // Item with the same name and color does not exist in the cart
       setCartItems((prevItems) => [
         ...prevItems,
         {

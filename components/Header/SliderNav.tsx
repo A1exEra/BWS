@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import FirebaseTesting from './FirebaseTesting';
 type SliderProps = {
   isopen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,14 +42,15 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
           </Link>
         </li>
       </ul>
+      <FirebaseTesting />
     </SliderNavContainer>
   );
 };
 
 const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
   .background {
-    position: fixed;
-    top: -1px;
+    position: absolute;
+    top: 0px;
     left: 320px;
     width: 100vw;
     height: 100vh;

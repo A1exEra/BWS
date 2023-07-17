@@ -80,8 +80,6 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
       status: 'success',
     });
   };
-
-  console.log(totalItems);
   const handleCheckout = () => {
     console.log('Item was purchased!!! - ', {
       ...cartItems,
@@ -145,8 +143,8 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
     padding-bottom: 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.third};
   }
-  position: fixed;
-  top: 72px;
+  position: absolute;
+  top: 76px;
   right: -320px;
   width: 320px;
   height: 100vh;

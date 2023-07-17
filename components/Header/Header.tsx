@@ -49,9 +49,10 @@ const Header = () => {
 };
 
 export const StyledHeader = styled.div`
-  position: fixed;
+  position: sticky;
   z-index: 1000;
   width: 100%;
+  height: 76px;
   top: 0;
   background-color: ${({ theme }) => theme.colors.third};
   padding: 18px 64px;
@@ -59,6 +60,7 @@ export const StyledHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 2px 12px 2px rgba(0, 0, 0, 0.2);
   h3 {
     font-size: 32px;
     font-family: ${({ theme }) => theme.fontSizes.text2xl};

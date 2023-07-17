@@ -68,7 +68,7 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
     }
   }
   position: fixed;
-  top: 76px;
+  top: 72px;
   left: -320px;
   width: 320px;
   height: 100%;

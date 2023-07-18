@@ -24,18 +24,20 @@ const Notification = (props: {
 const StyledNotification = styled.div<{ $status: string }>`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   color: ${({ theme }) => theme.colors.whiteSecondary};
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 0 2rem;
+  margin: 0 auto;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
   position: fixed;
-  height: 5rem;
-  bottom: 0;
+  z-index: 1100;
+  height: 4rem;
+  bottom: 5%;
   width: 100%;
   left: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+  border-radius: 8px;
   h2 {
     font-size: ${({ theme }) => theme.fontSizes.textXl};
     margin: 0;

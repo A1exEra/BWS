@@ -1,26 +1,21 @@
-// import { categories } from './categoryList';
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { StyledLabel, StyledCheckbox, CheckboxIcon } from './Categories.styled';
 import { PriceRangeContext } from '@/helpers/PriceRangeContext';
 interface LabelsProps {
-  // selectedCategory: string;
   selectedC?: any[];
   selectedProducts?: any[];
   labels: any[];
   handleChange: any;
 }
-const Labels = ({
-  // selectedCategory,
-  selectedC,
-  selectedProducts,
-  labels,
-  handleChange,
-}: LabelsProps) => {
-  const { sortedProducts, setSortedProducts, setFilteredProducts } =
-    useContext(PriceRangeContext);
+const Labels = ({ id, labels, selectedLabels, handleCheckboxChange }) => {
+  const {
+    sortedProducts,
+    setSortedProducts,
+    setFilteredProducts,
+    selectedCategories,
+  } = useContext(PriceRangeContext);
   const labelsRef = useRef();
   const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
-  const [validSideProducts, setValidSideProducts] = useState([]);
 
   useEffect(() => {
     const container: any = labelsRef.current;
@@ -29,13 +24,17 @@ const Labels = ({
     }
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (selectedProducts.length > 0) {
-        setFilteredProducts(selectedProducts);
-      }
-    }, 1);
-  }, [selectedProducts]);
+  const onLabelClick = (label: string) => {
+    let updatedLabels;
+
+    if (selectedLabels.includes(label)) {
+      updatedLabels = selectedLabels.filter((l) => l !== label);
+    } else {
+      updatedLabels = [...selectedLabels, label];
+    }
+
+    handleCheckboxChange(updatedLabels);
+  };
 
   return (
     <div
@@ -48,11 +47,15 @@ const Labels = ({
           key={label.id}
           htmlFor={label.title}
           className="category"
-          $isSelected={selectedC.includes(label.title)}
-          onClick={() => handleChange(label.title)}
+          $isSelected={selectedLabels.includes(label.title)}
+          onClick={() => onLabelClick(label.title)}
         >
-          <StyledCheckbox type="checkbox" id={label.title} />
-          <CheckboxIcon $isSelected={selectedC.includes(label.title)} />
+          <StyledCheckbox
+            type="checkbox"
+            checked={selectedLabels.includes(label)}
+            onChange={() => handleCheckboxChange(label)}
+          />
+          <CheckboxIcon $isSelected={selectedLabels.includes(label.title)} />
           {label.title
             .split(' ')
             .map((word: string) => word[0].toUpperCase() + word.slice(1))

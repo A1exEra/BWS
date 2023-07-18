@@ -4,6 +4,7 @@ export interface MESSAGE {
   message: string;
   _id?: any;
 }
+
 export interface BWS_DATA {
   id: string;
   title: string;

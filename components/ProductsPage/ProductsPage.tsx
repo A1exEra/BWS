@@ -15,26 +15,41 @@ import Pagination from './Pagination/Pagination';
 const ProductsPage = (props: { products: BWS_DATA[] }) => {
   const { products } = props;
   const [sortedProducts, setSortedProducts] = useState(products);
+  const [displayedProducts, setDisplayedProducts] = useState(products);
+
   const [sortOrder, setSortOrder] = useState('desc');
   const [rangeValues, setRangeValues] = useState([10, 95]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const numPages = Math.ceil(filteredProducts.length / 9);
 
   useEffect(() => {
-    setFilteredProducts(
-      sortedProducts.filter(
-        (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
-      )
+    const newFilteredProducts = sortedProducts.filter(
+      (p) =>
+        (selectedCategories.length === 0 ||
+          selectedCategories.includes(p.category)) &&
+        (selectedProducts.length === 0 || selectedProducts.includes(p.title))
     );
-  }, [rangeValues]);
+
+    setFilteredProducts(newFilteredProducts);
+  }, [selectedCategories, selectedProducts, sortedProducts, sortOrder]);
+
+  useEffect(() => {
+    const newDisplayedProducts = filteredProducts.filter(
+      (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
+    );
+
+    setDisplayedProducts(newDisplayedProducts);
+  }, [rangeValues, filteredProducts]);
 
   const onSortHandler = () => {
     setSortOrder((prevSortOrder) => {
       const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';
 
-      setSortedProducts((prevFilteredProducts) => {
+      setFilteredProducts((prevFilteredProducts) => {
         return [...prevFilteredProducts].sort((a, b) => {
           if (newSortOrder === 'desc') {
             return a.price > b.price ? -1 : 1;
@@ -88,9 +103,16 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
         setSortedProducts,
         filteredProducts,
         setFilteredProducts,
-      }}>
+      }}
+    >
       <StyledProducts>
-        <Categories products={filteredProducts} />
+        <Categories
+          products={filteredProducts}
+          selectedCategories={selectedCategories}
+          setSelectedCategories={setSelectedCategories}
+          selectedProducts={selectedProducts}
+          setSelectedProducts={setSelectedProducts}
+        />
 
         <div className="productsList">
           <div className="productSorter">
@@ -107,13 +129,15 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
           </div>
 
           <div className="products">
-            {filteredProducts
+            {displayedProducts
               .filter(
                 (p) => p.price >= rangeValues[0] && p.price <= rangeValues[1]
               )
               .slice((currentPage - 1) * 9, currentPage * 9)
               .map((el: BWS_DATA) => (
-                <ProductCard product={el} key={el.id} />
+                <div key={el.id}>
+                  <ProductCard product={el} key={el.id} />
+                </div>
               ))}
           </div>
 

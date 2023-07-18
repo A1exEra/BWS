@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { PriceRangeContext } from '../../../helpers/PriceRangeContext';
 import arrow from '../../../public/icons/arrow-right.svg';
+import arrowLeft from '../../../public/arrowLeft.svg';
 import { StyledPagination } from './Pagination.styled';
 import { BWS_DATA } from '@/helpers/types';
 
@@ -24,7 +25,7 @@ const Pagination = ({
   return (
     <StyledPagination>
       <div className="arrowLeft" onClick={handlePrevPage}>
-        <Image src={arrow} alt="go to previous page" />
+        <Image src={arrowLeft} alt="go to previous page" />
       </div>
       <div className="numbers">
         {Array.from({ length: Math.ceil(products.length / 9) }, (_, i) => (

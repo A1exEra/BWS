@@ -25,8 +25,7 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(true);
   const [displayedProducts, setDisplayedProducts] = useState<any>([]);
   const [isColorSelected, setIsColorSelected] = useState<boolean>(false);
-  // const [selectedColor, setSelectedColor] = useState<string>('');
-  const [selectedColors, setSelectedColors] = useState<string[]>([]); // Now an array
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
 
   const handleColorClick = (color: string) => {
     if (isChecked) {
@@ -39,6 +38,7 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
       setSelectedColors([...selectedColors, color]);
     }
   };
+
   useEffect(() => {
     let newDisplayedProducts: BWS_DATA[] = [];
     selectedColors.forEach((selectedColor) => {
@@ -62,8 +62,14 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
         newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
       }
     });
-    setDisplayedProducts(newDisplayedProducts);
+
+    if (
+      JSON.stringify(newDisplayedProducts) !== JSON.stringify(displayedProducts)
+    ) {
+      setDisplayedProducts(newDisplayedProducts);
+    }
   }, [selectedColors, selectedCategories, sortedProducts]);
+
   const onClickHandler = () => {
     setSelectedColors([]);
   };
@@ -104,7 +110,8 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
             <div
               key={choice.id}
               className="choice"
-              onClick={() => handleColorClick(choice.title)}>
+              onClick={() => handleColorClick(choice.title)}
+            >
               <div className="color_name">{choice.title}</div>
               <Image
                 className={`${

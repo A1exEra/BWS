@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useMemo } from 'react';
 import {
   StyledCategories,
   StyledLabel,
@@ -20,14 +20,19 @@ interface CategorySchema {
 }
 interface CategoriesProps {
   products: BWS_DATA[];
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
+  selectedProducts: string[];
+  setSelectedProducts: (products: string[]) => void;
 }
 const Categories: React.FC<CategoriesProps> = ({ products }) => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedSideItems, setSelectedSideItems] = useState([]);
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const [sideProducts, setSideProducts] = useState(products);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedSideCategories, setSelectedSideCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const selectedCategoryProducts = useMemo(() => {
+    return products.filter((product) =>
+      selectedCategories.includes(product.category)
+    );
+  }, [products, selectedCategories]);
   const {
     filteredProducts,
     setSortedProducts,
@@ -35,106 +40,50 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
     setFilteredProducts,
   } = useContext(PriceRangeContext);
 
-  const handleCheckboxChange = (category: any) => {
-    setTimeout(() => {
-      setTimeout(() => {
-        if (selectedCategories.length > 0) {
-          selectedCategories.forEach((cat) => {
-            if (cat.category === category) {
-              setSelectedCategories(
-                selectedCategories.filter((cur) => {
-                  return cur.category !== category;
-                })
-              );
-              setSelectedSideCategories(
-                selectedSideCategories.filter((cur) => {
-                  return cur !== category;
-                })
-              );
-            }
-          });
-        }
-      }, 40);
-
-      categories.forEach((cat) => {
-        if (cat.title === category) {
-          setSelectedSideCategories([...selectedSideCategories, category]);
-          setSelectedCategories([
-            ...new Set([
-              ...selectedCategories,
-              ...sortedProducts.filter((prod) => prod.category === cat.title),
-            ]),
-          ]);
-        }
-      });
-    }, 200);
-
-    // ITEMS
-    setTimeout(() => {
-      if (selectedSideItems.includes(category)) {
-        setSelectedSideItems(
-          selectedSideItems.filter((item) => {
-            return item !== category;
-          })
-        );
-      } else {
-        if (category.split(' ').length > 1) {
-          setSelectedSideItems([...new Set([...selectedSideItems, category])]);
-        }
-      }
-    }, 100);
-
-    setSelectedProducts([
-      ...selectedProducts,
-      ...sideProducts.filter(
-        (product) =>
-          product.title === category &&
-          !selectedProducts.some(
-            (selectedProduct) => selectedProduct.id === product.id
-          )
-      ),
-    ]);
+  const handleCategoryCheckboxChange = (labels: string[]) => {
+    setSelectedCategories(labels);
   };
 
-  // this will set the product list back to default state if no category is selected
-  // or to selectedCategories if selectedCategories has items in it
-  useEffect(() => {
-    if (selectedCategories.length > 0) {
-      setFilteredProducts(selectedCategories);
-      setSideProducts(selectedCategories);
+  const handleProductCheckboxChange = (labels: string[]) => {
+    setSelectedProducts(labels);
+  };
 
-      setSelectedProducts([]);
-      setSelectedSideItems([]);
-    } else {
-      setFilteredProducts(sortedProducts);
-    }
-  }, [selectedCategories]);
   useEffect(() => {
-    if (selectedSideItems.length === 0) {
-      setFilteredProducts(selectedCategories);
-    }
-  }, [selectedSideItems]);
+    setFilteredProducts(sortedProducts);
+  }, [sortedProducts]);
+  useEffect(() => {
+    const newFilteredProducts = sortedProducts.filter((p) => {
+      const categoryMatch = selectedCategories.length
+        ? selectedCategories.includes(p.category)
+        : true;
+      const productMatch = selectedProducts.length
+        ? selectedProducts.includes(p.title)
+        : true;
+      return categoryMatch && productMatch;
+    });
+    setFilteredProducts(newFilteredProducts);
+  }, [sortedProducts, selectedCategories, selectedProducts]);
 
   return (
     <StyledCategories>
       <div className="productCategories">
         <h5>Category</h5>
         <Labels
-          selectedC={selectedSideCategories} //HERE!!!!
-          selectedProducts={selectedProducts}
+          id="categories"
           labels={categories}
-          handleChange={handleCheckboxChange}
+          selectedLabels={selectedCategories}
+          handleCheckboxChange={handleCategoryCheckboxChange}
         />
 
         <h5>Products</h5>
         <Labels
-          selectedC={selectedSideItems} //HERE
-          selectedProducts={selectedProducts}
-          labels={sideProducts}
-          handleChange={handleCheckboxChange}
+          id="products"
+          labels={sortedProducts}
+          selectedLabels={selectedProducts}
+          handleCheckboxChange={handleProductCheckboxChange}
         />
       </div>
-      <ColorPicker selectedCategories={selectedCategories} />
+      <ColorPicker selectedCategories={selectedCategoryProducts} />
       <PriceRange />
     </StyledCategories>
   );

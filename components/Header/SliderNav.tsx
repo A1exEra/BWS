@@ -27,10 +27,8 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
   return (
     <SliderNavContainer $isopen={isopen}>
       <div className="background" ref={divRef}></div>
+      <h2>BWS</h2>
       <ul ref={sliderRef}>
-        <li>Menu Item 1</li>
-        <li>Menu Item 2</li>
-        <li>Menu Item 3</li>
         <li>
           <Link href="/">
             <h3>HOME</h3>
@@ -42,6 +40,7 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
           </Link>
         </li>
       </ul>
+      <h4>Send your feedback to Alex & Razvan</h4>
       <FirebaseTesting />
     </SliderNavContainer>
   );
@@ -58,14 +57,36 @@ const SliderNavContainer = styled.nav<{ $isopen: boolean }>`
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ $isopen }) => ($isopen ? 'block' : 'none')};
   }
+  h2 {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 32px;
+    font-family: ${({ theme }) => theme.fontSizes.text2xl};
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px;
+    padding: 16px;
+    border-top: 2px solid ${({ theme }) => theme.colors.third};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.third};
+  }
   a {
     h3 {
-      font-size: 32px;
-      font-family: ${({ theme }) => theme.fontSizes.text20};
+      font-size: 24px;
+      font-family: ${({ theme }) => theme.fontSizes.textBase};
       font-weight: 500;
       letter-spacing: 10px;
       color: ${({ theme }) => theme.colors.third};
     }
+  }
+  h4 {
+    text-align: center;
+    margin: 16px 0px;
   }
   position: fixed;
   top: 76px;

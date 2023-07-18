@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { styled } from 'styled-components';
 import Image from 'next/image';
 import { deleteIcon } from '@/public/icons/deleteIcon';
-import arrow from '@/public/icons/ArrowIcon.svg';
 interface CartItemProps {
   cartItems: any[];
   remove: (productId: string) => void;
@@ -9,6 +9,7 @@ interface CartItemProps {
   decrement: (id: string, title: string) => void;
 }
 const CartItem = (props: CartItemProps) => {
+  const [totalItemPrice, setTotalItemPrice] = useState<number>(0);
   return (
     <StyledcartItem>
       {props.cartItems.map((item) => (
@@ -23,11 +24,23 @@ const CartItem = (props: CartItemProps) => {
               <span onClick={() => props.remove(item.id)}>{deleteIcon}</span>
             </div>
             <div className="item_icons">
-              <h4>$ {item.price}</h4>
+              <h4>$ {+(totalItemPrice + item.price).toFixed(2)}</h4>
               <div className="qnty">
-                <h4 onClick={() => props.decrement(item.id, item.title)}>-</h4>
+                <h4
+                  onClick={() => {
+                    props.decrement(item.id, item.title);
+                    setTotalItemPrice((prev) => prev - item.price);
+                  }}>
+                  -
+                </h4>
                 <p>{item.quantity}</p>
-                <h4 onClick={() => props.increment(item.id, item.title)}>+</h4>
+                <h4
+                  onClick={() => {
+                    props.increment(item.id, item.title);
+                    setTotalItemPrice((prev) => prev + item.price);
+                  }}>
+                  +
+                </h4>
               </div>
             </div>
           </div>
@@ -47,6 +60,7 @@ const StyledcartItem = styled.ul`
     display: flex;
     flex-direction: row;
     border-radius: 8px;
+    border: 1px solid #ccc;
     background-color: ${({ theme }) => theme.colors.whitePrimary};
     &:hover {
       box-shadow: 0px 2px 12px 2px rgba(0, 0, 0, 0.2);

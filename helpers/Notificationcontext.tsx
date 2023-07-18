@@ -24,7 +24,7 @@ export const NotificationContextProvider = (props: { children: ReactNode }) => {
 
   useEffect(() => {
     if (notification && notification.status !== 'pending') {
-      const timer = setTimeout(() => setNotification(null), 2000);
+      const timer = setTimeout(() => setNotification(null), 5000);
       return () => {
         clearTimeout(timer);
       };

@@ -1,24 +1,5 @@
 import { BWS_DATA } from './types';
-import { addDoc, collection } from '@firebase/firestore';
-import { firestore } from './firebse';
-// Usage example
-// sendFeedback(
-//   'john@example.com',
-//   'John Doe',
-//   'Great app! Keep up the good work.'
-// );
 
-export const handleSubmit = (data: any) => {
-  const ref = collection(firestore, 'test-data');
-  const newData = {
-    testdata: data,
-  };
-  try {
-    addDoc(ref, newData);
-  } catch (err) {
-    console.log(err);
-  }
-};
 const firebase_URL: string | undefined = process.env.PRODUCTS_URL;
 export const getAllData = async () => {
   const response = await fetch(firebase_URL!);

@@ -12,7 +12,7 @@ const Notification = (props: {
 
   return ReactDOM.createPortal(
     <StyledNotification
-      status={status}
+      $status={status}
       onClick={notificationCtx!.hideNotification}>
       <h2>{title}</h2>
       <p>{message}</p>
@@ -21,7 +21,7 @@ const Notification = (props: {
   );
 };
 
-const StyledNotification = styled.div<{ status: string }>`
+const StyledNotification = styled.div<{ $status: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,23 +45,23 @@ const StyledNotification = styled.div<{ status: string }>`
     margin: 0;
   }
 
-  ${({ status }) =>
-    status === 'success' &&
+  ${({ $status }) =>
+    $status === 'success' &&
     css`
       background-color: #a2f0bc;
       color: ${({ theme }) => theme.colors.primary};
     `}
 
-  ${({ status }) =>
-    status === 'error' &&
+  ${({ $status }) =>
+    $status === 'error' &&
     css`
       background-color: #a10c4a;
     `}
       
-      ${({ status }) =>
-    status === 'pending' &&
+      ${({ $status }) =>
+    $status === 'pending' &&
     css`
-      background-color: #732392;
+      background-color: #a07aaa;
     `}
 
   @media (min-width: 768px) {

@@ -25,8 +25,7 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(true);
   const [displayedProducts, setDisplayedProducts] = useState<any>([]);
   const [isColorSelected, setIsColorSelected] = useState<boolean>(false);
-  // const [selectedColor, setSelectedColor] = useState<string>('');
-  const [selectedColors, setSelectedColors] = useState<string[]>([]); // Now an array
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
 
   const handleColorClick = (color: string) => {
     if (isChecked) {
@@ -63,7 +62,12 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
         newDisplayedProducts = [...newDisplayedProducts, ...newProducts];
       }
     });
-    setDisplayedProducts(newDisplayedProducts);
+
+    if (
+      JSON.stringify(newDisplayedProducts) !== JSON.stringify(displayedProducts)
+    ) {
+      setDisplayedProducts(newDisplayedProducts);
+    }
   }, [selectedColors, selectedCategories, sortedProducts]);
 
   const onClickHandler = () => {
@@ -102,24 +106,6 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
             />
             <span className="checkmark"></span>
           </button>
-          {/* {choices.map((choice) => (
-            <div
-              key={choice.id}
-              className="choice"
-              onClick={() => handleColorClick(choice.title)}
-            >
-              <div className="color_name">{choice.title}</div>
-              <Image
-                className={`${
-                  selectedColors.includes(choice.title) ? 'selected' : ''
-                }`}
-                src={`/images/color-options/Oval${choice.id}.png`}
-                alt="color choice"
-                width={27}
-                height={27}
-              />
-            </div>
-          ))} */}
           {choices.map((choice) => (
             <div
               key={choice.id}
@@ -131,7 +117,7 @@ const ColorPicker = ({ selectedCategories }: ColorProps) => {
                 className={`${
                   selectedColors.includes(choice.title) ? 'selected' : ''
                 }`}
-                src={`/images/color-options/Oval${choice.id}.png`}
+                src={`/images/color-options/${choice.title}.png`}
                 alt="color choice"
                 width={27}
                 height={27}

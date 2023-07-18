@@ -1,24 +1,20 @@
 import { useRef, useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useCart } from '@/helpers/cartContext';
-import { deleteIcon } from '@/public/icons/deleteIcon';
-import arrow from '@/public/icons/ArrowIcon.svg';
-import MainButton from '../shared/MainButton';
-import { BWS_DATA } from '@/helpers/types';
+import MainButton from '../../shared/MainButton';
 import NotificationContext from '@/helpers/Notificationcontext';
-type SliderProps = {
+import CartItem from './CartItem';
+type CartProps = {
   iscartopen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
-const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
+const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
   const notificationCtx = useContext(NotificationContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const sliderRef = useRef<HTMLUListElement>(null);
+  const [totalItems, setTotalItems] = useState<number>(0);
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -39,11 +35,12 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
     const calculateTotalQuantity = () => {
       let totalPrice = 0;
       let quantity = 0;
-      const totalQuantity = cartItems.forEach((curr) => {
+      cartItems.forEach((curr) => {
         totalPrice += curr.totalItemPrice;
         quantity += curr.quantity;
       }, 0);
       setQuantity(quantity);
+      setTotalItems(quantity);
       setTotalPrice(+totalPrice.toFixed(2));
     };
 
@@ -83,47 +80,44 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: SliderProps) => {
       status: 'success',
     });
   };
-
   const handleCheckout = () => {
-    console.log('Item was purchased!!! - ', { ...cartItems, totalPrice });
+    console.log('Item was purchased!!! - ', {
+      ...cartItems,
+      totalItems,
+      totalPrice,
+    });
   };
   return (
     <SliderCartContainer $iscartopen={iscartopen}>
       <div className="background" ref={divRef}></div>
-      <ul ref={sliderRef}>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            <p>{item.title}</p>
-            <div className="item_icons">
-              <Image
-                src={arrow}
-                alt="arrow"
-                onClick={() => handleDecrementItem(item.id, item.title)}
-              />
-              <p>{item.quantity}</p>
-              <Image
-                className="img2"
-                src={arrow}
-                alt="arrow"
-                onClick={() => handleIncrementItem(item.id, item.title)}
-              />
-              <span onClick={() => handleRemoveItem(item.id)}>
-                {deleteIcon}
-              </span>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <h2>Total: {totalPrice}</h2>
+      <h1>Shopping Cart</h1>
+      <CartItem
+        cartItems={cartItems}
+        increment={handleIncrementItem}
+        decrement={handleDecrementItem}
+        remove={handleRemoveItem}
+      />
+      <div className="subtotal">
+        <div className="left">
+          <h2>Subtotal</h2>
+          <p>
+            ({totalItems} {totalItems === 1 ? 'item' : 'items'})
+          </p>
+        </div>
+        <h2>$ {totalPrice}</h2>
+      </div>
       <div className="btn_container">
         <MainButton
           onClick={handleClearCart}
           label="Clear Cart"
+          className="btn"
           backgroundColor="#536758"></MainButton>
         <MainButton
           onClick={handleCheckout}
           backgroundColor="#2a2a2a"
+          className="btn"
           label="Checkout"></MainButton>
+        <p>Psst, get it now before it sells out.</p>
       </div>
     </SliderCartContainer>
   );
@@ -140,13 +134,22 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
     background-color: rgba(0, 0, 0, 0.5);
     display: ${({ $iscartopen }) => ($iscartopen ? 'block' : 'none')};
   }
-  position: fixed;
+  h1 {
+    ${({ theme }) => theme.mixins.primaryHeroRegular};
+    color: ${({ theme }) => theme.colors.third};
+    font-weight: bold;
+    margin: 16px 0px;
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.third};
+  }
+  position: absolute;
   top: 76px;
   right: -320px;
   width: 320px;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.whiteSecondary};
-  z-index: 999;
+  z-index: 9;
   padding: 16px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $iscartopen }) =>
@@ -157,50 +160,32 @@ const SliderCartContainer = styled.nav<{ $iscartopen: boolean }>`
     color: ${({ theme }) => theme.colors.third};
     font-weight: bold;
     margin: 16px 0px;
-    text
   }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  p {
+    ${({ theme }) => theme.mixins.primaryProductCard};
+    color: ${({ theme }) => theme.colors.grey};
+  }
+  .btn_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    li {
-      cursor: pointer;
+    gap: 16px;
+    .btn {
       width: 100%;
-      padding: 8px;
-      margin-bottom: 8px;
-      border:2px solid ${({ theme }) => theme.colors.grey};
-      border-radius: 4px;
-      background-color: ${({ theme }) => theme.colors.whitePrimary};
-      &:hover{
-        box-shadow: 0px 2px 12px 2px rgba(0, 0, 0, 0.2);
-      }
-      p{
-        ${({ theme }) => theme.mixins.primaryComponentTitle};
-        color: ${({ theme }) => theme.colors.third};
-        font-weight: bold;
-      }
-      .item_icons {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        gap: 16px;
-        align-items: center;
-        & .img2 {
-          transform: rotate(180deg);
-        }
-      }
+    }
+    p {
+      text-align: center;
     }
   }
-  .btn_container{
+  .subtotal {
+    .left {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 16px;
-    align-items: center;
   }
 `;
 export default Cart;

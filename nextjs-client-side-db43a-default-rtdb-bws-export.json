@@ -1,0 +1,406 @@
+{
+  "item1": {
+    "category": "walls",
+    "colors": [
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 }
+    ],
+    "description": "Premium oakwood flooring planks with a smooth finish.",
+    "image": "/images/oakwood.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 39.99,
+    "title": "Oakwood Planks"
+  },
+  "item10": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Hickory wood flooring with a harmonious blend of light and dark tones.",
+    "image": "/images/granite.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 74.99,
+    "title": "Hickory Harmony"
+  },
+  "item11": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 }
+    ],
+    "description": "Timeless travertine flooring that adds warmth and character to any space.",
+    "image": "/images/bamboo.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": true,
+    "price": 84.99,
+    "title": "Travertine Timeless"
+  },
+  "item12": {
+    "category": "enviro",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Prestigious porcelain tiles known for their durability and luxurious appearance.",
+    "image": "/images/slate.jpg",
+    "isLiked": false,
+    "isTrending": true,
+    "onSale": false,
+    "price": 89.99,
+    "title": "Porcelain Prestige"
+  },
+  "item13": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Cherry wood flooring with a beautiful grain pattern and natural reddish tones.",
+    "image": "/images/cork.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": true,
+    "price": 79.99,
+    "title": "Cherry Blossom"
+  },
+  "item14": {
+    "category": "slabs",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 }
+    ],
+    "description": "Acacia wood flooring that adds a distinctive accent to any room.",
+    "image": "/images/laminate.jpg",
+    "isLiked": false,
+    "isTrending": true,
+    "onSale": false,
+    "price": 69.99,
+    "title": "Acacia Accent"
+  },
+  "item15": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "golden", "quantity": 25 }
+    ],
+    "description": "Versatile vinyl flooring that replicates the look of various natural materials.",
+    "image": "/images/oakwood.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 49.99,
+    "title": "Vinyl Versatile"
+  },
+  "item16": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Wonderful walnut wood flooring with rich, dark tones and a sophisticated appeal.",
+    "image": "/images/marble.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 89.99,
+    "title": "Walnut Wonder"
+  },
+  "item17": {
+    "category": "slabs",
+    "colors": [
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Chic concrete flooring that exudes an industrial and modern aesthetic.",
+    "image": "/images/granite.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": true,
+    "price": 59.99,
+    "title": "Concrete Chic"
+  },
+  "item18": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Beautiful birch wood flooring with a smooth finish and natural color variations.",
+    "image": "/images/bamboo.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 64.99,
+    "title": "Birch Beauty"
+  },
+  "item19": {
+    "category": "enviro",
+    "colors": [{ "name": "golden", "quantity": 25 }],
+    "description": "Luxurious limestone flooring that brings sophistication and natural beauty.",
+    "image": "/images/slate.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 79.99,
+    "title": "Limestone Luxe"
+  },
+  "item2": {
+    "category": "slabs",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Luxurious marble flooring tiles that add elegance to any space.",
+    "image": "/images/marble.jpg",
+    "isLiked": false,
+    "isTrending": true,
+    "onSale": true,
+    "price": 79.99,
+    "title": "Marble Elegance"
+  },
+  "item20": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Paradise-like pine wood flooring with a charming rustic appeal.",
+    "image": "/images/cork.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": true,
+    "price": 54.99,
+    "title": "Pine Paradise"
+  },
+  "item21": {
+    "category": "slabs",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Majestic maple wood flooring known for its durability and timeless beauty.",
+    "image": "/images/laminate.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 74.99,
+    "title": "Maple Majesty"
+  },
+  "item22": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Charming cobblestone flooring that adds a touch of nostalgia and old-world charm.",
+    "image": "/images/oakwood.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 69.99,
+    "title": "Cobblestone Charm"
+  },
+  "item23": {
+    "category": "steps",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Blissful beechwood flooring with a smooth and elegant appearance.",
+    "image": "/images/marble.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 59.99,
+    "title": "Beechwood Bliss"
+  },
+  "item24": {
+    "category": "pavers",
+    "colors": [{ "name": "red", "quantity": 15 }],
+    "description": "Serenading sycamore wood flooring that captures attention with its unique grain patterns.",
+    "image": "/images/granite.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": true,
+    "price": 84.99,
+    "title": "Sycamore Serenade"
+  },
+  "item25": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+
+      { "name": "golden", "quantity": 25 }
+    ],
+    "description": "Classic chestnut wood flooring with a warm and inviting appeal.",
+    "image": "/images/bamboo.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 79.99,
+    "title": "Chestnut Classic"
+  },
+  "item26": {
+    "category": "slabs",
+    "colors": [
+      { "name": "beige", "quantity": 10 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Innovative bamstone flooring made from bamboo fibers for a sustainable and durable choice.",
+    "image": "/images/slate.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 89.99,
+    "title": "Bamstone"
+  },
+  "item27": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 }
+    ],
+    "description": "Radiant rosewood flooring that adds warmth and a touch of luxury to any room.",
+    "image": "/images/cork.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 94.99,
+    "title": "Rosewood Radiance"
+  },
+  "item3": {
+    "category": "pavers",
+    "colors": [{ "name": "red", "quantity": 15 }],
+    "description": "Classic granite flooring for a timeless look and durability.",
+    "image": "/images/granite.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 59.99,
+    "title": "Granite Classic"
+  },
+  "item4": {
+    "category": "steps",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Eco-friendly bamboo flooring for a natural and sustainable choice.",
+    "image": "/images/bamboo.jpg",
+    "isLiked": false,
+    "isTrending": false,
+    "onSale": true,
+    "price": 49.99,
+    "title": "Bamboo Bliss"
+  },
+  "item5": {
+    "category": "enviro",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Slate stone flooring that brings a serene and earthy vibe to any room.",
+    "image": "/images/slate.jpg",
+    "isLiked": true,
+    "isTrending": false,
+    "onSale": false,
+    "price": 69.99,
+    "title": "Slate Serenity"
+  },
+  "item6": {
+    "category": "walls",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 }
+    ],
+    "description": "Comfortable and eco-friendly cork flooring for a cozy atmosphere.",
+    "image": "/images/cork.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 54.99,
+    "title": "Cork Comfort"
+  },
+  "item7": {
+    "category": "slabs",
+    "colors": [
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Laminate flooring with a luxurious look and easy maintenance.",
+    "image": "/images/laminate.jpg",
+    "isLiked": false,
+    "isTrending": true,
+    "onSale": true,
+    "price": 44.99,
+    "title": "Laminate Luxe"
+  },
+  "item8": {
+    "category": "pavers",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "red", "quantity": 15 }
+    ],
+    "description": "Trendy terrazzo flooring with colorful stone chips for a unique style.",
+    "image": "/images/oakwood.jpg",
+    "isLiked": false,
+    "isTrending": false,
+    "onSale": false,
+    "price": 64.99,
+    "title": "Terrazzo Trend"
+  },
+  "item9": {
+    "category": "steps",
+    "colors": [
+      { "name": "gray", "quantity": 55 },
+      { "name": "beige", "quantity": 10 },
+      { "name": "golden", "quantity": 25 },
+      { "name": "brown", "quantity": 5 }
+    ],
+    "description": "Chic ceramic tiles that offer durability and a modern aesthetic.",
+    "image": "/images/marble.jpg",
+    "isLiked": true,
+    "isTrending": true,
+    "onSale": false,
+    "price": 49.99,
+    "title": "Ceramic Chic"
+  }
+}

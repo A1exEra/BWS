@@ -1,22 +1,26 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { BWS_DATA } from '@/helpers/types';
-import Button from '@/components/shared/Button/Button';
 import ProductId from './Product.styled';
 import downarrow from '../../public/images/color-options/downarrow.svg';
 import heart from '../../public/icons/heart.svg';
-import ColorPicker from '../shared/Colors/ColorPicker';
-import cart from '@/public/icons/mdi-light_cart.svg';
 import { useCart } from '@/helpers/cartContext';
 import NotificationContext from '@/helpers/Notificationcontext';
-import { useContext } from 'react';
-// import { choices } from './choices';
+import { useContext, useState } from 'react';
+import ColorChoises from '../shared/Colors/ColorChoises';
+
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
+  const [chosenColor, setColor] = useState<string | null>(null);
   const notificationCtx = useContext(NotificationContext);
   const { addToCart } = useCart();
   const onAddItemHandler = () => {
-    addToCart(product);
+    const newId = `${product.id}-${chosenColor}-${product.title
+      .split(' ')
+      .join('-')
+      .toLowerCase()}`;
+    const updatedProduct: BWS_DATA = { ...product, id: newId };
+    addToCart(updatedProduct, chosenColor);
     //////////////
     notificationCtx.setNotification({
       title: 'Item Added...',
@@ -35,7 +39,7 @@ const Product = (props: { product: BWS_DATA }) => {
         <h4>${product.price} per sqm</h4>
         <p>{product.description}</p>
         <div className="optionSelector">
-          <ColorPicker />
+          <ColorChoises setColor={setColor} product={product} />
           <div className="border">
             <p>Border Shortways</p>
             <Image src={downarrow} alt="down arrow" />

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useMemo } from 'react';
 import {
   StyledCategories,
   StyledLabel,
@@ -28,7 +28,11 @@ interface CategoriesProps {
 const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
-
+  const selectedCategoryProducts = useMemo(() => {
+    return products.filter((product) =>
+      selectedCategories.includes(product.category)
+    );
+  }, [products, selectedCategories]);
   const {
     filteredProducts,
     setSortedProducts,
@@ -43,15 +47,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
   const handleProductCheckboxChange = (labels: string[]) => {
     setSelectedProducts(labels);
   };
-  useEffect(() => {
-    console.log('[Categories] selectedProducts:', selectedProducts);
-  }, [selectedProducts]);
-  useEffect(() => {
-    console.log(
-      '[categories] selectedCategories after update:',
-      selectedCategories
-    );
-  }, [selectedCategories]);
+
   useEffect(() => {
     setFilteredProducts(sortedProducts);
   }, [sortedProducts]);
@@ -87,7 +83,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
           handleCheckboxChange={handleProductCheckboxChange}
         />
       </div>
-      <ColorPicker />
+      <ColorPicker selectedCategories={selectedCategoryProducts} />
       <PriceRange />
     </StyledCategories>
   );

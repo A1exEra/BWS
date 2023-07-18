@@ -1,6 +1,7 @@
 import { BWS_DATA } from './types';
-import { addDoc, collection } from '@firebase/firestore';
-import { firestore } from './firebse';
+import { setDoc, addDoc, collection } from '@firebase/firestore';
+import { firestore } from './firebase';
+import { doc } from 'firebase/firestore';
 // Usage example
 // sendFeedback(
 //   'john@example.com',
@@ -8,17 +9,41 @@ import { firestore } from './firebse';
 //   'Great app! Keep up the good work.'
 // );
 
-export const handleSubmit = (data: any) => {
-  const ref = collection(firestore, 'test-data');
-  const newData = {
-    testdata: data,
-  };
-  try {
-    addDoc(ref, newData);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const handleSubmit = (data: any) => {
+//   const ref = collection(firestore, 'testData');
+//   const newData = {
+//     testdata: data,
+//   };
+//   try {
+//     addDoc(ref, newData);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// ////
+// const collectionRef = collection(firestore, 'feedback');
+
+// // Function to add a new document to the "products" collection
+// export const addFeedback = async (feedback: {
+//   name: string;
+//   email: string;
+//   message: string;
+// }) => {
+//   console.log(feedback);
+//   try {
+//     // Create a new document with an auto-generated ID
+//     const docRef = doc(collectionRef);
+
+//     // Set the data of the document
+//     await setDoc(docRef, feedback);
+//     console.log(setDoc);
+//     console.log('Feedback added successfully!');
+//   } catch (error) {
+//     console.error('Error adding feedback:', error);
+//   }
+// };
+////
+
 const firebase_URL: string | undefined = process.env.PRODUCTS_URL;
 export const getAllData = async () => {
   const response = await fetch(firebase_URL!);

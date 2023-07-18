@@ -13,10 +13,8 @@ export interface BWS_DATA {
   price: number;
   isLiked: boolean;
   onSale: boolean;
-  colors: {
-    name: string;
-    quantity: number;
-  }[];
+  color?: string;
+  colors: { name: string; quantity: number }[];
   isTrending: boolean;
   category: string;
 }

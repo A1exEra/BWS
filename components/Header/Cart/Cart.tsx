@@ -81,11 +81,12 @@ const Cart = ({ isCartOpen, setIsCartOpen, setQuantity }: CartProps) => {
     });
   };
   const handleCheckout = () => {
-    console.log('Item was purchased!!! - ', {
+    console.log('Checking out - ', {
       ...cartItems,
       totalItems,
       totalPrice,
     });
+    clearCart();
   };
   return (
     <SliderCartContainer $iscartopen={isCartOpen}>

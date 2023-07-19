@@ -12,7 +12,6 @@ const ColorChoises = (props: CHOISES) => {
   const [selectedColor, setSelectedColor] = useState<string>(
     props.product.colors[0].name
   );
-
   const handleColorClick = (color: string) => {
     props.setColor(color);
     setSelectedColor(color);

@@ -49,7 +49,7 @@ const ProductsPage = (props: { products: BWS_DATA[] }) => {
     setSortOrder((prevSortOrder) => {
       const newSortOrder = prevSortOrder === 'desc' ? 'asc' : 'desc';
 
-      setSortedProducts((prevFilteredProducts) => {
+      setFilteredProducts((prevFilteredProducts) => {
         return [...prevFilteredProducts].sort((a, b) => {
           if (newSortOrder === 'desc') {
             return a.price > b.price ? -1 : 1;

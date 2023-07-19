@@ -9,7 +9,6 @@ interface CartItemProps {
   decrement: (id: string, title: string) => void;
 }
 const CartItem = (props: CartItemProps) => {
-  const [totalItemPrice, setTotalItemPrice] = useState<number>(0);
   return (
     <StyledcartItem>
       {props.cartItems.map((item) => (
@@ -24,23 +23,11 @@ const CartItem = (props: CartItemProps) => {
               <span onClick={() => props.remove(item.id)}>{deleteIcon}</span>
             </div>
             <div className="item_icons">
-              <h4>$ {+(totalItemPrice + item.price).toFixed(2)}</h4>
+              <h4>$ {+item.totalItemPrice.toFixed(2)}</h4>
               <div className="qnty">
-                <h4
-                  onClick={() => {
-                    props.decrement(item.id, item.title);
-                    setTotalItemPrice((prev) => prev - item.price);
-                  }}>
-                  -
-                </h4>
+                <h4 onClick={() => props.decrement(item.id, item.title)}>-</h4>
                 <p>{item.quantity}</p>
-                <h4
-                  onClick={() => {
-                    props.increment(item.id, item.title);
-                    setTotalItemPrice((prev) => prev + item.price);
-                  }}>
-                  +
-                </h4>
+                <h4 onClick={() => props.increment(item.id, item.title)}>+</h4>
               </div>
             </div>
           </div>

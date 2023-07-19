@@ -2,7 +2,7 @@ import { BWS_DATA } from './types';
 
 const firebase_URL: string | undefined = process.env.PRODUCTS_URL;
 export const getAllData = async () => {
-  const response = await fetch(firebase_URL!);
+  const response = await fetch(firebase_URL);
   const data = await response.json();
   const bws_data: BWS_DATA[] = [];
   for (const key in data) {

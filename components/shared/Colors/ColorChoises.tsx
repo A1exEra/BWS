@@ -11,8 +11,6 @@ const ColorChoises = (props: CHOISES) => {
   const [selectedColor, setSelectedColor] = useState<string>(
     props.product.colors[0].name
   );
-  //passing the selected color on component loading because the handler function was not yet activated
-  props.setColor(selectedColor);
   const handleColorClick = (color: string) => {
     props.setColor(color);
     setSelectedColor(color);

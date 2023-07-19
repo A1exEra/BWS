@@ -1,5 +1,22 @@
 import styled from 'styled-components';
+type BurgerProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
+// const Burger = ({ isopen, setIsOpen }: BurgerProps) => {
+const Burger = ({ isOpen, setIsOpen }: BurgerProps) => {
+  const handleClick = () => {
+    setIsOpen((prev: boolean) => !prev);
+  };
+  return (
+    <StyledBurger onClick={handleClick}>
+      <div className={`stripe ${isOpen ? 'stripe-top' : ''}`}></div>
+      <div className={`stripe ${isOpen ? 'stripe-middle' : ''}`}></div>
+      <div className={`stripe ${isOpen ? 'stripe-bottom' : ''}`}></div>
+    </StyledBurger>
+  );
+};
 const StyledBurger = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,23 +57,4 @@ const StyledBurger = styled.div`
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   }
 `;
-type BurgerProps = {
-  $isopen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-// const Burger = ({ isopen, setIsOpen }: BurgerProps) => {
-const Burger = ({ $isopen: isopen, setIsOpen }: BurgerProps) => {
-  const handleClick = () => {
-    setIsOpen((prev: boolean) => !prev);
-  };
-  return (
-    <StyledBurger onClick={handleClick}>
-      <div className={`stripe ${isopen ? 'stripe-top' : ''}`}></div>
-      <div className={`stripe ${isopen ? 'stripe-middle' : ''}`}></div>
-      <div className={`stripe ${isopen ? 'stripe-bottom' : ''}`}></div>
-    </StyledBurger>
-  );
-};
-
 export default Burger;

@@ -25,8 +25,8 @@ const Header = () => {
   }, [isOpen, isCartOpen]);
   return (
     <StyledHeader>
-      <SliderNav isopen={isOpen} setIsOpen={setIsOpen} />
-      <Burger setIsOpen={setIsOpen} isopen={isOpen} />
+      <SliderNav isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Burger setIsOpen={setIsOpen} isOpen={isOpen} />
 
       <Link href="/">
         <h3>BWS</h3>
@@ -40,7 +40,7 @@ const Header = () => {
         />
       </div>
       <Cart
-        iscartopen={isCartOpen}
+        isCartOpen={isCartOpen}
         setIsCartOpen={setIsCartOpen}
         setQuantity={setQuantity}
       />

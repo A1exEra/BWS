@@ -7,6 +7,7 @@ interface CHOISES {
   setColor: (color: string) => void;
   product: BWS_DATA;
 }
+
 const ColorChoises = (props: CHOISES) => {
   const [selectedColor, setSelectedColor] = useState<string>(
     props.product.colors[0].name
@@ -15,6 +16,7 @@ const ColorChoises = (props: CHOISES) => {
     props.setColor(color);
     setSelectedColor(color);
   };
+
   return (
     <StyledColors>
       {props.product.colors.map(
@@ -35,6 +37,7 @@ const ColorChoises = (props: CHOISES) => {
     </StyledColors>
   );
 };
+
 const StyledColors = styled.div`
   display: flex;
   gap: 8px;

@@ -41,11 +41,12 @@ const StyledBurger = styled.div`
   }
 `;
 type BurgerProps = {
-  isopen: boolean;
+  $isopen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Burger = ({ isopen, setIsOpen }: BurgerProps) => {
+// const Burger = ({ isopen, setIsOpen }: BurgerProps) => {
+const Burger = ({ $isopen: isopen, setIsOpen }: BurgerProps) => {
   const handleClick = () => {
     setIsOpen((prev: boolean) => !prev);
   };

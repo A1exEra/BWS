@@ -7,16 +7,17 @@ interface CHOISES {
   setColor: (color: string) => void;
   product: BWS_DATA;
 }
+
 const ColorChoises = (props: CHOISES) => {
   const [selectedColor, setSelectedColor] = useState<string>(
     props.product.colors[0].name
   );
-  //passing the selected color on component loading because the handler function was not yet activated
-  props.setColor(selectedColor);
+
   const handleColorClick = (color: string) => {
     props.setColor(color);
     setSelectedColor(color);
   };
+
   return (
     <StyledColors>
       {props.product.colors.map(
@@ -37,6 +38,7 @@ const ColorChoises = (props: CHOISES) => {
     </StyledColors>
   );
 };
+
 const StyledColors = styled.div`
   display: flex;
   gap: 8px;

@@ -5,11 +5,11 @@ import MainButton from '../../shared/MainButton';
 import NotificationContext from '@/helpers/Notificationcontext';
 import CartItem from './CartItem';
 type CartProps = {
-  iscartopen: boolean;
+  $iscartopen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
-const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
+const Cart = ({ $iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
   const notificationCtx = useContext(NotificationContext);
   const { cartItems, removeFromCart, incrementItem, decrementItem, clearCart } =
     useCart();
@@ -18,7 +18,7 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (iscartopen) {
+      if ($iscartopen) {
         if (divRef.current?.contains(event.target as Node)) {
           setIsCartOpen(false);
         }
@@ -29,7 +29,7 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [iscartopen, setIsCartOpen]);
+  }, [$iscartopen, setIsCartOpen]);
   ////
   useEffect(() => {
     const calculateTotalQuantity = () => {
@@ -88,7 +88,7 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
     });
   };
   return (
-    <SliderCartContainer $iscartopen={iscartopen}>
+    <SliderCartContainer $iscartopen={$iscartopen}>
       <div className="background" ref={divRef}></div>
       <h1>Shopping Cart</h1>
       <CartItem
@@ -111,12 +111,14 @@ const Cart = ({ iscartopen, setIsCartOpen, setQuantity }: CartProps) => {
           onClick={handleClearCart}
           label="Clear Cart"
           className="btn"
-          backgroundColor="#536758"></MainButton>
+          backgroundColor="#536758"
+        ></MainButton>
         <MainButton
           onClick={handleCheckout}
           backgroundColor="#2a2a2a"
           className="btn"
-          label="Checkout"></MainButton>
+          label="Checkout"
+        ></MainButton>
         <p>Psst, get it now before it sells out.</p>
       </div>
     </SliderCartContainer>

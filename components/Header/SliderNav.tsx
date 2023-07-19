@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import FirebaseTesting from './FirebaseTesting';
 type SliderProps = {
-  isopen: boolean;
+  $isopen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
+const SliderNav = ({ $isopen, setIsOpen }: SliderProps) => {
   const sliderRef = useRef<HTMLUListElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (isopen) {
+      if ($isopen) {
         if (divRef.current?.contains(event.target as Node)) {
           setIsOpen(false);
         }
@@ -22,10 +22,10 @@ const SliderNav = ({ isopen, setIsOpen }: SliderProps) => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [isopen, setIsOpen]);
+  }, [$isopen, setIsOpen]);
 
   return (
-    <SliderNavContainer $isopen={isopen}>
+    <SliderNavContainer $isopen={$isopen}>
       <div className="background" ref={divRef}></div>
       <h2>BWS</h2>
       <ul ref={sliderRef}>

@@ -11,7 +11,10 @@ import ColorChoises from '../shared/Colors/ColorChoises';
 
 const Product = (props: { product: BWS_DATA }) => {
   const { product } = props;
-  const [chosenColor, setColor] = useState<string | null>(null);
+  const [chosenColor, setColor] = useState<string | null>(
+    product.colors[0].name
+  );
+
   const notificationCtx = useContext(NotificationContext);
   const { addToCart } = useCart();
   const onAddItemHandler = () => {
